@@ -64,9 +64,10 @@ public class Model {
 	}
 	/**
 	 * Grades plants depending on attributes of garden and the plants own attributes (1 point added for every common attribute)
+	 * @param plants - ArrayList of all plants in the garden
 	 * @return - the score of the garden as an integer
 	 */
-	public int plantGrader() {
+	public int plantGrader(ArrayList<Plant> plants) {
 		return 5;
 	}
 }

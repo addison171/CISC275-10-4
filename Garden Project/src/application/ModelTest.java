@@ -1,28 +1,34 @@
 package application;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class ModelTest {
+public class ModelTest {
 
 	@Test
-	void testInputData() {
+	public void testInputData() {
 		Cell[][] cells = new Cell[1][1];
 		cells[0][0] = new Cell();
 		Model m = new Model();
-		assertEquals(m.inputData().equals(cells), false);
+		m.cells = new Cell[5][5];
+		assertEquals(m.inputData().equals((cells)), true);
 	}
 
 	@Test
-	void testAddObstruction() {
+	public void testAddObstruction() {
 		Cell[][] cells = new Cell[5][5];	
 		Model m = new Model();
-		assertEquals(m.addObstruction().equals(cells), false);	}
+		m.cells = new Cell[5][5];
+		boolean equality = m.addObstruction(cells)==cells; 
+		assertEquals(equality, true);	}
 
 	@Test
-	void testEditCells() {
-		fail("Not yet implemented");
+	public void testEditCells() {
+		Cell[][] cells = new Cell[5][5];	
+		Model m = new Model();
+		m.cells = new Cell[5][5];
+		boolean equality2 = m.editCells(cells)==cells; 
+		assertEquals(equality2, true);	}	
 	}
 
-}

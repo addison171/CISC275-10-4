@@ -37,3 +37,4 @@ public class Cell {
 	public boolean getObstruction() {
 		return obstruction;
 	}
+}

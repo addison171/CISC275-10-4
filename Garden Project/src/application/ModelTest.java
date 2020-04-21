@@ -1,7 +1,7 @@
 package application;
 
 import static org.junit.Assert.*;
-
+import java.util.ArrayList;
 import org.junit.Test;
 
 public class ModelTest {
@@ -33,12 +33,13 @@ public class ModelTest {
 	@Test
 	public void plantGrader() {
 		Model m = new Model();
-		m.plants.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring"));
+		ArrayList<Plant> p = new ArrayList<Plant>();
+		p.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring"));
 		m.soilType = "Clay";
 		m.waterLevel = "Wet";
 		m.sunLight = "Shade";
 		int score = 3;
-		assertEquals(score, m.plantGrader());	
+		assertEquals(score, m.plantGrader(p));	
 	}	
 }
 

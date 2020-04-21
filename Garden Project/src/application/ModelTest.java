@@ -30,5 +30,15 @@ public class ModelTest {
 		m.cells = new Cell[5][5];
 		boolean equality2 = m.editCells(cells)==cells; 
 		assertEquals(equality2, true);	}	
-	}
+	@Test
+	public void plantGrader() {
+		Model m = new Model();
+		m.plants.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring"));
+		m.soilType = "Clay";
+		m.waterLevel = "Wet";
+		m.sunLight = "Shade";
+		int score = 3;
+		assertEquals(score, m.plantGrader());	
+	}	
+}
 

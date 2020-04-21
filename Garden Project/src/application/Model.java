@@ -13,6 +13,9 @@ public class Model {
 	/**
 	 * Saves the garden
 	 */
+	public Model() {
+		ArrayList<Plant> plants = new ArrayList<Plant>();
+	}
 	public void saveAll() {
 		
 	}

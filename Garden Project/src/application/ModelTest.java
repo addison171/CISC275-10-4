@@ -10,13 +10,15 @@ class ModelTest {
 	void testInputData() {
 		Cell[][] cells = new Cell[1][1];
 		cells[0][0] = new Cell();
-		assertEquals(inputData().compare(cells), false);
+		Model m = new Model();
+		assertEquals(m.inputData().equals(cells), false);
 	}
 
 	@Test
 	void testAddObstruction() {
-		fail("Not yet implemented");
-	}
+		Cell[][] cells = new Cell[5][5];	
+		Model m = new Model();
+		assertEquals(m.addObstruction().equals(cells), false);	}
 
 	@Test
 	void testEditCells() {

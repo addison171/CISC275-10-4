@@ -9,7 +9,7 @@ public class Model {
 	Cell[][] cells;
 	String soilType;
 	String waterLevel;
-	String sunLight; 
+	String sunLight;
 	/**
 	 * Saves the garden
 	 */
@@ -45,4 +45,26 @@ public class Model {
 	public Cell[][] editCells(Cell[][] cellChange) {
 		return cells;
 	}
+	/**
+	 * allows user to change the data pertaining to seasons
+	 * @param timeOfDay - timeOfDay selected by User
+	 * @param season - Season selected by user
+	 */
+	public void preview(String timeOfDay, String season) {
+		
+	}
+	/**
+	 * gathers all data needed to enter final screen
+	 */
+	public void finalScreen() {
+			
+	}
+	/**
+	 * Grades plants depending on attributes of garden and the plants own attributes (1 point added for every common attribute)
+	 * @return - the score of the garden as an integer
+	 */
+	public int plantGrader() {
+		return 5;
+	}
 }
+	

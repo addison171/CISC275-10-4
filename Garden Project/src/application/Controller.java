@@ -9,6 +9,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
  
 public class Controller extends Application {
+	private Model model;
+	private View view;
+	
+	
     public static void main(String[] args) {
         launch(args);
     }

@@ -1,3 +1,6 @@
+/**
+ * @author Sohan Gadiraju
+ */
 package application;
 
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ public class Model {
 	String soilType;
 	String waterLevel;
 	String sunLight;
+	
 	/**
 	 * Saves the garden
 	 */

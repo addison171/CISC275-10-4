@@ -1,3 +1,6 @@
+/**
+ * @author Sohan Gadiraju
+ */
 package application;
 
 import javafx.scene.control.Button;
@@ -7,6 +10,7 @@ public class EditCellsView {
 	Button WaterLevel;
 	Button SoilType;
 	Button Save;
+	
 	/**
 	 * highlightCells allows the user to highlight cells and change the sunlight, water, and soil
 	 */

@@ -1,3 +1,6 @@
+/**
+ * @author Addison Kuykendall
+ */
 package application;
 
 import javafx.scene.control.ComboBox;
@@ -13,12 +16,14 @@ public class InsertObstructionView {
 	TextArea label;
 	Button add;
 	
+	//updates the view according to what inputs have been changed
 	public void update() {
-		//updates the view according to what inputs have been changed
 	}
-	
+	/**
+	 * creates an image on the scene of some shape
+	 * @param shape the shape of the obstruction the insert obstruction button will create
+	 */
 	public void generateShape(Image shape) {
-		//creates an image on the scene of some shape
 	}
 	
 }

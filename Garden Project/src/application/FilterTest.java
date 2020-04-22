@@ -1,3 +1,6 @@
+/**
+ * @author Nick Sabatini
+ */
 package application;
 
 import static org.junit.Assert.*;

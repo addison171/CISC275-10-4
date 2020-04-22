@@ -1,3 +1,6 @@
+/**
+ * @author Addison Kuykendall
+ */
 package application;
 
 import javafx.scene.control.ComboBox;
@@ -11,16 +14,16 @@ public class SearchAllView {
 	ComboBox nativePlant;
 	ComboBox filter;
 	
+	//displays the search all view on the scene
 	public void display() {
-		//displays the search all view on the scene
 	}
 	
+	//changes the images of plants displayed depending on season(bloomage)
 	public void changeSeason() {
-		//changes the images of plants displayed depending on season(bloomage)
 	}
 	
+	//updates the plants on the screen based on criteria.  Basically a "search" button.
 	public void updatePlants() {
-		//updates the plants on the screen based on criteria.  Basically a "search" button.
 	}
 	
 }

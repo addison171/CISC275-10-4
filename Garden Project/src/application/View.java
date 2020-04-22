@@ -1,3 +1,6 @@
+/**
+ * @author Addison Kuykendall
+ */
 package application;
 
 import javafx.scene.Scene;
@@ -14,7 +17,7 @@ public class View {
 	
 	/**
 	 * 
-	 * @param theStage
+	 * @param theStage primary stage being created for the view, an object of stage
 	 */
 	public View(Stage theStage) {
 		

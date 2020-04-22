@@ -1,3 +1,6 @@
+/**
+ * @author Jonni Tran
+ */
 package application;
 
 import javafx.scene.control.Button;

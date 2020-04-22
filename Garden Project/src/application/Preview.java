@@ -1,3 +1,6 @@
+/**
+ * @author Jonni Tran
+ */
 package application;
 
 import javafx.scene.control.Button;
@@ -9,16 +12,16 @@ public class Preview {
 	ComboBox season;
 	Button backToEdit;
 	
+	//shows the preview of the garden to the user
 	public void display() {
-		//shows the preview of the garden to the user
 	}
-	
+
+	//changes the season that the garden is being viewed in
 	public void changeSeason() {
-		//changes the season that the garden is being viewed in
 	}
 	
+	//updates the images of plants according to the season selected
 	public void updatePlants() {
-		//updates the images of plants according to the season selected
 	}
 }
 

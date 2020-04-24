@@ -3,6 +3,7 @@
  */
 package application;
 	
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,7 +32,9 @@ public class Controller extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-      
+    	view = new View(primaryStage);
+    	model = new Model(view.getWidth(), view.getHeight());
+        primaryStage.show();
     }
     
     /**

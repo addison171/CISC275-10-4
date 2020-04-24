@@ -25,11 +25,19 @@ public class Model implements Serializable{
 	String soilType;
 	String waterLevel;
 	String sunLight;
+	double canvasHeight;
+	double canvasWidth;
+	
+	public Model(double width, double height) {
+		ArrayList<Plant> plants = new ArrayList<Plant>();
+		canvasHeight = height;
+		canvasWidth = width;
+	}
 	
 	public Model() {
 		ArrayList<Plant> plants = new ArrayList<Plant>();
 	}
-	
+
 	/**
 	 * Saves the garden
 	 */

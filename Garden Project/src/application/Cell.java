@@ -7,8 +7,7 @@ public class Cell {
 	private String soil;
 	private String water;
 	private String sunlight;
-	private Plant plant; 
-	private boolean obstruction;
+	private Object obj;
 	
 	/**
 	 * Setter for the soil in the cell
@@ -63,7 +62,7 @@ public class Cell {
 	 * @param newPlant - the new plant to be inserted in the cell
 	 */
 	public void setPlant(Plant newPlant) {
-		plant = newPlant;
+		obj = newPlant;
 	}
 	
 	/**
@@ -71,22 +70,22 @@ public class Cell {
 	 * @return returns the plant object that was inserted in the cell
 	 */
 	public Plant getPlant() {
-		return plant;
+		return (Plant) obj;
 	}
 	
 	/**
 	 * Setter for obstruction in a cell
 	 * @param obs - condition of whether or not the cell contains an obstruction
 	 */
-	public void setObstruction(boolean obs) {
-		obstruction = obs;
+	public void setObstruction(Obstruction obs) {
+		obj = obs;
 	}
 	
 	/**
 	 * Getter for obstruction in a cell
 	 * @return returns whether or not cell contains an obstruction
 	 */
-	public boolean getObstruction() {
-		return obstruction;
+	public Obstruction getObstruction() {
+		return (Obstruction) obj;
 	}
 }

@@ -18,6 +18,7 @@ public class Model implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	ArrayList<Plant> plants;
+	ArrayList<Plant> allPlants;
 	Filter f;
 	File saveFile;
 	int score;
@@ -32,12 +33,9 @@ public class Model implements Serializable{
 		ArrayList<Plant> plants = new ArrayList<Plant>();
 		canvasHeight = height;
 		canvasWidth = width;
+		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 	}
 	
-	public Model() {
-		ArrayList<Plant> plants = new ArrayList<Plant>();
-	}
-
 	/**
 	 * Saves the garden
 	 */
@@ -76,6 +74,16 @@ public class Model implements Serializable{
 	 * @return returns the new updated cell array
 	 */
 	public Cell[][] inputData() {
+		for (Cell[] innerArray : cells)
+	      {
+	         for (Cell val : innerArray)
+	         {
+	            val.setSoil(soilType);
+	            val.setSunlight(sunLight);
+	            val.setWater(waterLevel);
+	         }
+	      }
+		
 		return cells;
 	}
 	/**

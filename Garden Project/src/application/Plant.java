@@ -11,8 +11,7 @@ class Plant {
 	private String idealWaterLevel;
 	private String idealSunlightLevel;
 	private String bloomTime;
-	private Image[] stagesOfPlant;
-	
+	private Image[] stagesOfPlant;	
 	/**
 	 * 
 	 * @param n String for the name of plant
@@ -75,58 +74,7 @@ class Plant {
 	public String getWater() {
 	    return this.idealWaterLevel;
 	}
-	/**
-	 * Getter for bloom string
-	 * @param bloom - the plant's bloom time in string form
-	 */
-	public void getBloom(String bloom) {
-	    this.bloomTime = bloom;
-	}
-
-	/**
-	 * Setter for bloom time
-	 * @return returns the string for the time when the plant blooms
-	 */
-	public String setBloom() {
-	    return this.bloomTime;
-	}
 	
-	/**
-	 * Setter for non bloom image of the plant
-	 * @param nonBloom - Images of the plant when it is not fully bloomed
-	 */
-	public void getNonBloom(Image nonBloom) {
-	    this.stagesOfPlant[0] = nonBloom;
-	}
-
-	/**
-	 * Setter for the non bloom image of the plant
-	 * @return returns the image of the plant when it is not in bloom.
-	 */
-	public Image setNonBloom() {
-	    return this.stagesOfPlant[0];
-	}
-
-	/**
-	 * Setter for the bloom image of the plant
-	 * @param bloom - image of the plant that is in bloom
-	 */
-	public void setBloom(Image bloom) {
-	    this.stagesOfPlant[1] = bloom;
-	}
-
-	/**
-	 * Getter for the bloom image of the plant
-	 * @return returns the image of the plant in full bloom
-	 */
-	public Image getBloom() {
-	    return this.stagesOfPlant[1];
-	}
-
-	/**
-	 * Setter for the sunlight level of the plant
-	 * @param sun - returns string of ideal sunlight level of a plant
-	 */
 	public void setSunlight(String sun) {
 	    this.idealSunlightLevel = sun;
 	}

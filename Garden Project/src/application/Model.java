@@ -4,30 +4,64 @@
 package application;
 
 import java.util.ArrayList;
+import java.io.Serializable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-public class Model {
+public class Model implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ArrayList<Plant> plants;
 	Filter f;
+	File saveFile;
 	int score;
 	Cell[][] cells;
 	String soilType;
 	String waterLevel;
-	String sunLight;
+	String sunlight;
+	
+	public Model() {
+		ArrayList<Plant> plants = new ArrayList<Plant>();
+	}
 	
 	/**
 	 * Saves the garden
 	 */
-	public Model() {
-		ArrayList<Plant> plants = new ArrayList<Plant>();
-	}
 	public void saveAll() {
-		
+		try {
+		   FileOutputStream fos = new FileOutputStream(saveFile);
+		   ObjectOutputStream outputStream = new ObjectOutputStream(fos);
+		   outputStream.writeObject(plants);
+		   outputStream.close();
+		} 
+		catch (IOException ex) {
+		   System.err.println(ex);
+		}
 	}
 	/**
 	 * opens file browser to open a new garden
+	 * @return - A previously saved Model
 	 */
-	public void open() {
-		
+	public Model open() {
+		Model savedModel = null;
+		 
+	    try {
+	        FileInputStream fis = new FileInputStream(saveFile);
+	        ObjectInputStream inputStream = new ObjectInputStream(fis);
+	        savedModel = (Model) inputStream.readObject();
+	        inputStream.close();
+	    } 
+	    catch (IOException | ClassNotFoundException ex) {
+	        System.err.println(ex);
+	    }
+	 
+	    return savedModel;
 	}
 	/**
 	 * allows user to change the data for all cells.
@@ -72,7 +106,31 @@ public class Model {
 	 * @return - the score of the garden as an integer
 	 */
 	public int plantGrader(ArrayList<Plant> plants) {
-		return 5;
+		int score = 0;
+		
+		for(Plant p: plants) {
+			if (p.getSoil().equals(soilType)) {
+				score++;
+			}
+			if (p.getWater().equals(waterLevel)) {
+				score++;
+			}
+			if (p.getSunlight().equals(sunlight)) {
+				score++;
+			}
+		}
+		
+		return score;
+	}
+	/**
+	 * Calculates the total possible points available for garden based on amount of plants placed in Garden
+	 * @param plants - ArrayList of all plants in the garden
+	 * @return - the total possible score of the garden as an integer
+	 */
+	public int totalScore (ArrayList<Plant> plants) {
+		int total = 0;
+		total = plants.size() * 3;
+		return total;
 	}
 }
 	

@@ -36,6 +36,8 @@ public class Filter {
 	 * @return the plant object the filter sifts for.
 	 */
 	public ArrayList<Plant> search(ArrayList<Plant> plants){
+		for(Plant p: plants) {
+		
 		return plants;
 	}
 

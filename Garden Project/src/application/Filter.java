@@ -39,6 +39,7 @@ public class Filter {
 		for(Plant p: plants) {
 		
 		return plants;
-	}
+		}
 
+	}
 }

@@ -1,5 +1,5 @@
 /**
- * @author Nick Sabitini
+ * @author Nick Sabatini
  */
 package application;
 
@@ -40,7 +40,7 @@ public class ModelTest {
 		p.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring"));
 		m.soilType = "Clay";
 		m.waterLevel = "Wet";
-		m.sunLight = "Shade";
+		m.sunlight = "Shade";
 		int score = 3;
 		assertEquals(score, m.plantGrader(p));	
 	}	

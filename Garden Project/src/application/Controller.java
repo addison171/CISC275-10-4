@@ -4,7 +4,7 @@
 package application;
 	
 import javafx.application.Application;
-
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -38,7 +38,7 @@ public class Controller extends Application {
      * Clicking to create obstruction from button
      * @return returns event that the obstructions wants to be created from clicking the button
      */
-    public EventHandler insertObstructionClick() {
+    public EventHandler<MouseEvent> insertObstructionClick() {
     	return event -> insertObstructionClicked((MouseEvent) event);
 	}
     
@@ -54,7 +54,7 @@ public class Controller extends Application {
      * Eventhandlier for viewing the garden button being clicked
      * @return returns an event that the view button was clicked
      */
-    public EventHandler viewClick() {
+    public EventHandler<MouseEvent> viewClick() {
     	return event -> viewClicked((MouseEvent) event);
 	}
     
@@ -70,7 +70,7 @@ public class Controller extends Application {
      * Eventhandler for input data button being clicked
      * @return returns event object from clicking input data button
      */
-    public EventHandler inputDataClick() {
+    public EventHandler<MouseEvent> inputDataClick() {
     	return event -> inputDataClicked((MouseEvent) event);
 	}
     
@@ -86,7 +86,7 @@ public class Controller extends Application {
      * The preview button being clicked
      * @return returns event object that preview button was selected
      */
-    public EventHandler previewClick() {
+    public EventHandler<MouseEvent> previewClick() {
     	return event -> previewClicked((MouseEvent) event);
 	}
     
@@ -102,7 +102,7 @@ public class Controller extends Application {
      * The edit cell button being clicked
      * @return return event object for the edit cells button being clicked
      */
-    public EventHandler editCellsClick() {
+    public EventHandler<MouseEvent> editCellsClick() {
     	return event -> editCellsClicked((MouseEvent) event);
 	}
     
@@ -118,7 +118,7 @@ public class Controller extends Application {
      * The final view button being clicked
      * @return returns object that finalview button was clicked
      */
-    public EventHandler finalViewClick() {
+    public EventHandler<MouseEvent> finalViewClick() {
     	return event -> finalViewClicked((MouseEvent) event);
 	}
     
@@ -134,7 +134,7 @@ public class Controller extends Application {
      * The save all button being clicked
      * @return returns events object that saveall button was clicked
      */
-    public EventHandler saveAllClick() {
+    public EventHandler<MouseEvent> saveAllClick() {
     	return event -> saveAllClicked((MouseEvent) event);
 	}
     

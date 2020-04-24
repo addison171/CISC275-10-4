@@ -24,7 +24,7 @@ public class Model implements Serializable{
 	Cell[][] cells;
 	String soilType;
 	String waterLevel;
-	String sunlight;
+	String sunLight;
 	
 	public Model() {
 		ArrayList<Plant> plants = new ArrayList<Plant>();
@@ -115,7 +115,7 @@ public class Model implements Serializable{
 			if (p.getWater().equals(waterLevel)) {
 				score++;
 			}
-			if (p.getSunlight().equals(sunlight)) {
+			if (p.getSunlight().equals(sunLight)) {
 				score++;
 			}
 		}

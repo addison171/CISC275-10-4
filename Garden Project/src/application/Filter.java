@@ -37,7 +37,7 @@ public class Filter {
 	 */
 	public ArrayList<Plant> search(ArrayList<Plant> plants){
 		for(Plant p: plants) {
-		
+		}
 		return plants;
 	}
 

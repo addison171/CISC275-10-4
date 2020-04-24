@@ -24,12 +24,20 @@ public class Model implements Serializable{
 	Cell[][] cells;
 	String soilType;
 	String waterLevel;
-	String sunlight;
+	String sunLight;
+	double canvasHeight;
+	double canvasWidth;
+	
+	public Model(double width, double height) {
+		ArrayList<Plant> plants = new ArrayList<Plant>();
+		canvasHeight = height;
+		canvasWidth = width;
+	}
 	
 	public Model() {
 		ArrayList<Plant> plants = new ArrayList<Plant>();
 	}
-	
+
 	/**
 	 * Saves the garden
 	 */
@@ -115,7 +123,7 @@ public class Model implements Serializable{
 			if (p.getWater().equals(waterLevel)) {
 				score++;
 			}
-			if (p.getSunlight().equals(sunlight)) {
+			if (p.getSunlight().equals(sunLight)) {
 				score++;
 			}
 		}

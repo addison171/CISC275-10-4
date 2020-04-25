@@ -34,8 +34,6 @@ public class View {
 		Canvas canvas = new Canvas(canvasWidth, canvasHeight);
 		root.getChildren().add(canvas);
 		gc = canvas.getGraphicsContext2D();
-		
-		
 	}
 	/**
 	 * Displays the image (usually to display plants)

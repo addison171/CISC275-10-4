@@ -34,6 +34,19 @@ public class Controller extends Application {
     public void start(Stage primaryStage) {
     	view = new View(primaryStage);
     	model = new Model(view.getWidth(), view.getHeight());
+    	
+    	this.hv = new HomeView();
+    	primaryStage.setScene(hv.scene);
+    	        
+        this.gv = new GardenView();
+        primaryStage.setScene(gv.scene);
+        
+        this.idv = new InputDataView();
+        primaryStage.setScene(idv.scene);
+        
+        this.searchv = new SearchAllView();
+        primaryStage.setScene(searchv.scene);
+        
         primaryStage.show();
     }
     

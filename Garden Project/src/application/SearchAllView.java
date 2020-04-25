@@ -5,6 +5,7 @@
 package application;
 
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -22,9 +23,15 @@ public class SearchAllView {
 	ComboBox<String> bloomCbx;
 	ComboBox<String> nativeCbx;
 	ComboBox<String> filterCbx;
+	Button inputDataBtn;
+	Button previewBtn;
+	Button editCellsBtn;
+	Button searchBtn;
+	Button finalViewBtn;
+	Button saveBtn;
 	
-	BorderPane borderpane = new BorderPane();
-	Scene scene = new Scene(borderpane);
+	static BorderPane borderpane;
+	Scene scene;
 	
 	public SearchAllView() {
 		
@@ -34,22 +41,23 @@ public class SearchAllView {
 		
 		//Buttons within the menu HBox
 		//input data
-		Button inputDataBtn = new Button("Input Data");
-		
+		inputDataBtn = new Button("Input Data");
+
 		//preview
-		Button previewBtn = new Button("Preview");
+		previewBtn = new Button("Preview");
+		//previewBtn.setonAction
 		
 		//edit cells
-		Button editCellsBtn = new Button("Edit Cells");
+		editCellsBtn = new Button("Edit Cells");
 		
 		//search all
-		Button searchBtn = new Button("Plants Search");
+		searchBtn = new Button("Plants Search");
 		
 		//final view 
-		Button finalViewBtn = new Button("Final View");
+		finalViewBtn = new Button("Final View");
 		
 		//save button
-		Button saveBtn = new Button("Save");
+		saveBtn = new Button("Save");
 		
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
@@ -120,14 +128,14 @@ public class SearchAllView {
 		//RIGHT
 
 		//BORDERPANE
-		BorderPane borderpane = new BorderPane();
+		borderpane = new BorderPane();
 		
 		borderpane.setTop(menu);
 		borderpane.setRight(filterPane);
 		borderpane.setPadding(new Insets(10,10,10,10));
 		
-		this.scene.setRoot(borderpane);
-
+		scene = new Scene(borderpane);
+		this.scene.setRoot(borderpane);		
 		
 	}
 	

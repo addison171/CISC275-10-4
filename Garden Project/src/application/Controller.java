@@ -48,16 +48,41 @@ public class Controller extends Application {
         this.idv = new InputDataView();
         primaryStage.setScene(idv.scene);
         
+        idv.searchBtn.setOnAction(searchClick());
+
         this.searchv = new SearchAllView();
         primaryStage.setScene(searchv.scene);
         
-        primaryStage.show();
-        view.test.setOnAction(insertObstructionClick());
+		searchv.inputDataBtn.setOnAction(inputDataClick());
+		searchv.editCellsBtn.setOnAction(editCellsClick());
+		searchv.finalViewBtn.setOnAction(finalViewClick());
+		searchv.previewBtn.setOnAction(previewClick());
+		searchv.searchBtn.setOnAction(searchClick());
+
+		primaryStage.show();
     }
     
     /**
-     * Clicking to create obstruction from button
-     * @return returns event that the obstructions wants to be created from clicking the button
+     * Clicking to search all 
+     * @return returns event that the search goes to when clicked
+     */
+    
+    public EventHandler<ActionEvent> searchClick() {
+    	return event -> searchClicked();
+	}
+    
+    
+    /**
+     * Transition to search UI
+     * 
+     */
+    public void searchClicked() {
+    	view.changeScene(SearchAllView.borderpane);
+    }
+    
+    /**
+     * Clicking to insert obstructions
+     * @return returns event that leads to obstructions
      */
     public EventHandler<ActionEvent> insertObstructionClick() {
     	return event -> insertObstructionClicked();
@@ -78,94 +103,95 @@ public class Controller extends Application {
      * @return returns an event that the view button was clicked
      */
     public EventHandler<ActionEvent> viewClick() {
-    	return event -> viewClicked((ActionEvent) event);
+    	return event -> viewClicked();
 	}
     
     /**
      * Transition to the view garden ui
      * @param event - event object from view button being clicked
      */
-    public void viewClicked(ActionEvent event) {
-    	
+    public void viewClicked() {
+    	view.changeScene(FinalView.finalRoot);
     }
     
     /**
      * Eventhandler for input data button being clicked
      * @return returns event object from clicking input data button
      */
-    public EventHandler<MouseEvent> inputDataClick() {
-    	return event -> inputDataClicked((MouseEvent) event);
-	}
+    public EventHandler<ActionEvent> inputDataClick() {
+    	return event -> inputDataClicked();
+	}		
+
     
     /**
      * Transition to input data screen from button click
      * @param event - event object from input data button being clicked
      */
-    public void inputDataClicked(MouseEvent event) {
-    
+    public void inputDataClicked() {
+    	view.changeScene(InputDataView.inputDataRoot);
     }
     
     /**
      * The preview button being clicked
      * @return returns event object that preview button was selected
      */
-    public EventHandler<MouseEvent> previewClick() {
-    	return event -> previewClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> previewClick() {
+    	return event -> previewClicked();
 	}
     
     /**
      * Preview button transition
      * @param event - event object for the preview button being clicked
      */
-    public void previewClicked(MouseEvent event) {
-    
+    public void previewClicked() {
+    	view.changeScene(Preview.previewRoot);
     }
     
     /**
      * The edit cell button being clicked
      * @return return event object for the edit cells button being clicked
      */
-    public EventHandler<MouseEvent> editCellsClick() {
-    	return event -> editCellsClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> editCellsClick() {
+    	return event -> editCellsClicked();
 	}
     
     /**
      * Transition to edit cells ui from the button being clicked
      * @param event - event object confirming the editcells button was clicked
      */
-    public void editCellsClicked(MouseEvent event) {
-    
+    public void editCellsClicked() {
+    	view.changeScene(EditCellsView.editCellsRoot);
     }
     
     /**
      * The final view button being clicked
      * @return returns object that finalview button was clicked
      */
-    public EventHandler<MouseEvent> finalViewClick() {
-    	return event -> finalViewClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> finalViewClick() {
+    	return event -> finalViewClicked();
 	}
     
     /**
      * View transition to final view screen
      * @param event - event object confirming the finalview button was clicked
      */
-    public void finalViewClicked(MouseEvent event) {
-    
+    public void finalViewClicked() {
+    	view.changeScene(FinalView.finalRoot);
     }
     
     /**
      * The save all button being clicked
      * @return returns events object that saveall button was clicked
      */
-    public EventHandler<MouseEvent> saveAllClick() {
-    	return event -> saveAllClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> saveAllClick() {
+    	return event -> saveAllClicked();
 	}
     
     /**
      * Saved all progress after button click
      * @param event - event object that confirms the saveall button was clicked
      */
-    public void saveAllClicked(MouseEvent event) {
+    public void saveAllClicked() {
     
     }
 }

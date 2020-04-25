@@ -3,6 +3,7 @@
  */
 package application;
 
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
@@ -11,6 +12,8 @@ public class Preview {
 	ComboBox timeOfDay;
 	ComboBox season;
 	Button backToEdit;
+	static Group previewRoot = new Group();
+
 	
 	//shows the preview of the garden to the user
 	public void display() {

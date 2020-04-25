@@ -22,6 +22,7 @@ public class InputDataView {
 	ComboBox<String> soilCbx;
 	Text plotSize;
 	Button addData;
+	Button searchBtn;
 	static Group inputDataRoot = new Group();
 
 	
@@ -56,7 +57,7 @@ public class InputDataView {
 		Button editCellsBtn = new Button("Edit Cells");
 		
 		//search all
-		Button searchBtn = new Button("Plants Search");
+		searchBtn = new Button("Plants Search");
 		
 		//final view 
 		Button finalViewBtn = new Button("Final View");
@@ -137,8 +138,12 @@ public class InputDataView {
 		borderpane.setPadding(new Insets(10,10,10,10));
 		
 		this.scene.setRoot(borderpane);
+		inputDataRoot.getChildren().add(borderpane);
+
 	}
 	
+	public void update() {
+	}
 	
 	/**
 	 * goes back to the garden view with the settings updated according to the selections.

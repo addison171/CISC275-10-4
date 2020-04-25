@@ -3,6 +3,7 @@
  */
 package application;
 
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 
 public class EditCellsView {
@@ -11,6 +12,8 @@ public class EditCellsView {
 	Button SoilType;
 	Button Save;
 	
+	static Group editCellsRoot = new Group();
+
 	/**
 	 * highlightCells allows the user to highlight cells and change the sunlight, water, and soil
 	 */

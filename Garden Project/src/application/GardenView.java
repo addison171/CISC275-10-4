@@ -63,8 +63,16 @@ public class GardenView {
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
+		
+		//LEFT
+		
+		
+		
+		
+		
+		//LEFT
+		
 
-				
 		BorderPane borderpane = new BorderPane();
 		
 		borderpane.setTop(menu);

@@ -91,15 +91,21 @@ public class Model implements Serializable{
 	 * @param cellChange - what cells the obstruction covers
 	 * @return - the new updated cell array
 	 */
-	public Cell[][] addObject(Cell[][] cellChange) {
+	public Cell[][] addObject(Cell[][] startColumn) {
+		
+		
 		return cells;
 	}
 	/**
 	 * Allows user to change the data in selected cells
-	 * @param cellChange - the cells being changed
+	 * @param startCell - first cell selected
+	 * @param endCell - last cell selected
+	 * @param newSoil - the new soil needed to be assigned to highlighted cells
+	 * @param newWater - the new water level needed to be assigned to highlighted cells
+	 * @param newSun - the new sunlight level needed to be assigned to highlighted cells
 	 * @return - the updated list of cells
 	 */
-	public Cell[][] editCells(Cell[][] cellChange) {
+	public Cell[][] editCells(Cell[][] startCell, Cell[][] endCell, String newSoil, String newWater, String newSun) {
 		return cells;
 	}
 	/**

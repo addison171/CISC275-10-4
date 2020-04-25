@@ -11,7 +11,6 @@ public class Obstruction {
 	public void setName(String label) {
 		name = label; 
 	}
-	
 	/**
 	 * Getter for the name type
 	 * @return returns the name type string

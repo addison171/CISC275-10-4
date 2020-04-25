@@ -87,11 +87,11 @@ public class Model implements Serializable{
 		return cells;
 	}
 	/**
-	 * Allows user to add obstruction by changing the cells in the parameter
+	 * Allows user to add an object of either a plant or obstruction by changing the cells in the parameter
 	 * @param cellChange - what cells the obstruction covers
 	 * @return - the new updated cell array
 	 */
-	public Cell[][] addObstruction(Cell[][] cellChange) {
+	public Cell[][] addObject(Cell[][] cellChange) {
 		return cells;
 	}
 	/**

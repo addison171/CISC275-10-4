@@ -1,5 +1,6 @@
 /**
- * @author Nick Sabitini
+ * @author Nick Sabitini, Addison Kuykendall
+ * #
  */
 package application;
 	
@@ -7,6 +8,9 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
  
@@ -48,38 +52,41 @@ public class Controller extends Application {
         primaryStage.setScene(searchv.scene);
         
         primaryStage.show();
+        view.test.setOnAction(insertObstructionClick());
     }
     
     /**
      * Clicking to create obstruction from button
      * @return returns event that the obstructions wants to be created from clicking the button
      */
-    public EventHandler<MouseEvent> insertObstructionClick() {
-    	return event -> insertObstructionClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> insertObstructionClick() {
+    	return event -> insertObstructionClicked();
 	}
+    
     
     /**
      * Transition to insert obstruction ui after button clicked
      * @param event - event object from the insert obstruction button being clicked
      */
-    public void insertObstructionClicked(MouseEvent event) {
-    
+    public void insertObstructionClicked() {
+    	InsertObstructionView.update();
+    	view.changeScene(InsertObstructionView.iovRoot);
     }
 	
     /**
      * Eventhandlier for viewing the garden button being clicked
      * @return returns an event that the view button was clicked
      */
-    public EventHandler<MouseEvent> viewClick() {
-    	return event -> viewClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> viewClick() {
+    	return event -> viewClicked((ActionEvent) event);
 	}
     
     /**
      * Transition to the view garden ui
      * @param event - event object from view button being clicked
      */
-    public void viewClicked(MouseEvent event) {
-    
+    public void viewClicked(ActionEvent event) {
+    	
     }
     
     /**

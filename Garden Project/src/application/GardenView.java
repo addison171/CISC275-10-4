@@ -5,6 +5,7 @@ package application;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -74,7 +75,9 @@ public class GardenView {
 		
 		
 	}
-	
+
+	static Group GardenRoot = new Group();
+
 	/**
 	 * updates the screen. Called when something is changed
 	 */

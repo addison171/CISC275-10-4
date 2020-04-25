@@ -11,7 +11,6 @@ class Plant {
 	private String idealWaterLevel;
 	private String idealSunlightLevel;
 	private String bloomTime;
-	private Image[] stagesOfPlant;	
 	/**
 	 * 
 	 * @param n String for the name of plant
@@ -28,7 +27,6 @@ class Plant {
 		this.bloomTime = bloom;
 		
 	}
-	
 	
 	 /**
 	  * Setter for name string
@@ -74,7 +72,10 @@ class Plant {
 	public String getWater() {
 	    return this.idealWaterLevel;
 	}
-	
+	/**
+	 * Setter for the sunlight string
+	 * @param sun - the sunlight level string of the plant
+	 */
 	public void setSunlight(String sun) {
 	    this.idealSunlightLevel = sun;
 	}
@@ -85,6 +86,21 @@ class Plant {
 	 */
 	public String getSunlight() {
 	    return this.idealSunlightLevel;
+	}
+	/**
+	 * Setter for the bloom time
+	 * @param bloom - the bloom time string of the plant
+	 */
+	public void setBloom(String bloom) {
+	    this.bloomTime = bloom;
+	}
+
+	/**
+	 * Getter for bloom time
+	 * @return returns the bloom time of a plant.
+	 */
+	public String getBloom() {
+	    return this.bloomTime;
 	}
 
 }

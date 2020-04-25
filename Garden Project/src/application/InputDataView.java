@@ -5,6 +5,7 @@ package application;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -21,6 +22,8 @@ public class InputDataView {
 	ComboBox<String> soilCbx;
 	Text plotSize;
 	Button addData;
+	static Group inputDataRoot = new Group();
+
 	
 	BorderPane borderpane = new BorderPane();
 	Scene scene = new Scene(borderpane);

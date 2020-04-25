@@ -4,6 +4,8 @@
 package application;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -19,12 +21,14 @@ public class View {
 	int canvasWidth = 1380;
 	int canvasHeight = 940;
     GraphicsContext gc;
+    public Button test;
 	
 	/**
 	 * 
 	 * @param theStage primary stage being created for the view, an object of stage
 	 */
-	public View(Stage theStage) {
+	public View(Stage aStage) {
+		theStage = aStage;
 		theStage.setTitle("Garden");
 		
 		Group root = new Group();
@@ -34,7 +38,17 @@ public class View {
 		Canvas canvas = new Canvas(canvasWidth, canvasHeight);
 		root.getChildren().add(canvas);
 		gc = canvas.getGraphicsContext2D();
+
+		test =  new Button("Test");
+		root.getChildren().add(test);
+		test.setTranslateY(.5*canvasHeight);
+		
 	}
+	
+	public void changeScene(Group n) {
+		theStage.getScene().setRoot(n);
+	}
+	
 	/**
 	 * Displays the image (usually to display plants)
 	 * @param img - image to be displayed

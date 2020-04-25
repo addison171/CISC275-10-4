@@ -64,16 +64,16 @@ public class Controller extends Application {
      * Eventhandlier for viewing the garden button being clicked
      * @return returns an event that the view button was clicked
      */
-    public EventHandler<MouseEvent> viewClick() {
-    	return event -> viewClicked((MouseEvent) event);
+    public EventHandler<ActionEvent> viewClick() {
+    	return event -> viewClicked((ActionEvent) event);
 	}
     
     /**
      * Transition to the view garden ui
      * @param event - event object from view button being clicked
      */
-    public void viewClicked(MouseEvent event) {
-    
+    public void viewClicked(ActionEvent event) {
+    	
     }
     
     /**

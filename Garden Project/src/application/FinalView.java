@@ -3,6 +3,7 @@
  */
 package application;
 
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
@@ -13,6 +14,8 @@ public class FinalView {
 	Button save;
 	Button Edit;
 	Button newGarden;
+	static Group finalRoot = new Group();
+
 	/**
 	 * draws the screen
 	 */

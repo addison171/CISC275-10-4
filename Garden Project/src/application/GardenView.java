@@ -3,6 +3,7 @@
  */
 package application;
 
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 
 public class GardenView {
@@ -13,6 +14,8 @@ public class GardenView {
 	Button editCells;
 	Button finalView;
 	Button saveAll;
+	static Group GardenRoot = new Group();
+
 	/**
 	 * updates the screen. Called when something is changed
 	 */

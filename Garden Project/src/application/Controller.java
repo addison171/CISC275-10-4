@@ -61,7 +61,6 @@ public class Controller extends Application {
 		idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-        //primaryStage.setScene(searchv.scene);
         
     	primaryStage.setScene(hv.scene);
 
@@ -71,6 +70,7 @@ public class Controller extends Application {
 		searchv.finalViewBtn.setOnAction(finalViewClick());
 		searchv.previewBtn.setOnAction(previewClick());
 		searchv.searchBtn.setOnAction(searchClick());
+		searchv.searchPlants.setOnAction(searchPlantsClick());
 		
 		
 		primaryStage.show();

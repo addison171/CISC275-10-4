@@ -39,6 +39,7 @@ public class SearchAllView {
 	Button searchBtn;
 	Button finalViewBtn;
 	Button saveBtn;
+	Button searchPlants;
 	
 	ArrayList<GridPane> plantItems;
 	ArrayList<GridPane> cartItems;
@@ -198,10 +199,10 @@ public class SearchAllView {
 		);
 		
 		//Search button
-		Button searchBtn = new Button("Search");
-		GridPane.setConstraints(searchBtn, 1, 4);
+		searchPlants = new Button("Search");
+		GridPane.setConstraints(searchPlants, 1, 4);
 		
-		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, searchBtn);
+		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, searchPlants);
 		//RIGHT
 
 		

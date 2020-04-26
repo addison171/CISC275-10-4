@@ -28,6 +28,8 @@ public class InputDataView {
 	static Group inputDataRoot = new Group();
 	TextField cellFld;
 	TextField cellFld2;
+	TextField x;
+	TextField y;
 	
 	
 	Button inputDataBtn;
@@ -36,6 +38,7 @@ public class InputDataView {
 	Button searchBtn;
 	Button finalViewBtn;
 	Button saveBtn;
+	Button createPlot;
 
 	
 	static BorderPane borderpane;
@@ -88,6 +91,8 @@ public class InputDataView {
 		
 		//save button
 		saveBtn = new Button("Save");
+		
+		
 		
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
@@ -147,35 +152,28 @@ public class InputDataView {
 		instruct.setWrappingWidth(350);
 		GridPane.setConstraints(instruct, 0, 0, 2, 1 );
 		
-		TextField x = new TextField();
-		x.setPromptText("x (feet)");
+		x = new TextField();
+		x.setPromptText("Height (feet)");
 		GridPane.setConstraints(x, 0, 1);
 		x.setMaxWidth(100);
 		
-		TextField y = new TextField();
-		y.setPromptText("y (feet)");
+		y = new TextField();
+		y.setPromptText("Width (feet)");
 		GridPane.setConstraints(y, 1, 1);
 		y.setMaxWidth(100);
 		
-		Button createPlot = new Button("Create Plot");
+		createPlot = new Button("Create Plot");
 		GridPane.setConstraints(createPlot, 0, 2);
 		
 		//features within the data input box
 		Label cellsLbl = new Label("Cells Selected: ");
 		GridPane.setConstraints(cellsLbl, 0, 3);
-		//Label cellsLbl = new Label("Garden Size: ");
-		//GridPane.setConstraints(cellsLbl, 0, 0);
 		
 		//text field
 		cellFld = new TextField();
-		cellFld.setPromptText("Height");
+		cellFld.setPromptText("x1, y1, x2, y2");
 		cellFld.setPrefWidth(200);
 		GridPane.setConstraints(cellFld, 1, 3);
-		
-		cellFld2 = new TextField();
-		cellFld2.setPromptText("Width");
-		cellFld2.setPrefWidth(200);
-		GridPane.setConstraints(cellFld2, 0, 0);
 		
 		//sunlight label
 		Label sunLbl = new Label("Sunlight Level");
@@ -222,7 +220,7 @@ public class InputDataView {
 		
 		
 		inputDataBox.getChildren().addAll(instruct, x, y, createPlot, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
-		inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
+		//inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
 
 

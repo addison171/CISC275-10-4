@@ -61,6 +61,7 @@ public class Controller extends Application {
 		idv.searchBtn.setOnAction(searchClick());
 		idv.saveBtn.setOnAction(saveAllClick());
 		idv.saveDataBtn.setOnAction(saveAllClick());
+		idv.createPlot.setOnAction(createPlotClick());
 
         this.searchv = new SearchAllView();
         primaryStage.setScene(searchv.scene);
@@ -80,6 +81,17 @@ public class Controller extends Application {
 		primaryStage.show();
     }
     
+    public EventHandler<ActionEvent> createPlotClick(){
+    	return event ->createPlotClicked();
+    }
+    
+    public void createPlotClicked() {
+    	String tx = idv.x.getText();
+    	String ty = idv.y.getText();
+    	int x = Integer.parseInt(tx);
+    	int y = Integer.parseInt(ty);
+    	model.cells = new Cell[x][y];
+    }
     
     public EventHandler<ActionEvent> newClick(){
     	return event -> newClicked();
@@ -223,11 +235,6 @@ public class Controller extends Application {
     	model.soilType = idv.soilCbx.getValue();
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
-    	String tx = idv.cellFld.getText();
-    	String ty = idv.cellFld.getText();
-    	int x = Integer.parseInt(tx);
-    	int y = Integer.parseInt(ty);
-    	model.cells = new Cell[x][y];
     	model.cells = model.inputData();
     	
     }

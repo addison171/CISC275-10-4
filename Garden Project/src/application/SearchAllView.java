@@ -97,32 +97,6 @@ public class SearchAllView {
 		cart.setPadding(new Insets(10,10,10,10));
 		cartVb.setSpacing(10);
 		
-		GridPane cartgp1 = new GridPane();
-		Label sun1 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun1, 1, 0);
-		Label water1 = new Label("Water preference");
-		GridPane.setConstraints(water1, 1, 1);
-		Label soil1 = new Label("Soil Preference");
-		GridPane.setConstraints(soil1, 1, 2);
-		cartgp1.getChildren().addAll(sun1,water1,soil1);
-		
-		GridPane cartgp2 = new GridPane();
-		Label sun2 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun2, 1, 0);
-		Label water2 = new Label("Water preference");
-		GridPane.setConstraints(water2, 1, 1);
-		Label soil2 = new Label("Soil Preference");
-		GridPane.setConstraints(soil2, 1, 2);
-		cartgp2.getChildren().addAll(sun2,water2,soil2);
-		
-		GridPane cartgp3 = new GridPane();
-		Label sun3 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun3, 1, 0);
-		Label water3 = new Label("Water preference");
-		GridPane.setConstraints(water3, 1, 1);
-		Label soil3 = new Label("Soil Preference");
-		GridPane.setConstraints(soil3, 1, 2);
-		cartgp3.getChildren().addAll(sun3,water3,soil3);
 
 		
 		GridPane cartgp4 = new GridPane();
@@ -134,10 +108,6 @@ public class SearchAllView {
 		GridPane.setConstraints(soil4, 1, 2);
 		cartgp4.getChildren().addAll(sun4,water4,soil4);
 		
-		this.cartItems.add(cartgp1);
-		this.cartItems.add(cartgp2);
-		this.cartItems.add(cartgp3);
-		this.cartItems.add(cartgp4);
 		
 		cartVb.getChildren().addAll(cartItems);
 		cart.setContent(cartVb);
@@ -285,6 +255,34 @@ public class SearchAllView {
 		resultsVb.getChildren().addAll(plantItems);
 		results.setContent(resultsVb);
 		borderpane.setCenter(results);
+	}
+	
+	public void displayCart(ArrayList<Plant> plants) {
+		
+		this.cartItems.clear();
+		this.cartVb.getChildren().clear();
+
+		ScrollPane cart;
+		
+		for (Plant p : plants) {
+			
+			GridPane cartgp = new GridPane();
+			Label sun = new Label(p.getSunlight());
+			GridPane.setConstraints(sun, 1, 0);
+			Label water = new Label(p.getWater());
+			GridPane.setConstraints(water, 1, 1);
+			Label soil = new Label(p.getSoil());
+			GridPane.setConstraints(soil, 1, 2);
+			cartgp.getChildren().addAll(sun, water, soil);
+			
+			cartgp.setPadding(new Insets(10,10,10,10));
+			this.cartItems.add(gp);
+		}
+		
+		cartVb.getChildren().addAll(cartItems);
+		cart.setContent(cartVb);
+		borderpane.setCenter(cart);
+
 	}
 	
 	//displays the search all view on the scene

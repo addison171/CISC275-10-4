@@ -4,10 +4,13 @@
  */
 package application;
 	
+import java.util.ArrayList;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ComboBox;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -46,12 +49,12 @@ public class Controller extends Application {
         primaryStage.setScene(gv.scene);
         
         this.idv = new InputDataView();
-        primaryStage.setScene(idv.scene);
+        //primaryStage.setScene(idv.scene);
         
         idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-        primaryStage.setScene(searchv.scene);
+        //primaryStage.setScene(searchv.scene);
         
         
 		searchv.inputDataBtn.setOnAction(inputDataClick());
@@ -196,4 +199,21 @@ public class Controller extends Application {
     public void saveAllClicked() {
     
     }
+
+    /**
+     * Calls the search plant clicked function when the button is clicked
+     * @return The function that should happen
+     */
+    public EventHandler<ActionEvent> searchPlantsClick() {
+    	return event -> searchPlantsClicked();
+    }
+    /**
+     * SOHAN HERE
+     */
+    public void searchPlantsClicked() {
+    	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
+    						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
+    	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
+    }
+    
 }

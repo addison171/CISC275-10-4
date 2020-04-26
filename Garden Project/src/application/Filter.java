@@ -13,6 +13,8 @@ public class Filter {
 	private String lightLevel;
 	private String water;
 	Model m;
+	
+	private ArrayList<Plant> filteredPlants;
 	/**
 	 * @param seas 			String to specify the season a plant grows in when filtering through plants
 	 * @param soilType 		String specifying the soil type of a plant when using filter
@@ -25,6 +27,7 @@ public class Filter {
 		this.lightLevel = light;
 		this.water = waterLevel;
 		m = new Model();
+		this.filteredPlants = new ArrayList<Plant>();
 	}
 	
 	/**
@@ -34,21 +37,22 @@ public class Filter {
 	 * @return the a new arraylist of plants that suit chosen data.
 	 */
 	public ArrayList<Plant> search(ArrayList<Plant> plants){
+		this.filteredPlants.clear();
 		for(Plant p: plants) {
-			if (!p.getSoil().equals(soil)) {
-				plants.remove(p);
+			if (p.getSoil().equals(soil)) {
+				filteredPlants.add(p);
 			}
-			else if (!p.getSunlight().equals(lightLevel)) {
-				plants.remove(p);
+			if (p.getSunlight().equals(lightLevel)) {
+				filteredPlants.add(p);
 			}
-			else if (!p.getWater().equals(water)) {
-				plants.remove(p);
+			if (p.getWater().equals(water)) {
+				filteredPlants.add(p);
 			}
-			else if (!p.getBloom().equals(season)) {
-				plants.remove(p);
+			if (p.getBloom().equals(season)) {
+				filteredPlants.add(p);
 			}
 		}
-		return plants;
+		return filteredPlants;
 	}
 	
 	/**

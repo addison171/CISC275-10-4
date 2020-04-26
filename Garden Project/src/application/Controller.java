@@ -49,12 +49,12 @@ public class Controller extends Application {
         primaryStage.setScene(gv.scene);
         
         this.idv = new InputDataView();
-        primaryStage.setScene(idv.scene);
+        //primaryStage.setScene(idv.scene);
         
         idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-        primaryStage.setScene(searchv.scene);
+        //primaryStage.setScene(searchv.scene);
         
         
 		searchv.inputDataBtn.setOnAction(inputDataClick());

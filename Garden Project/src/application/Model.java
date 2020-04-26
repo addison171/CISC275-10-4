@@ -136,20 +136,6 @@ public class Model implements Serializable{
 		return cells;
 	}
 	/**
-	 * allows user to change the data pertaining to seasons
-	 * @param timeOfDay - timeOfDay selected by User
-	 * @param season - Season selected by user
-	 */
-	public void preview(String timeOfDay, String season) {
-		
-	}
-	/**
-	 * gathers all data needed to enter final screen
-	 */
-	public void finalScreen() {
-			
-	}
-	/**
 	 * Grades plants depending on attributes of garden and the plants own attributes (1 point added for every common attribute)
 	 * @param plants - ArrayList of all plants in the garden
 	 * @return - the score of the garden as an integer

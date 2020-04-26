@@ -23,8 +23,15 @@ public class InputDataView {
 	ComboBox<String> soilCbx;
 	Text plotSize;
 	Button addData;
-	Button searchBtn;
 	static Group inputDataRoot = new Group();
+	
+	
+	Button inputDataBtn;
+	Button previewBtn;
+	Button editCellsBtn;
+	Button searchBtn;
+	Button finalViewBtn;
+	Button saveBtn;
 
 	
 	static BorderPane borderpane;
@@ -51,22 +58,22 @@ public class InputDataView {
 		
 		//Buttons within the menu HBox
 		//input data
-		Button inputDataBtn = new Button("Input Data");
+		inputDataBtn = new Button("Input Data");
 		
 		//preview
-		Button previewBtn = new Button("Preview");
+		previewBtn = new Button("Preview");
 		
 		//edit cells
-		Button editCellsBtn = new Button("Edit Cells");
+		editCellsBtn = new Button("Edit Cells");
 		
 		//search all
 		searchBtn = new Button("Plants Search");
 		
 		//final view 
-		Button finalViewBtn = new Button("Final View");
+		finalViewBtn = new Button("Final View");
 		
 		//save button
-		Button saveBtn = new Button("Save");
+		saveBtn = new Button("Save");
 		
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP

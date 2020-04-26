@@ -18,8 +18,8 @@ public class View {
 	Stage theStage;
 	Scene theScene;
 	Plant[][] plants;
-	int canvasWidth = 1380;
-	int canvasHeight = 940;
+	int canvasWidth = 1350;
+	int canvasHeight = 950;
     GraphicsContext gc;
     public Button test;
 	

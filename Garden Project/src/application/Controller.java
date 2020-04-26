@@ -4,10 +4,13 @@
  */
 package application;
 	
+import java.util.ArrayList;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ComboBox;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -207,7 +210,9 @@ public class Controller extends Application {
      * SOHAN HERE
      */
     public void searchPlantsClicked() {
-    	
+    	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
+    						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
+    	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
     }
     
 }

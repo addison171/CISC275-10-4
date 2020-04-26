@@ -11,6 +11,7 @@ class Plant {
 	private String idealWaterLevel;
 	private String idealSunlightLevel;
 	private String bloomTime;
+	private String description;
 	/**
 	 * 
 	 * @param n String for the name of plant
@@ -19,12 +20,13 @@ class Plant {
 	 * @param water string for the water level the plant needs
 	 * @param bloom string of the bloom time of the plant
 	 */
-	public Plant(String n, String soil,String sun, String water, String bloom){
+	public Plant(String n, String soil,String sun, String water, String bloom, String descr){
 		this.name = n;
 		this.idealSoil = soil;
 		this.idealSunlightLevel = sun;
 		this.idealWaterLevel = water;
 		this.bloomTime = bloom;
+		this.description = descr;
 		
 	}
 	
@@ -102,6 +104,22 @@ class Plant {
 	public String getBloom() {
 	    return this.bloomTime;
 	}
+	/**
+	 * Setter for the description of the plant
+	 * @param bloom - the description string of the plant
+	 */
+	public void setDescription(String descrip) {
+		this.description = descrip;
+	}
+
+	/**
+	 * Getter for the description
+	 * @return returns the description of a plant.
+	 */
+	public String getDescription() {
+		return this.description;
+	}
+
 
 }
 

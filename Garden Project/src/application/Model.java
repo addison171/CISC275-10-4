@@ -36,7 +36,12 @@ public class Model implements Serializable{
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 	}
 	public Model() {
-		ArrayList<Plant> plants = new ArrayList<Plant>();
+		ArrayList<Plant> allPlants = new ArrayList<Plant>();
+		allPlants.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring", "Pretty cool plant"));
+		allPlants.add(new Plant("Addison's Bush", "Mix","Shade", "Dry", "Fall", "Kinda weird"));
+		allPlants.add(new Plant("Dandelion", "Mix","Shade", "Wet", "Spring", "I like to blow em"));
+		allPlants.add(new Plant("Red Oak", "Sandy","Medium", "Dry", "Winter", "I dont know if this exists"));
+		allPlants.add(new Plant("Sunflower", "Clay","Sunny", "Medium", "Summer", "Post Malone vibes"));
 	}
 	
 	/**

@@ -37,6 +37,7 @@ public class GardenView {
 		gardenGrid.setPadding(new Insets(10,10,10,10));
 		gardenGrid.setVgap(10);
 		gardenGrid.setHgap(10);
+		gardenGrid.setGridLinesVisible(true);
 		//CENTER
 
 		

@@ -39,6 +39,8 @@ public class InputDataView {
 	
 	ScrollPane cart;
 	
+	Button saveDataBtn;
+	
 	public InputDataView() {
 		
 		
@@ -48,6 +50,10 @@ public class InputDataView {
 		gardenGrid.setPadding(new Insets(10,10,10,10));
 		gardenGrid.setVgap(10);
 		gardenGrid.setHgap(10);
+		gardenGrid.setGridLinesVisible(true);
+		
+		
+
 		//CENTER
 		
 		
@@ -171,7 +177,12 @@ public class InputDataView {
 				"Sandy"
 		);
 		
-		inputDataBox.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx );
+		// enter the data into selected boxes
+		this.saveDataBtn = new Button("Enter Data");
+		GridPane.setConstraints(saveDataBtn, 1, 4);
+		
+		
+		inputDataBox.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
 
 

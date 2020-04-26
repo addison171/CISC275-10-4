@@ -59,6 +59,8 @@ public class Controller extends Application {
 		idv.finalViewBtn.setOnAction(finalViewClick());
 		idv.previewBtn.setOnAction(previewClick());
 		idv.searchBtn.setOnAction(searchClick());
+		idv.saveBtn.setOnAction(saveAllClick());
+		idv.saveDataBtn.setOnAction(saveAllClick());
 
         this.searchv = new SearchAllView();
         primaryStage.setScene(searchv.scene);
@@ -217,7 +219,17 @@ public class Controller extends Application {
      * @param event - event object that confirms the saveall button was clicked
      */
     public void saveAllClicked() {
-    
+    	
+    	model.soilType = idv.soilCbx.getValue();
+    	model.sunLight = idv.sunCbx.getValue();
+    	model.waterLevel = idv.waterCbx.getValue();
+    	String tx = idv.cellFld.getText();
+    	String ty = idv.cellFld.getText();
+    	int x = Integer.parseInt(tx);
+    	int y = Integer.parseInt(ty);
+    	model.cells = new Cell[x][y];
+    	model.cells = model.inputData();
+    	
     }
 
     /**

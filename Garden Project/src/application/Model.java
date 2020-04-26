@@ -34,30 +34,25 @@ public class Model implements Serializable{
 	double canvasHeight;
 	double canvasWidth;
 	
+	public Model() {
+		
+	}
 	public Model(double width, double height) {
 		ArrayList<Plant> plants = new ArrayList<Plant>();
 		canvasHeight = height;
 		canvasWidth = width;
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 		
-		this.allPlants = new ArrayList<Plant>();
-		allPlants.add(new Plant("Blue Oak", "Clay","Shady", "Wet", "Spring", "Pretty cool plant"));
-		allPlants.add(new Plant("Addison's Bush", "Mix","Shady", "Dry", "Fall", "Kinda weird"));
-		allPlants.add(new Plant("Dandelion", "Mix","Shady", "Wet", "Spring", "I like to blow em"));
-		allPlants.add(new Plant("Red Oak", "Sandy","Medium", "Dry", "Winter", "I dont know if this exists"));
-		allPlants.add(new Plant("Sunflower", "Clay","Sunny", "Medium", "Summer", "Post Malone vibes"));
 	}
-	public Model() {
-		this.allPlants = new ArrayList<Plant>();
-		allPlants.add(new Plant("Blue Oak", "Clay","Shady", "Wet", "Spring", "Pretty cool plant"));
-		allPlants.add(new Plant("Addison's Bush", "Mix","Shady", "Dry", "Fall", "Kinda weird"));
-		allPlants.add(new Plant("Dandelion", "Mix","Shady", "Wet", "Spring", "I like to blow em"));
-		allPlants.add(new Plant("Red Oak", "Sandy","Medium", "Dry", "Winter", "I dont know if this exists"));
-		allPlants.add(new Plant("Sunflower", "Clay","Sunny", "Medium", "Summer", "Post Malone vibes"));
-		
+	public Model(String soil,String water,String sun ) {
+		soilType = soil;
+		waterLevel = water;
+		sunLight = sun;
+	
 	}
+
 	/**
-	 * load data into allPlants
+	 * method to load data into allPlants
 	 * @param filename - a csv file containing data
 	 * @return returns a new arraylist of plants with all data from file
 	 */

@@ -44,17 +44,20 @@ public class Controller extends Application {
     	
     	this.hv = new HomeView();
     	primaryStage.setScene(hv.scene);
+    	hv.createNew.setOnAction(newClick());
     	        
         this.gv = new GardenView();
         primaryStage.setScene(gv.scene);
         
         this.idv = new InputDataView();
-        //primaryStage.setScene(idv.scene);
+        primaryStage.setScene(idv.scene);
         
         idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-        //primaryStage.setScene(searchv.scene);
+        primaryStage.setScene(searchv.scene);
+        
+        primaryStage.setScene(hv.scene);
         
         
 		searchv.inputDataBtn.setOnAction(inputDataClick());
@@ -65,6 +68,15 @@ public class Controller extends Application {
 		
 		
 		primaryStage.show();
+    }
+    
+    
+    public EventHandler<ActionEvent> newClick(){
+    	return event -> newClicked();
+    }
+    
+    public void newClicked() {
+    	view.changeScene(searchv.searchRoot);
     }
     
     /**
@@ -82,7 +94,7 @@ public class Controller extends Application {
      * 
      */
     public void searchClicked() {
-    	view.changeScene(searchv.borderpane);
+    	view.changeScene(searchv.searchRoot);
     }
     
     /**

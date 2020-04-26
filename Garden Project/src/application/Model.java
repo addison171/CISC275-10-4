@@ -5,6 +5,11 @@ package application;
 
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,7 +23,7 @@ public class Model implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	ArrayList<Plant> plants;
-	ArrayList<Plant> allPlants;
+	static ArrayList<Plant> allPlants;
 	Filter f;
 	File saveFile;
 	int score;
@@ -36,14 +41,62 @@ public class Model implements Serializable{
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 	}
 	public Model() {
-		ArrayList<Plant> allPlants = new ArrayList<Plant>();
-		allPlants.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring", "Pretty cool plant"));
-		allPlants.add(new Plant("Addison's Bush", "Mix","Shade", "Dry", "Fall", "Kinda weird"));
-		allPlants.add(new Plant("Dandelion", "Mix","Shade", "Wet", "Spring", "I like to blow em"));
-		allPlants.add(new Plant("Red Oak", "Sandy","Medium", "Dry", "Winter", "I dont know if this exists"));
-		allPlants.add(new Plant("Sunflower", "Clay","Sunny", "Medium", "Summer", "Post Malone vibes"));
+		ArrayList<Plant> allPlants = readPlantsFromCSV("PlantData.csv");
 	}
-	
+	/**
+	 * load data into allPlants
+	 * @param filename - a csv file containing data
+	 * @return returns a new arraylist of plants with all data from file
+	 */
+	public static ArrayList<Plant> readPlantsFromCSV(String fileName) { 
+		ArrayList<Plant> plants = new ArrayList<>(); 
+		Path pathToFile = Paths.get(fileName); 
+		// create an instance of BufferedReader 
+		// using try with resource, Java 7 feature to close resources 
+		try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) 
+		{ 
+			// read the first line from the text file
+			String line = br.readLine(); 
+			// loop until all lines are read
+			while (line != null) { 
+				
+				// use string.split to load a string array with the values from 
+				// each line of 
+				// the file, using a comma as the delimiter 
+				String[] attributes = line.split(","); 
+				Plant p = createPlant(attributes); 
+				
+				// adding Plant into ArrayList 
+				plants.add(p); 
+				
+				// read next line before looping 
+				// if end of file reached, line would be null
+				line = br.readLine(); 
+			} 
+		} 
+		
+		catch (IOException ioe) { 
+			ioe.printStackTrace(); 
+		}
+		return plants;
+	}
+	/**
+	 * Creates plant according to consumed metadata
+	 * @param metadata - metadata consumed from a line of the csv file
+	 * @return returns a new plant according to consumed Metadata
+	 */
+	private static Plant createPlant(String[] metadata) { 
+		String name = metadata[0]; 
+		String idealSoil = metadata[1];
+		String idealWaterLevel = metadata[3];
+		String idealSunlightLevel = metadata[2];
+		String bloomTime = metadata[4];
+		String description = metadata[5];
+		
+		
+		// create and return Plant of this metadata 
+		return new Plant(name, idealSoil,idealSunlightLevel, idealWaterLevel, bloomTime, description); 
+	}
 	/**
 	 * Saves the garden
 	 */
@@ -172,5 +225,6 @@ public class Model implements Serializable{
 		total = plants.size() * 3;
 		return total;
 	}
+	
 }
 	

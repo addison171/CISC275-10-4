@@ -19,7 +19,7 @@ public class Filter {
 	 * @param light 		String to specify the light level of plants when using filter
 	 * @param waterLevel 	String to specify the water level a plant needs when using the filter
 	 */
-	public Filter(ArrayList<Plant> p,String seas, String soilType, String light, String waterLevel) {
+	public Filter(String seas, String soilType, String light, String waterLevel) {
 		this.season = seas;
 		this.soil = soilType;
 		this.lightLevel = light;

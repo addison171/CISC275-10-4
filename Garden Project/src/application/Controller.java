@@ -41,7 +41,7 @@ public class Controller extends Application {
     public void start(Stage primaryStage) {
     	view = new View(primaryStage);
     	model = new Model(view.getWidth(), view.getHeight());
-    	
+    	Model.allPlants = Model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
     	primaryStage.setScene(hv.scene);
     	        
@@ -55,8 +55,7 @@ public class Controller extends Application {
 
         this.searchv = new SearchAllView();
         //primaryStage.setScene(searchv.scene);
-        
-        
+
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
 		searchv.finalViewBtn.setOnAction(finalViewClick());

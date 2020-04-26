@@ -53,12 +53,14 @@ public class Controller extends Application {
         this.searchv = new SearchAllView();
         primaryStage.setScene(searchv.scene);
         
+        
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
 		searchv.finalViewBtn.setOnAction(finalViewClick());
 		searchv.previewBtn.setOnAction(previewClick());
 		searchv.searchBtn.setOnAction(searchClick());
-
+		
+		
 		primaryStage.show();
     }
     
@@ -77,7 +79,7 @@ public class Controller extends Application {
      * 
      */
     public void searchClicked() {
-    	view.changeScene(SearchAllView.borderpane);
+    	view.changeScene(searchv.scene.getRoot());
     }
     
     /**

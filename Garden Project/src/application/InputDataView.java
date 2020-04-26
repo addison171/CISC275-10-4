@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -28,6 +29,8 @@ public class InputDataView {
 	
 	static BorderPane borderpane;
 	Scene scene;
+	
+	ScrollPane cart;
 	
 	public InputDataView() {
 		
@@ -68,6 +71,42 @@ public class InputDataView {
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
+		
+		//LEFT
+		
+		this.cart = new ScrollPane();
+		VBox vb = new VBox();
+		cart.setContent(vb);
+		cart.setPadding(new Insets(10,10,10,10));
+		
+		GridPane gp1 = new GridPane();
+		Label sun1 = new Label("Sunlight preference");
+		GridPane.setConstraints(sun1, 1, 0);
+		Label water1 = new Label("Water preference");
+		GridPane.setConstraints(water1, 1, 1);
+		Label soil1 = new Label("Soil Preference");
+		GridPane.setConstraints(soil1, 1, 2);
+		
+		gp1.getChildren().addAll(sun1,water1,soil1);
+		vb.getChildren().add(gp1);
+		
+		GridPane gp2 = new GridPane();
+		Label sun2 = new Label("Sunlight preference");
+		GridPane.setConstraints(sun2, 1, 0);
+		Label water2 = new Label("Water preference");
+		GridPane.setConstraints(water2, 1, 1);
+		Label soil2 = new Label("Soil Preference");
+		GridPane.setConstraints(soil2, 1, 2);
+		
+		gp2.getChildren().addAll(sun2,water2,soil2);
+		vb.getChildren().add(gp2);
+		
+		
+
+		
+		
+		
+		//LEFT
 		
 
 		//RIGHT
@@ -135,6 +174,7 @@ public class InputDataView {
 		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
 		borderpane.setRight(inputDataBox);
+		borderpane.setLeft(this.cart);
 		borderpane.setPadding(new Insets(10,10,10,10));
 		
 		scene =  new Scene(borderpane);

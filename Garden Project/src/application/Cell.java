@@ -4,6 +4,7 @@
 package application;
 
 public class Cell {
+	
 	private String soil;
 	private String water;
 	private String sunlight;

@@ -3,8 +3,15 @@
  */
 package application;
 
+
+
+import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 public class FinalView {
@@ -75,9 +82,9 @@ public class FinalView {
 		finalviewBP.setBottom(saveButton);
 		finalviewBP.setBottom(newgardenButton);
 		
-		editButton.setPadding(editButton,new Insets(2,2,2,2));
-		saveButton.setPadding(saveButton, new Insets(2,2,2,2));
-		newgardenButton.setPadding(newgardenButton, new Insets(2,2,2,2));
+		editButton.setPadding(new Insets(2,2,2,2));
+		saveButton.setPadding(new Insets(2,2,2,2));
+		newgardenButton.setPadding(new Insets(2,2,2,2));
 		
 		
 		

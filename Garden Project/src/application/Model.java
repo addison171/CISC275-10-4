@@ -34,12 +34,19 @@ public class Model implements Serializable{
 		canvasHeight = height;
 		canvasWidth = width;
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
+		
+		this.allPlants = new ArrayList<Plant>();
+		allPlants.add(new Plant("Blue Oak", "Clay","Shady", "Wet", "Spring", "Pretty cool plant"));
+		allPlants.add(new Plant("Addison's Bush", "Mix","Shady", "Dry", "Fall", "Kinda weird"));
+		allPlants.add(new Plant("Dandelion", "Mix","Shady", "Wet", "Spring", "I like to blow em"));
+		allPlants.add(new Plant("Red Oak", "Sandy","Medium", "Dry", "Winter", "I dont know if this exists"));
+		allPlants.add(new Plant("Sunflower", "Clay","Sunny", "Medium", "Summer", "Post Malone vibes"));
 	}
 	public Model() {
-		ArrayList<Plant> allPlants = new ArrayList<Plant>();
-		allPlants.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring", "Pretty cool plant"));
-		allPlants.add(new Plant("Addison's Bush", "Mix","Shade", "Dry", "Fall", "Kinda weird"));
-		allPlants.add(new Plant("Dandelion", "Mix","Shade", "Wet", "Spring", "I like to blow em"));
+		this.allPlants = new ArrayList<Plant>();
+		allPlants.add(new Plant("Blue Oak", "Clay","Shady", "Wet", "Spring", "Pretty cool plant"));
+		allPlants.add(new Plant("Addison's Bush", "Mix","Shady", "Dry", "Fall", "Kinda weird"));
+		allPlants.add(new Plant("Dandelion", "Mix","Shady", "Wet", "Spring", "I like to blow em"));
 		allPlants.add(new Plant("Red Oak", "Sandy","Medium", "Dry", "Winter", "I dont know if this exists"));
 		allPlants.add(new Plant("Sunflower", "Clay","Sunny", "Medium", "Summer", "Post Malone vibes"));
 	}

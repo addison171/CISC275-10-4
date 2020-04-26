@@ -54,7 +54,7 @@ public class Controller extends Application {
         idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-        //primaryStage.setScene(searchv.scene);
+        primaryStage.setScene(searchv.scene);
         
         
 		searchv.inputDataBtn.setOnAction(inputDataClick());
@@ -62,6 +62,8 @@ public class Controller extends Application {
 		searchv.finalViewBtn.setOnAction(finalViewClick());
 		searchv.previewBtn.setOnAction(previewClick());
 		searchv.searchBtn.setOnAction(searchClick());
+        searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
+
 		
 		
 		primaryStage.show();
@@ -210,9 +212,17 @@ public class Controller extends Application {
      * SOHAN HERE
      */
     public void searchPlantsClicked() {
+    	System.out.println("Search Plants Clicked");
+    	System.out.println( searchv.bloomCbx.getValue().toString() + " " + searchv.soilCbx.getValue().toString()+ " " + 
+				 searchv.sunCbx.getValue().toString() + " " + searchv.waterCbx.getValue().toString());
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
+    	for (Plant p : model.allPlants) {
+    		System.out.println(p.getName());
+    	}
     	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
+    	
+    	this.searchv.displayResults(filteredPlants);
     }
     
 }

@@ -285,7 +285,7 @@ public class SearchAllView {
 			
 		
 		scene = new Scene(borderpane);
-		//this.scene.setRoot(borderpane);		
+		this.scene.setRoot(borderpane);		
 		
 	}
 	

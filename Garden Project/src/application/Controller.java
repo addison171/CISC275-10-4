@@ -43,21 +43,27 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	
     	this.hv = new HomeView();
-    	primaryStage.setScene(hv.scene);
     	hv.createNew.setOnAction(newClick());
+    
     	        
         this.gv = new GardenView();
-        primaryStage.setScene(gv.scene);
+		gv.inputDataBtn.setOnAction(inputDataClick());
+		gv.editCellsBtn.setOnAction(editCellsClick());
+		gv.finalViewBtn.setOnAction(finalViewClick());
+		gv.previewBtn.setOnAction(previewClick());
+		gv.searchBtn.setOnAction(searchClick());
         
-        this.idv = new InputDataView();
-        primaryStage.setScene(idv.scene);
-        
-        idv.searchBtn.setOnAction(searchClick());
+        this.idv = new InputDataView();        
+		idv.inputDataBtn.setOnAction(inputDataClick());
+		idv.editCellsBtn.setOnAction(editCellsClick());
+		idv.finalViewBtn.setOnAction(finalViewClick());
+		idv.previewBtn.setOnAction(previewClick());
+		idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-        primaryStage.setScene(searchv.scene);
         
-        primaryStage.setScene(hv.scene);
+    	primaryStage.setScene(hv.scene);
+
         
         
 		searchv.inputDataBtn.setOnAction(inputDataClick());
@@ -76,7 +82,7 @@ public class Controller extends Application {
     }
     
     public void newClicked() {
-    	view.changeScene(searchv.searchRoot);
+    	view.changeScene(gv.gardenRoot);
     }
     
     /**

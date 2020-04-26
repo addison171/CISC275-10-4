@@ -14,18 +14,21 @@ import javafx.scene.layout.HBox;
 public class GardenView {
 			
 	Button insertObstruction = new Button("Insert Obstruction");
-	Button view = new Button();
-	Button inputData = new Button();
-	Button preview = new Button();
-	Button editCells = new Button();
-	Button finalView = new Button();
-	Button saveAll = new Button();
+	Button view;
+	Button inputDataBtn;
+	Button previewBtn;
+	Button editCellsBtn;
+	Button finalViewBtn;
+	Button saveBtn;
+	Button searchBtn;
 	
 	HBox menu = new HBox();
 	
 	BorderPane borderPane = new BorderPane();
 	
 	Scene scene = new Scene(borderPane);
+	
+	static Group gardenRoot = new Group();
 
 	public GardenView() {
 		
@@ -43,22 +46,22 @@ public class GardenView {
 		
 		//Buttons within the menu HBox
 		//input data
-		Button inputDataBtn = new Button("Input Data");
+		inputDataBtn = new Button("Input Data");
 		
 		//preview
-		Button previewBtn = new Button("Preview");
+		previewBtn = new Button("Preview");
 		
 		//edit cells
-		Button editCellsBtn = new Button("Edit Cells");
+		editCellsBtn = new Button("Edit Cells");
 		
 		//search all
-		Button searchBtn = new Button("Plants Search");
+		searchBtn = new Button("Plants Search");
 		
 		//final view 
-		Button finalViewBtn = new Button("Final View");
+		finalViewBtn = new Button("Final View");
 		
 		//save button
-		Button saveBtn = new Button("Save");
+		saveBtn = new Button("Save");
 		
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
@@ -69,7 +72,7 @@ public class GardenView {
 		cart = new ScrollPane();
 		cartVb = new VBox();
 		cart.setContent(cartVb);
-		**/
+		*/
 		
 		
 		//LEFT
@@ -83,10 +86,11 @@ public class GardenView {
 
 		this.scene.setRoot(borderpane);
 		
+		gardenRoot.getChildren().add(borderpane);
+		
 		
 	}
 
-	static Group GardenRoot = new Group();
 
 	/**
 	 * updates the screen. Called when something is changed

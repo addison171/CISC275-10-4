@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class ModelTest {
-/** 
+
 	@Test
 	public void testInputData() {
 		Cell[][] cells = new Cell[1][1];
@@ -34,7 +34,7 @@ public class ModelTest {
 		boolean equality2 = m.editCells(cells)==cells; 
 		assertEquals(equality2, true);	}	
 	@Test
-	public void plantGrader() {
+	public void testPlantGrader() {
 		Model m = new Model();
 		ArrayList<Plant> p = new ArrayList<Plant>();
 		p.add(new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring"));
@@ -44,6 +44,10 @@ public class ModelTest {
 		int score = 3;
 		assertEquals(score, m.plantGrader(p));	
 	}	
-	**/
+	@Test
+	public void testTotalScore() {
+		Model m = new Model();
+	}
+	
 }
 

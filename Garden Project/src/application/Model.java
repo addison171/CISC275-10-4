@@ -40,7 +40,6 @@ public class Model implements Serializable{
 	public Model(double width, double height) {
 		canvasHeight = height;
 		canvasWidth = width;
-		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 		
 	}
 	public Model(String soil,String water,String sun ) {
@@ -48,6 +47,9 @@ public class Model implements Serializable{
 		waterLevel = water;
 		sunLight = sun;
 	
+	}
+	public Model(int plotX, int plotY) {
+		cells = new Cell[plotX][plotY];
 	}
 
 	/**

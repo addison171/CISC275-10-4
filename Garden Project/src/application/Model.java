@@ -35,10 +35,9 @@ public class Model implements Serializable{
 	double canvasWidth;
 	
 	public Model() {
-		
+		ArrayList<Plant> plants = new ArrayList<Plant>();
 	}
 	public Model(double width, double height) {
-		ArrayList<Plant> plants = new ArrayList<Plant>();
 		canvasHeight = height;
 		canvasWidth = width;
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];

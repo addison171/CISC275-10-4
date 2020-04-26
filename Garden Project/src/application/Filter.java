@@ -5,6 +5,8 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Filter {
 
@@ -39,23 +41,26 @@ public class Filter {
 	public ArrayList<Plant> search(ArrayList<Plant> plants){
 		this.filteredPlants.clear();
 		filteredPlants = plants;
-		for(Plant p: plants) {
+		
+		for(Iterator<Plant> itr = filteredPlants.iterator(); itr.hasNext();){ 
+			Plant p = itr.next(); 
 			if (!p.getSoil().equals(soil)) {
-				filteredPlants.remove(p);
+				itr.remove();
 			}
 			else if (!p.getSunlight().equals(lightLevel)) {
-				filteredPlants.remove(p);
+				itr.remove();
 			}
 			else if (!p.getWater().equals(water)) {
-				filteredPlants.remove(p);
+				itr.remove();
 			}
 			else if (!p.getBloom().equals(season)) {
-				filteredPlants.remove(p);
+				itr.remove();
 			}
+				
 		}
 		return filteredPlants;
 	}
-	
+
 	/**
 	 * Will compare all plants in ArrayList to garden data and return a new ArrayList of plants
 		only containing plants that suit at least one attribute of the garden specifications
@@ -78,6 +83,5 @@ public class Filter {
 		}
 		return suitablePlants;
 	}
-
 	
 }

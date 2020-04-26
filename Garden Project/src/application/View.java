@@ -47,6 +47,7 @@ public class View {
 	 */
 	public void changeScene(Parent n) {
 		theStage.getScene().setRoot(n);
+		//theStage.setScene(n);
 	}
 	
 	/**

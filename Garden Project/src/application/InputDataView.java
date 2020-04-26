@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -52,8 +53,12 @@ public class InputDataView {
 		gardenGrid.setHgap(10);
 		gardenGrid.setGridLinesVisible(true);
 		
-		
-
+		for (int i=0; i<10; i++) {
+			for (int j=0; j<10; j++) {
+				ImageView iv = new ImageView();
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		//CENTER
 		
 		

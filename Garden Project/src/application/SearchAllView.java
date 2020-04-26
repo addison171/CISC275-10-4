@@ -225,15 +225,17 @@ public class SearchAllView {
 		//CENTER
 		this.results = new ScrollPane();
 		this.resultsVb = new VBox();
+		
 		results.setContent(resultsVb);
 		results.setPadding(new Insets(10,10,10,10));
 		resultsVb.setSpacing(10);
+		resultsVb.setPadding(new Insets(10,10,10,10));
+		resultsVb.setPrefWidth(550);
 
+		this.borderpane.setCenter(this.results);
 		
 		this.plantItems = new ArrayList<GridPane>();
 		
-
-		resultsVb.setPadding(new Insets(10,10,10,10));
 		//CENTER
 		
 	
@@ -256,12 +258,12 @@ public class SearchAllView {
 		
 	}
 	
-	public void displayResults(ArrayList<Plant> results) {
+	public void displayResults(ArrayList<Plant> plants) {
 		
 		this.plantItems.clear();
 		this.resultsVb.getChildren().clear();
 		
-		for (Plant p : results) {
+		for (Plant p : plants) {
 			
 			GridPane gp = new GridPane();
 			Text descFlw = new Text();
@@ -269,7 +271,7 @@ public class SearchAllView {
 			
 			descFlw.setText(p.getName() + ": " + "A plant that blooms in the " + p.getBloom() + " and thrives in " + p.getSunlight() + " and " +
 					p.getSoil() + " soil. This plant can be described with the phrase, '" + p.getDescription() + ".'"  );
-			descFlw.setWrappingWidth(600);
+			descFlw.setWrappingWidth(400);
 			GridPane.setConstraints(descFlw, 1, 0);
 						
 			GridPane.setConstraints(addToCartBtn, 2, 0);
@@ -280,8 +282,9 @@ public class SearchAllView {
 			
 		}
 		
-		this.resultsVb.getChildren().addAll(plantItems);
-		this.results.setContent(resultsVb);
+		resultsVb.getChildren().addAll(plantItems);
+		results.setContent(resultsVb);
+		borderpane.setCenter(results);
 	}
 	
 	//displays the search all view on the scene

@@ -134,14 +134,19 @@ public class InputDataView {
 		inputDataBox.setHgap(10);
 		
 		//features within the data input box
-		Label cellsLbl = new Label("Cells Selected: ");
-		GridPane.setConstraints(cellsLbl, 0, 0);
+		//Label cellsLbl = new Label("Garden Size: ");
+		//GridPane.setConstraints(cellsLbl, 0, 0);
 		
 		//text field
 		TextField cellFld = new TextField();
-		cellFld.setPromptText("x,y a,b");
+		cellFld.setPromptText("Height");
 		cellFld.setPrefWidth(200);
 		GridPane.setConstraints(cellFld, 1, 0);
+		
+		TextField cellFld2 = new TextField();
+		cellFld2.setPromptText("Width");
+		cellFld2.setPrefWidth(200);
+		GridPane.setConstraints(cellFld2, 0, 0);
 		
 		//sunlight label
 		Label sunLbl = new Label("Sunlight Level");
@@ -187,7 +192,7 @@ public class InputDataView {
 		GridPane.setConstraints(saveDataBtn, 1, 4);
 		
 		
-		inputDataBox.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
+		inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
 
 

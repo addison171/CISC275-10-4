@@ -66,7 +66,9 @@ public class GardenView {
 		
 		//LEFT
 		
-		
+		cart = new ScrollPane();
+		cartVb = new VBox();
+		cart.setContent(cartVb);
 		
 		
 		

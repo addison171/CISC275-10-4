@@ -196,18 +196,4 @@ public class Controller extends Application {
     public void saveAllClicked() {
     
     }
-    /**
-     * Calls the search plant clicked function when the button is clicked
-     * @return The function that should happen
-     */
-    public EventHandler<ActionEvent> searchPlantsClick() {
-    	return event -> searchPlantsClicked();
-    }
-    /**
-     * SOHAN HERE
-     */
-    public void searchPlantsClicked() {
-    	
-    }
-    
 }

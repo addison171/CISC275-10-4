@@ -54,6 +54,8 @@ public class SearchAllView {
 	BorderPane borderpane;
 	Scene scene;
 	
+	GridPane gp;
+	
 	static Group searchRoot = new Group();
 	
 	public SearchAllView() {
@@ -235,7 +237,7 @@ public class SearchAllView {
 		
 		for (Plant p : plants) {
 			
-			GridPane gp = new GridPane();
+			gp = new GridPane();
 			Text descFlw = new Text();
 			Button addToCartBtn = new Button("Add to Cart");
 			
@@ -262,7 +264,7 @@ public class SearchAllView {
 		this.cartItems.clear();
 		this.cartVb.getChildren().clear();
 
-		ScrollPane cart;
+		ScrollPane cart = new ScrollPane();
 		
 		for (Plant p : plants) {
 			

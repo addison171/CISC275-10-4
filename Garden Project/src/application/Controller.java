@@ -1,5 +1,5 @@
 /**
- * @author Nick Sabitini, Addison Kuykendall
+ * @author Addison Kuykendall
  * #
  */
 package application;
@@ -95,7 +95,7 @@ public class Controller extends Application {
      */
     public void insertObstructionClicked() {
     	InsertObstructionView.update();
-    	view.changeScene(InsertObstructionView.iovRoot);
+    	//view.changeScene(InsertObstructionView.iovRoot);
     }
 	
     /**
@@ -111,7 +111,7 @@ public class Controller extends Application {
      * @param event - event object from view button being clicked
      */
     public void viewClicked() {
-    	view.changeScene(FinalView.finalRoot);
+    	//view.changeScene(FinalView.finalRoot);
     }
     
     /**
@@ -144,7 +144,7 @@ public class Controller extends Application {
      * @param event - event object for the preview button being clicked
      */
     public void previewClicked() {
-    	view.changeScene(Preview.previewRoot);
+    	//view.changeScene(Preview.previewRoot);
     }
     
     /**
@@ -160,7 +160,7 @@ public class Controller extends Application {
      * @param event - event object confirming the editcells button was clicked
      */
     public void editCellsClicked() {
-    	view.changeScene(EditCellsView.editCellsRoot);
+    	//view.changeScene(EditCellsView.editCellsRoot);
     }
     
     /**
@@ -176,7 +176,7 @@ public class Controller extends Application {
      * @param event - event object confirming the finalview button was clicked
      */
     public void finalViewClicked() {
-    	view.changeScene(FinalView.finalRoot);
+    	//view.changeScene(FinalView.finalRoot);
     }
     
     /**

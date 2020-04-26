@@ -26,8 +26,8 @@ public class InputDataView {
 	static Group inputDataRoot = new Group();
 
 	
-	BorderPane borderpane = new BorderPane();
-	Scene scene = new Scene(borderpane);
+	static BorderPane borderpane;
+	Scene scene;
 	
 	public InputDataView() {
 		
@@ -130,12 +130,14 @@ public class InputDataView {
 
 
 		//BORDERPANE
-		BorderPane borderpane = new BorderPane();
+		borderpane = new BorderPane();
 		
 		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
 		borderpane.setRight(inputDataBox);
 		borderpane.setPadding(new Insets(10,10,10,10));
+		
+		scene =  new Scene(borderpane);
 		
 		this.scene.setRoot(borderpane);
 		inputDataRoot.getChildren().add(borderpane);

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -32,49 +33,62 @@ public class SearchAllView {
 	ComboBox<String> nativeCbx;
 	ComboBox<String> filterCbx;
 	
+	Button inputDataBtn;
+	Button previewBtn;
+	Button editCellsBtn;
+	Button searchBtn;
+	Button finalViewBtn;
+	Button saveBtn;
+	
 	ArrayList<GridPane> plantItems;
+	ArrayList<GridPane> cartItems;
+	
 	ScrollPane results;
-	VBox cartVb;
+	VBox resultsVb;
+	
 	ScrollPane cart;
+	VBox cartVb;
 	
-	
-	BorderPane borderpane = new BorderPane();
-	Scene scene = new Scene(borderpane);
+	BorderPane borderpane;
+	Scene scene;
 	
 	public SearchAllView() {
 		
+		this.borderpane = new BorderPane();
+		this.scene = new Scene(borderpane);
+
 		
 		//TOP
 		HBox menu = new HBox();
 		menu.setSpacing(5);
 		
-		//Buttons within the menu HBox
 		//input data
-		Button inputDataBtn = new Button("Input Data");
-		
+		inputDataBtn = new Button("Input Data");
+
 		//preview
-		Button previewBtn = new Button("Preview");
+		previewBtn = new Button("Preview");
+		//previewBtn.setonAction
 		
 		//edit cells
-		Button editCellsBtn = new Button("Edit Cells");
+		editCellsBtn = new Button("Edit Cells");
 		
 		//search all
-		Button searchBtn = new Button("Plants Search");
+		searchBtn = new Button("Plants Search");
 		
 		//final view 
-		Button finalViewBtn = new Button("Final View");
+		finalViewBtn = new Button("Final View");
 		
 		//save button
-		Button saveBtn = new Button("Save");
+		saveBtn = new Button("Save");
 		
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
 		
 		//LEFT
-		
 		this.cart = new ScrollPane();
 		this.cartVb = new VBox();
+		this.cartItems = new ArrayList<GridPane>();
 		cart.setContent(cartVb);
 		cart.setPadding(new Insets(10,10,10,10));
 		cartVb.setSpacing(10);
@@ -86,9 +100,7 @@ public class SearchAllView {
 		GridPane.setConstraints(water1, 1, 1);
 		Label soil1 = new Label("Soil Preference");
 		GridPane.setConstraints(soil1, 1, 2);
-		
 		cartgp1.getChildren().addAll(sun1,water1,soil1);
-		cartVb.getChildren().add(cartgp1);
 		
 		GridPane cartgp2 = new GridPane();
 		Label sun2 = new Label("Sunlight preference");
@@ -97,9 +109,7 @@ public class SearchAllView {
 		GridPane.setConstraints(water2, 1, 1);
 		Label soil2 = new Label("Soil Preference");
 		GridPane.setConstraints(soil2, 1, 2);
-		
 		cartgp2.getChildren().addAll(sun2,water2,soil2);
-		cartVb.getChildren().add(cartgp2);
 		
 		GridPane cartgp3 = new GridPane();
 		Label sun3 = new Label("Sunlight preference");
@@ -108,9 +118,7 @@ public class SearchAllView {
 		GridPane.setConstraints(water3, 1, 1);
 		Label soil3 = new Label("Soil Preference");
 		GridPane.setConstraints(soil3, 1, 2);
-		
 		cartgp3.getChildren().addAll(sun3,water3,soil3);
-		cartVb.getChildren().add(cartgp3);
 
 		
 		GridPane cartgp4 = new GridPane();
@@ -120,12 +128,15 @@ public class SearchAllView {
 		GridPane.setConstraints(water4, 1, 1);
 		Label soil4 = new Label("Soil Preference");
 		GridPane.setConstraints(soil4, 1, 2);
-		
 		cartgp4.getChildren().addAll(sun4,water4,soil4);
-		cartVb.getChildren().add(cartgp4);
 		
+		this.cartItems.add(cartgp1);
+		this.cartItems.add(cartgp2);
+		this.cartItems.add(cartgp3);
+		this.cartItems.add(cartgp4);
+		
+		cartVb.getChildren().addAll(cartItems);
 		cart.setContent(cartVb);
-
 		//LEFT
 		
 		
@@ -142,7 +153,7 @@ public class SearchAllView {
 		//text field
 		TextField cellFld = new TextField();
 		cellFld.setPromptText("Keywords");
-		cellFld.setPrefWidth(200);
+		cellFld.setPrefWidth(150);
 		GridPane.setConstraints(cellFld, 1, 0);
 		
 		//sunlight label
@@ -153,9 +164,9 @@ public class SearchAllView {
 		sunCbx = new ComboBox<String>();
 		GridPane.setConstraints(sunCbx, 1, 1);
 		sunCbx.getItems().addAll(
-				"High",
+				"Sunny",
 				"Medium",
-				"Low"
+				"Shady"
 		);
 		
 		//water label
@@ -166,9 +177,9 @@ public class SearchAllView {
 		waterCbx = new ComboBox<String>();
 		GridPane.setConstraints(waterCbx, 1, 2);
 		waterCbx.getItems().addAll(
-				"High",
+				"Wet",
 				"Medium",
-				"Low"
+				"Dry"
 		);
 		
 		//water label
@@ -183,57 +194,62 @@ public class SearchAllView {
 				"Mix",
 				"Sandy"
 		);
-		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx);
+		
+		//Search button
+		Button searchBtn = new Button("Search");
+		GridPane.setConstraints(searchBtn, 1, 4);
+		
+		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, searchBtn);
 		//RIGHT
 
 		
 		
 		//CENTER
-		ScrollPane results = new ScrollPane();
-		VBox vb = new VBox();
-		results.setContent(vb);
+		this.results = new ScrollPane();
+		this.resultsVb = new VBox();
+		results.setContent(resultsVb);
 		results.setPadding(new Insets(10,10,10,10));
-		vb.setSpacing(10);
+		resultsVb.setSpacing(10);
 		
 		GridPane gp1 = new GridPane();
 		Text descFlw1 = new Text();
 		descFlw1.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw1.setWrappingWidth(300);
+		descFlw1.setWrappingWidth(600);
 		GridPane.setConstraints(descFlw1, 1, 0);
 		gp1.getChildren().add(descFlw1);
 		
 		GridPane gp2 = new GridPane();
 		Text descFlw2 = new Text();
 		descFlw2.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw2.setWrappingWidth(300);
+		descFlw2.setWrappingWidth(600);
 		GridPane.setConstraints(descFlw2, 1, 0);
 		gp2.getChildren().add(descFlw2);
 
 		GridPane gp3 = new GridPane();
 		Text descFlw3 = new Text();
 		descFlw3.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw3.setWrappingWidth(300);
+		descFlw3.setWrappingWidth(600);
 		GridPane.setConstraints(descFlw3, 1, 0);
 		gp3.getChildren().add(descFlw3);
 		
 		GridPane gp4 = new GridPane();
 		Text descFlw4 = new Text();
 		descFlw4.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw4.setWrappingWidth(300);
+		descFlw4.setWrappingWidth(600);
 		GridPane.setConstraints(descFlw4, 1, 0);
 		gp4.getChildren().add(descFlw4);
 		
 		GridPane gp5 = new GridPane();
 		Text descFlw5 = new Text();
 		descFlw5.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw5.setWrappingWidth(300);
+		descFlw5.setWrappingWidth(600);
 		GridPane.setConstraints(descFlw5, 1, 0);
 		gp5.getChildren().add(descFlw5);
 
 		GridPane gp6 = new GridPane();
 		Text descFlw6 = new Text();
 		descFlw6.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw6.setWrappingWidth(300);
+		descFlw6.setWrappingWidth(600);
 		GridPane.setConstraints(descFlw6, 1, 0);
 		gp6.getChildren().add(descFlw6);
 
@@ -247,27 +263,33 @@ public class SearchAllView {
 		plantItems.add(gp5);
 		plantItems.add(gp6);
 
-		
+		for (GridPane gp : plantItems) {
+			gp.setPadding(new Insets(5,5,5,5));
+		}
 
-		vb.getChildren().addAll(plantItems);
-		vb.setPadding(new Insets(10,10,10,10));
-
+		resultsVb.getChildren().addAll(plantItems);
+		resultsVb.setPadding(new Insets(10,10,10,10));
 		//CENTER
 		
 	
 		
 	
 		//BORDERPANE
-		BorderPane borderpane = new BorderPane();
+		this.borderpane = new BorderPane();
 		
 		borderpane.setTop(menu);
 		borderpane.setRight(filterPane);
 		borderpane.setCenter(results);
 		borderpane.setLeft(cart);
 		borderpane.setPadding(new Insets(10,10,10,10));
-				
-		this.scene.setRoot(borderpane);
-
+			
+		
+		scene = new Scene(borderpane);
+		//this.scene.setRoot(borderpane);		
+		
+	}
+	
+	public void addResult(String description) {
 		
 	}
 	

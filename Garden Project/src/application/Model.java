@@ -35,6 +35,9 @@ public class Model implements Serializable{
 		canvasWidth = width;
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 	}
+	public Model() {
+		ArrayList<Plant> plants = new ArrayList<Plant>();
+	}
 	
 	/**
 	 * Saves the garden
@@ -88,24 +91,48 @@ public class Model implements Serializable{
 	}
 	/**
 	 * Allows user to add an object of either a plant or obstruction by changing the cells in the parameter
-	 * @param cellChange - what cells the obstruction covers
+	 * @param cells - all cells available
+	 * @param x1 - x coordinate of top left cell of placed object
+	 * @param y1 - y coordinate of top left cell of placed object
+	 * @param x2 - x coordinate of bottom right cell of placed object
+	 * @param y2 - y coordinate of bottom right cell of placed object
+	 * @param obj - the object being added to the cells
 	 * @return - the new updated cell array
 	 */
-	public Cell[][] addObject(Cell[][] startColumn) {
-		
+	public Cell[][] addObject(Cell[][] cells, int x1, int y1, int x2, int y2, Object obj) {
+		for(int i = x1; i<= x2; i++) {
+			for(int j= y1; j<=y2; j++) {
+				if (obj instanceof Plant) {
+					cells[i][j].setPlant((Plant)obj);
+				}
+				else if (obj instanceof Obstruction) {
+					cells[i][j].setObstruction((Obstruction)obj);
+				}
+			}
+		}
 		
 		return cells;
 	}
 	/**
 	 * Allows user to change the data in selected cells
-	 * @param startCell - first cell selected
-	 * @param endCell - last cell selected
+	 * @param cells - all cells available
+	 * @param x1 - x coordinate of top left cell selected
+	 * @param y1 - y coordinate of top left cell selected
+	 * @param x2 - x coordinate of bottom right cell selected
+	 * @param y2 - y coordinate of bottom right cell selected
 	 * @param newSoil - the new soil needed to be assigned to highlighted cells
 	 * @param newWater - the new water level needed to be assigned to highlighted cells
 	 * @param newSun - the new sunlight level needed to be assigned to highlighted cells
 	 * @return - the updated list of cells
 	 */
-	public Cell[][] editCells(Cell[][] startCell, Cell[][] endCell, String newSoil, String newWater, String newSun) {
+	public Cell[][] editCells(Cell[][] cells, int x1, int y1, int x2, int y2, String newSoil, String newWater, String newSun) {
+		for(int i = x1; i<= x2; i++) {
+			for(int j= y1; j<=y2; j++) {
+				cells[i][j].setSoil(newSoil);
+				cells[i][j].setWater(newWater);
+				cells[i][j].setSunlight(newSun);
+			}
+		}
 		return cells;
 	}
 	/**

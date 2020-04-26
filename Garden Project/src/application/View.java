@@ -39,13 +39,13 @@ public class View {
 		root.getChildren().add(canvas);
 		gc = canvas.getGraphicsContext2D();
 
-		test =  new Button("Test");
-		root.getChildren().add(test);
-		test.setTranslateY(.5*canvasHeight);
-		
 	}
 	
-	public void changeScene(Group n) {
+	/**
+	 * Switches screens
+	 * @param n - the new root. Usually a group
+	 */
+	public void changeScene(Parent n) {
 		theStage.getScene().setRoot(n);
 	}
 	

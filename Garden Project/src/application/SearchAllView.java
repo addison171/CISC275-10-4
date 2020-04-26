@@ -52,6 +52,8 @@ public class SearchAllView {
 	BorderPane borderpane;
 	Scene scene;
 	
+	static Group searchRoot = new Group();
+	
 	public SearchAllView() {
 		
 		this.borderpane = new BorderPane();
@@ -285,7 +287,9 @@ public class SearchAllView {
 			
 		
 		scene = new Scene(borderpane);
-		//this.scene.setRoot(borderpane);		
+		this.scene.setRoot(borderpane);	
+		
+		searchRoot.getChildren().add(borderpane);
 		
 	}
 	

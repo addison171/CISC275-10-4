@@ -18,10 +18,13 @@ public class HomeView {
 	
 	GridPane grid = new GridPane();
 	Scene scene = new Scene(grid);
+	
+	Button createNew;
+	Button editExisting;
 
 	public HomeView() {
 		
-		grid.setPadding(new Insets(10,10,10,10));
+		grid.setPadding(new Insets(150,450,150,450));
 		grid.setVgap(10);
 		grid.setHgap(10);
 				
@@ -35,7 +38,7 @@ public class HomeView {
 		GridPane.setConstraints(edit, 0, 1);
 		
 		//create new button
-		Button createNew = new Button("Lets get started");
+		createNew = new Button("Lets get started");
 		GridPane.setConstraints(createNew, 1, 0);
 		
 		//edit existing button
@@ -47,16 +50,4 @@ public class HomeView {
 		this.scene.setRoot(grid);
 		
 	}
-	
-	
-	
-	
-	
-	
-
-	
-	Button createNew;
-	Button editExisting;
-	static Group homeRoot = new Group();
-
 }

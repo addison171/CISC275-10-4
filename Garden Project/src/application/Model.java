@@ -41,6 +41,7 @@ public class Model implements Serializable{
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 	}
 	public Model() {
+<<<<<<< HEAD
 		ArrayList<Plant> allPlants = readPlantsFromCSV("PlantData.csv");
 	}
 	/**
@@ -96,6 +97,9 @@ public class Model implements Serializable{
 		
 		// create and return Plant of this metadata 
 		return new Plant(name, idealSoil,idealSunlightLevel, idealWaterLevel, bloomTime, description); 
+=======
+		ArrayList<Plant> plants = new ArrayList<Plant>();
+>>>>>>> cdb9efdec3bf78b8c43337630ee81534aca2cb05
 	}
 	/**
 	 * Saves the garden

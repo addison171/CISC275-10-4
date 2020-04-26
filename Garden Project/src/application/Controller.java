@@ -43,19 +43,34 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	Model.allPlants = Model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	primaryStage.setScene(hv.scene);
+    	hv.createNew.setOnAction(newClick());
+    
     	        
         this.gv = new GardenView();
-        primaryStage.setScene(gv.scene);
+		gv.inputDataBtn.setOnAction(inputDataClick());
+		gv.editCellsBtn.setOnAction(editCellsClick());
+		gv.finalViewBtn.setOnAction(finalViewClick());
+		gv.previewBtn.setOnAction(previewClick());
+		gv.searchBtn.setOnAction(searchClick());
         
-        this.idv = new InputDataView();
-        //primaryStage.setScene(idv.scene);
-        
-        idv.searchBtn.setOnAction(searchClick());
+        this.idv = new InputDataView();        
+		idv.inputDataBtn.setOnAction(inputDataClick());
+		idv.editCellsBtn.setOnAction(editCellsClick());
+		idv.finalViewBtn.setOnAction(finalViewClick());
+		idv.previewBtn.setOnAction(previewClick());
+		idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
+<<<<<<< HEAD
         //primaryStage.setScene(searchv.scene);
 
+=======
+        
+    	primaryStage.setScene(hv.scene);
+
+        
+        
+>>>>>>> cdb9efdec3bf78b8c43337630ee81534aca2cb05
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
 		searchv.finalViewBtn.setOnAction(finalViewClick());
@@ -64,6 +79,15 @@ public class Controller extends Application {
 		
 		
 		primaryStage.show();
+    }
+    
+    
+    public EventHandler<ActionEvent> newClick(){
+    	return event -> newClicked();
+    }
+    
+    public void newClicked() {
+    	view.changeScene(gv.gardenRoot);
     }
     
     /**
@@ -81,7 +105,7 @@ public class Controller extends Application {
      * 
      */
     public void searchClicked() {
-    	view.changeScene(searchv.borderpane);
+    	view.changeScene(searchv.searchRoot);
     }
     
     /**
@@ -198,6 +222,7 @@ public class Controller extends Application {
     public void saveAllClicked() {
     
     }
+
     /**
      * Calls the search plant clicked function when the button is clicked
      * @return The function that should happen

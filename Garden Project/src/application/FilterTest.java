@@ -8,19 +8,20 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class FilterTest {
-
+/**
 	@Test
 	public void searchTest() {
 		ArrayList<Plant> plants1 = new ArrayList<Plant>();
 		ArrayList<Plant> plants2 = new ArrayList<Plant>();
-		Plant blueOak = new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring", "Cool");
-		Plant redOak = new Plant("Red Oak", "Clay","Sunny", "Dry", "Fall", "Sick");
+		Plant blueOak = new Plant("Blue Oak", "Clay","Shade", "Wet", "Spring");
+		Plant redOak = new Plant("Red Oak", "Clay","Sunny", "Dry", "Fall");
 		plants1.add(blueOak);
 		plants1.add(redOak);
-		Filter f = new Filter( "Fall", "Clay", "Sunny" , "Dry");
+		Filter f = new Filter(plants1, "Fall", "Clay", "Sunny" , "Dry");
 		plants2.add(redOak);
 		assertEquals(plants2,f.search(plants1));
 	}
+<<<<<<< HEAD
 	
 	public void suitablePlantsTest() {
 		ArrayList<Plant> plants1 = new ArrayList<Plant>();
@@ -33,4 +34,7 @@ public class FilterTest {
 		plants2.add(redOak);
 		assertEquals(plants2,f.search(plants1));
 	}
+=======
+	**/
+>>>>>>> cdb9efdec3bf78b8c43337630ee81534aca2cb05
 }

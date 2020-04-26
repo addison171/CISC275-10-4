@@ -50,6 +50,11 @@ public class Model implements Serializable{
 	}
 	public Model(int plotX, int plotY) {
 		cells = new Cell[plotX][plotY];
+		for(int i = 0; i<cells.length; i++) {
+			for(int q = 0; q<cells[0].length; q++) {
+	        	cells[i][q] = new Cell();
+			}
+		}
 	}
 
 	/**
@@ -144,16 +149,13 @@ public class Model implements Serializable{
 	 * @return returns the new updated cell array
 	 */
 	public Cell[][] inputData() {
-		for (Cell[] innerArray : cells)
-	      {
-	         for (Cell val : innerArray)
-	         {
-	            val.setSoil(soilType);
-	            val.setSunlight(sunLight);
-	            val.setWater(waterLevel);
-	         }
-	      }
-		
+		for(int i = 0; i<cells.length; i++) {
+			for(int q = 0; q<cells[0].length; q++) {
+	        	cells[i][q].setSoil(soilType);
+	        	cells[i][q].setSunlight(sunLight);
+	        	cells[i][q].setWater(waterLevel);
+			}
+		}
 		return cells;
 	}
 	/**

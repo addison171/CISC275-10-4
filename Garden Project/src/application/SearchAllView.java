@@ -276,12 +276,12 @@ public class SearchAllView {
 			cartgp.getChildren().addAll(sun, water, soil);
 			
 			cartgp.setPadding(new Insets(10,10,10,10));
-			this.cartItems.add(gp);
+			this.cartItems.add(cartgp);
 		}
 		
-		cartVb.getChildren().addAll(cartItems);
-		cart.setContent(cartVb);
-		borderpane.setCenter(cart);
+		this.cartVb.getChildren().addAll(cartItems);
+		this.cart.setContent(cartVb);
+		borderpane.setCenter(this.cart);
 
 	}
 	

@@ -58,7 +58,11 @@ public class ModelTest {
 	}	
 	@Test
 	public void testTotalScore() {
-		Model m = new Model();
+		Model m = new Model(3,3);
+		Plant plant = new Plant("a", "b", "c", "w", "b","d");
+		ArrayList<Plant> p = new ArrayList<Plant>();
+		p.add(plant);
+		assertEquals(m.totalScore(p), 3);
 	}
 	
 }

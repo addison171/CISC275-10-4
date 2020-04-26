@@ -34,17 +34,23 @@ public class Model implements Serializable{
 	double canvasHeight;
 	double canvasWidth;
 	
+	public Model() {
+		
+	}
 	public Model(double width, double height) {
 		ArrayList<Plant> plants = new ArrayList<Plant>();
 		canvasHeight = height;
 		canvasWidth = width;
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
 	}
-	public Model() {
-		
+	public Model(String soil,String water,String sun ) {
+		soilType = soil;
+		waterLevel = water;
+		sunLight = sun;
 	}
+
 	/**
-	 * load data into allPlants
+	 * method to load data into allPlants
 	 * @param filename - a csv file containing data
 	 * @return returns a new arraylist of plants with all data from file
 	 */

@@ -40,6 +40,7 @@ public class SearchAllView {
 	Button searchBtn;
 	Button finalViewBtn;
 	Button saveBtn;
+	Button searchPlants;
 	
 	ArrayList<GridPane> plantItems;
 	ArrayList<GridPane> cartItems;

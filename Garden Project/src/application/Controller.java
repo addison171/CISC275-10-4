@@ -232,13 +232,8 @@ public class Controller extends Application {
      */
     public void searchPlantsClicked() {
     	System.out.println("Search Plants Clicked");
-    	System.out.println( searchv.bloomCbx.getValue().toString() + " " + searchv.soilCbx.getValue().toString()+ " " + 
-				 searchv.sunCbx.getValue().toString() + " " + searchv.waterCbx.getValue().toString());
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
-    	for (Plant p : model.allPlants) {
-    		System.out.println(p.getName());
-    	}
     	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
     	
     	this.searchv.displayResults(filteredPlants);

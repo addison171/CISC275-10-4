@@ -38,18 +38,19 @@ public class Filter {
 	 */
 	public ArrayList<Plant> search(ArrayList<Plant> plants){
 		this.filteredPlants.clear();
+		filteredPlants = plants;
 		for(Plant p: plants) {
-			if (p.getSoil().equals(soil)) {
-				filteredPlants.add(p);
+			if (!p.getSoil().equals(soil)) {
+				filteredPlants.remove(p);
 			}
-			if (p.getSunlight().equals(lightLevel)) {
-				filteredPlants.add(p);
+			else if (!p.getSunlight().equals(lightLevel)) {
+				filteredPlants.remove(p);
 			}
-			if (p.getWater().equals(water)) {
-				filteredPlants.add(p);
+			else if (!p.getWater().equals(water)) {
+				filteredPlants.remove(p);
 			}
-			if (p.getBloom().equals(season)) {
-				filteredPlants.add(p);
+			else if (!p.getBloom().equals(season)) {
+				filteredPlants.remove(p);
 			}
 		}
 		return filteredPlants;

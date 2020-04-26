@@ -41,15 +41,15 @@ public class SearchAllView {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchPlants;
-	
+		
 	ArrayList<GridPane> plantItems;
-	ArrayList<GridPane> cartItems;
-	
 	ScrollPane results;
 	VBox resultsVb;
 	
+	ArrayList<GridPane> cartItems;
 	ScrollPane cart;
 	VBox cartVb;
+	Label cartLbl;
 	
 	BorderPane borderpane;
 	Scene scene;
@@ -99,19 +99,25 @@ public class SearchAllView {
 		cart.setPadding(new Insets(10,10,10,10));
 		cartVb.setSpacing(10);
 		
-
+		this.cartLbl = new Label("Cart");
+		this.cartVb.getChildren().add(cartLbl);
+		this.cart.setMinWidth(200);
 		
-		GridPane cartgp4 = new GridPane();
-		Label sun4 = new Label("Sunlight prfsfsadeference");
-		GridPane.setConstraints(sun4, 1, 0);
-		Label water4 = new Label("Water preference");
-		GridPane.setConstraints(water4, 1, 1);
-		Label soil4 = new Label("Soil Preference");
-		GridPane.setConstraints(soil4, 1, 2);
-		cartgp4.getChildren().addAll(sun4,water4,soil4);
+		GridPane cartgp = new GridPane();
+		Label sun = new Label("Sun");
+		GridPane.setConstraints(sun, 1, 0);
+		Label water = new Label("Water");
+		GridPane.setConstraints(water, 1, 1);
+		Label soil = new Label("Soil");
+		GridPane.setConstraints(soil, 1, 2);
+		Button remove = new Button("Remove from cart");
+		GridPane.setConstraints(remove, 1, 3);
+		cartgp.getChildren().addAll(sun, water, soil, remove);
 		
+		cartgp.setPadding(new Insets(5,5,5,5));
+		this.cartItems.add(cartgp);
 		
-		cartVb.getChildren().addAll(cartItems);
+		cartVb.getChildren().add(cartgp);
 		cart.setContent(cartVb);
 		//LEFT
 		
@@ -263,8 +269,9 @@ public class SearchAllView {
 		
 		this.cartItems.clear();
 		this.cartVb.getChildren().clear();
+		this.cartVb.getChildren().add(this.cartLbl);
 
-		ScrollPane cart = new ScrollPane();
+		this.cart = new ScrollPane();
 		
 		for (Plant p : plants) {
 			
@@ -275,9 +282,11 @@ public class SearchAllView {
 			GridPane.setConstraints(water, 1, 1);
 			Label soil = new Label(p.getSoil());
 			GridPane.setConstraints(soil, 1, 2);
-			cartgp.getChildren().addAll(sun, water, soil);
+			Button remove = new Button("Remove from cart");
+			GridPane.setConstraints(remove, 1, 3);
+			cartgp.getChildren().addAll(sun, water, soil, remove);
 			
-			cartgp.setPadding(new Insets(10,10,10,10));
+			cartgp.setPadding(new Insets(5,5,5,5));
 			this.cartItems.add(cartgp);
 		}
 		

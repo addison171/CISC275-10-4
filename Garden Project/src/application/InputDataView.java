@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class InputDataView {
+	
 	ComboBox<String> sunCbx;
 	ComboBox<String> waterCbx;
 	ComboBox<String> soilCbx;
@@ -36,12 +37,13 @@ public class InputDataView {
 	Button searchBtn;
 	Button finalViewBtn;
 	Button saveBtn;
-
 	
 	static BorderPane borderpane;
 	Scene scene;
 	
 	ScrollPane cart;
+	
+	GridPane gardenGrid;
 	
 	Button saveDataBtn;
 	
@@ -49,7 +51,7 @@ public class InputDataView {
 		
 		
 		//CENTER
-		GridPane gardenGrid = new GridPane();
+		gardenGrid = new GridPane();
 		gardenGrid.setPadding(new Insets(10,10,10,10));
 		gardenGrid.setVgap(10);
 		gardenGrid.setHgap(10);
@@ -121,10 +123,6 @@ public class InputDataView {
 		
 		gp2.getChildren().addAll(sun2,water2,soil2);
 		vb.getChildren().add(gp2);
-		
-		
-
-		
 		
 		
 		//LEFT
@@ -222,7 +220,6 @@ public class InputDataView {
 		
 		
 		inputDataBox.getChildren().addAll(instruct, x, y, createPlot, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
-		inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
 
 
@@ -232,7 +229,7 @@ public class InputDataView {
 		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
 		borderpane.setRight(inputDataBox);
-		borderpane.setLeft(this.cart);
+		//borderpane.setLeft(this.cart);
 		borderpane.setPadding(new Insets(10,10,10,10));
 		
 		scene =  new Scene(borderpane);
@@ -240,6 +237,14 @@ public class InputDataView {
 		this.scene.setRoot(borderpane);
 		inputDataRoot.getChildren().add(borderpane);
 
+	}
+	
+	public void displayPlot(int x, int y) {
+		for (int i=0; i<x; i++) {
+			for (int j=0; j<y; j++) {
+				this.gardenGrid.getChildren().add(new ImageView());
+			}
+		}
 	}
 	
 	public void update() {

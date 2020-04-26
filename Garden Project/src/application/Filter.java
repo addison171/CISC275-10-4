@@ -39,6 +39,7 @@ public class Filter {
 	 * @return the a new arraylist of plants that suit chosen data.
 	 */
 	public ArrayList<Plant> search(ArrayList<Plant> plants){
+		
 		this.filteredPlants.clear();
 		filteredPlants = plants;
 		

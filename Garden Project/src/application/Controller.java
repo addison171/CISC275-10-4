@@ -219,20 +219,17 @@ public class Controller extends Application {
      * @param event - event object that confirms the saveall button was clicked
      */
     public void saveAllClicked() {
-    	/**
+    	
     	model.soilType = idv.soilCbx.getValue();
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
-    	String locations = idv.cellFld.getText();
-    	System.out.println(locations);
-    	String[] strings = locations.split(",");
-    	int x1 = Integer.parseInt(strings[0]);
-    	int y1 = Integer.parseInt(strings[1]);
-    	int x2 = Integer.parseInt(strings[2]);
-    	int y2 = Integer.parseInt(strings[3]);
+    	String tx = idv.cellFld.getText();
+    	String ty = idv.cellFld.getText();
+    	int x = Integer.parseInt(tx);
+    	int y = Integer.parseInt(ty);
+    	model.cells = new Cell[x][y];
     	model.cells = model.inputData();
-    	**/
-
+    	
     }
 
     /**

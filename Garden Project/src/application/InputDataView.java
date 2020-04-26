@@ -25,6 +25,8 @@ public class InputDataView {
 	Text plotSize;
 	Button addData;
 	static Group inputDataRoot = new Group();
+	TextField cellFld;
+	TextField cellFld2;
 	
 	
 	Button inputDataBtn;
@@ -138,12 +140,12 @@ public class InputDataView {
 		//GridPane.setConstraints(cellsLbl, 0, 0);
 		
 		//text field
-		TextField cellFld = new TextField();
+		cellFld = new TextField();
 		cellFld.setPromptText("Height");
 		cellFld.setPrefWidth(200);
 		GridPane.setConstraints(cellFld, 1, 0);
 		
-		TextField cellFld2 = new TextField();
+		cellFld2 = new TextField();
 		cellFld2.setPromptText("Width");
 		cellFld2.setPrefWidth(200);
 		GridPane.setConstraints(cellFld2, 0, 0);

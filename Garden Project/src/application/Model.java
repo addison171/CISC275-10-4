@@ -151,6 +151,9 @@ public class Model implements Serializable{
 	public Cell[][] inputData() {
 		for(int i = 0; i<cells.length; i++) {
 			for(int q = 0; q<cells[0].length; q++) {
+				if(cells[i][q]==null) {
+					cells[i][q] = new Cell();
+				}
 	        	cells[i][q].setSoil(soilType);
 	        	cells[i][q].setSunlight(sunLight);
 	        	cells[i][q].setWater(waterLevel);

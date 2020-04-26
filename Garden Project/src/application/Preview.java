@@ -1,5 +1,5 @@
 /**
- * @author Jonni Tran
+ * @author Nick Sabitini
  */
 package application;
 

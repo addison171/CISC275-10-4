@@ -61,16 +61,11 @@ public class Controller extends Application {
 		idv.searchBtn.setOnAction(searchClick());
 
         this.searchv = new SearchAllView();
-<<<<<<< HEAD
         //primaryStage.setScene(searchv.scene);
-
-=======
         
     	primaryStage.setScene(hv.scene);
 
-        
-        
->>>>>>> cdb9efdec3bf78b8c43337630ee81534aca2cb05
+
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
 		searchv.finalViewBtn.setOnAction(finalViewClick());
@@ -236,7 +231,7 @@ public class Controller extends Application {
     public void searchPlantsClicked() {
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
-    	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
+    	ArrayList<Plant> filteredPlants = model.f.search(Model.allPlants);
     }
     
 }

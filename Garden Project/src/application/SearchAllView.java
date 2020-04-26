@@ -32,6 +32,7 @@ public class SearchAllView {
 	ComboBox<String> bloomCbx;
 	ComboBox<String> nativeCbx;
 	ComboBox<String> filterCbx;
+	Button searchPlantsBtn;
 	
 	Button inputDataBtn;
 	Button previewBtn;
@@ -175,7 +176,7 @@ public class SearchAllView {
 		Label waterLbl = new Label("Water Level");
 		GridPane.setConstraints(waterLbl, 0, 2);
 		
-		//sunlight combo box
+		//water combo box
 		waterCbx = new ComboBox<String>();
 		GridPane.setConstraints(waterCbx, 1, 2);
 		waterCbx.getItems().addAll(
@@ -184,11 +185,11 @@ public class SearchAllView {
 				"Dry"
 		);
 		
-		//water label
+		//soil label
 		Label soilLbl = new Label("Soil Type");
 		GridPane.setConstraints(soilLbl, 0, 3);
 		
-		//sunlight combo box
+		//soil combo box
 		soilCbx = new ComboBox<String>();
 		GridPane.setConstraints(soilCbx, 1, 3);
 		soilCbx.getItems().addAll(
@@ -197,11 +198,25 @@ public class SearchAllView {
 				"Sandy"
 		);
 		
-		//Search button
-		Button searchBtn = new Button("Search");
-		GridPane.setConstraints(searchBtn, 1, 4);
+		//bloom label
+		Label bloomLbl = new Label("Bloom Season");
+		GridPane.setConstraints(bloomLbl, 0, 4);
 		
-		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, searchBtn);
+		//bloom combo box
+		bloomCbx = new ComboBox<String>();
+		GridPane.setConstraints(bloomCbx, 1, 4);
+		bloomCbx.getItems().addAll(
+				"Spring",
+				"Summer",
+				"Fall",
+				"Winter"
+		);
+		
+		//Search button
+		searchPlantsBtn = new Button("Search Plants");
+		GridPane.setConstraints(searchPlantsBtn, 1, 5);
+		
+		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, bloomLbl, bloomCbx, searchPlantsBtn);
 		//RIGHT
 
 		
@@ -258,18 +273,7 @@ public class SearchAllView {
 		
 		this.plantItems = new ArrayList<GridPane>();
 		
-		plantItems.add(gp1);
-		plantItems.add(gp2);
-		plantItems.add(gp3);
-		plantItems.add(gp4);
-		plantItems.add(gp5);
-		plantItems.add(gp6);
 
-		for (GridPane gp : plantItems) {
-			gp.setPadding(new Insets(5,5,5,5));
-		}
-
-		resultsVb.getChildren().addAll(plantItems);
 		resultsVb.setPadding(new Insets(10,10,10,10));
 		//CENTER
 		
@@ -293,8 +297,28 @@ public class SearchAllView {
 		
 	}
 	
-	public void addResult(String description) {
+	public void displayResults(ArrayList<Plant> results) {
 		
+		this.plantItems.clear();
+		this.resultsVb.getChildren().clear();
+		
+		for (Plant p : results) {
+			
+			GridPane gp = new GridPane();
+			Text descFlw = new Text();
+			
+			descFlw.setText(p.getDescription());
+			descFlw.setWrappingWidth(600);
+			GridPane.setConstraints(descFlw, 1, 0);
+			gp.getChildren().add(descFlw);
+			
+			gp.setPadding(new Insets(5,5,5,5));
+			this.plantItems.add(gp);
+			
+		}
+		
+		this.resultsVb.getChildren().addAll(plantItems);
+		this.results.setContent(resultsVb);
 	}
 	
 	//displays the search all view on the scene

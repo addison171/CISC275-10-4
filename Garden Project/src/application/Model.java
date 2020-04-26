@@ -42,11 +42,13 @@ public class Model implements Serializable{
 		canvasHeight = height;
 		canvasWidth = width;
 		cells = new Cell[(int)canvasHeight][(int)canvasWidth];
+		
 	}
 	public Model(String soil,String water,String sun ) {
 		soilType = soil;
 		waterLevel = water;
 		sunLight = sun;
+	
 	}
 
 	/**

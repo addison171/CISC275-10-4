@@ -79,7 +79,7 @@ public class Controller extends Application {
      * 
      */
     public void searchClicked() {
-    	view.changeScene(searchv.scene.getRoot());
+    	view.changeScene(searchv.borderpane);
     }
     
     /**

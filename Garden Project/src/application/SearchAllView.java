@@ -227,48 +227,6 @@ public class SearchAllView {
 		results.setContent(resultsVb);
 		results.setPadding(new Insets(10,10,10,10));
 		resultsVb.setSpacing(10);
-		
-		GridPane gp1 = new GridPane();
-		Text descFlw1 = new Text();
-		descFlw1.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw1.setWrappingWidth(600);
-		GridPane.setConstraints(descFlw1, 1, 0);
-		gp1.getChildren().add(descFlw1);
-		
-		GridPane gp2 = new GridPane();
-		Text descFlw2 = new Text();
-		descFlw2.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw2.setWrappingWidth(600);
-		GridPane.setConstraints(descFlw2, 1, 0);
-		gp2.getChildren().add(descFlw2);
-
-		GridPane gp3 = new GridPane();
-		Text descFlw3 = new Text();
-		descFlw3.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw3.setWrappingWidth(600);
-		GridPane.setConstraints(descFlw3, 1, 0);
-		gp3.getChildren().add(descFlw3);
-		
-		GridPane gp4 = new GridPane();
-		Text descFlw4 = new Text();
-		descFlw4.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw4.setWrappingWidth(600);
-		GridPane.setConstraints(descFlw4, 1, 0);
-		gp4.getChildren().add(descFlw4);
-		
-		GridPane gp5 = new GridPane();
-		Text descFlw5 = new Text();
-		descFlw5.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw5.setWrappingWidth(600);
-		GridPane.setConstraints(descFlw5, 1, 0);
-		gp5.getChildren().add(descFlw5);
-
-		GridPane gp6 = new GridPane();
-		Text descFlw6 = new Text();
-		descFlw6.setText("This is a very long description of a plant.  fjkdfjadskfjaskljdfkasl djsfkldashfjklfhads hfdjaklfhdkl afdhajkl hjdskalfh ");
-		descFlw6.setWrappingWidth(600);
-		GridPane.setConstraints(descFlw6, 1, 0);
-		gp6.getChildren().add(descFlw6);
 
 		
 		this.plantItems = new ArrayList<GridPane>();
@@ -306,12 +264,16 @@ public class SearchAllView {
 			
 			GridPane gp = new GridPane();
 			Text descFlw = new Text();
+			Button addToCartBtn = new Button("Add to Cart");
 			
-			descFlw.setText(p.getDescription());
+			descFlw.setText(p.getName() + ": " + "A plant that blooms in the " + p.getBloom() + " and thrives in " + p.getSunlight() + " and " +
+					p.getSoil() + " soil. This plant can be described with the phrase, '" + p.getDescription() + ".'"  );
 			descFlw.setWrappingWidth(600);
 			GridPane.setConstraints(descFlw, 1, 0);
-			gp.getChildren().add(descFlw);
+						
+			GridPane.setConstraints(addToCartBtn, 2, 0);
 			
+			gp.getChildren().addAll(descFlw, addToCartBtn);
 			gp.setPadding(new Insets(5,5,5,5));
 			this.plantItems.add(gp);
 			

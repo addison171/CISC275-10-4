@@ -215,7 +215,7 @@ public class Controller extends Application {
      * @param event - event object confirming the finalview button was clicked
      */
     public void finalViewClicked() {
-    	//view.changeScene(FinalView.finalRoot);
+    	view.changeScene(FinalView.finalRoot);
     }
     
     /**

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class Controller extends Application {
 	private Model model;
 	private View view;
-	private GardenView gv;
+	GardenView gv;
 	private HomeView hv;
 	private InputDataView idv;
 	private InsertObstructionView iov;
@@ -44,15 +44,19 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(inputDataClick());
-    
-    	        
+    	hv.createNew.setOnAction(inputDataClick());    	
+    	
         this.gv = new GardenView();
 		gv.inputDataBtn.setOnAction(inputDataClick());
 		gv.editCellsBtn.setOnAction(editCellsClick());
 		gv.finalViewBtn.setOnAction(finalViewClick());
 		gv.previewBtn.setOnAction(previewClick());
 		gv.searchBtn.setOnAction(searchClick());
+		
+		//gv.gardenGrid 
+		
+    	//this.pv = new Preview();
+
         
         this.idv = new InputDataView();        
 		idv.inputDataBtn.setOnAction(inputDataClick());
@@ -63,6 +67,7 @@ public class Controller extends Application {
 		idv.saveBtn.setOnAction(saveAllClick());
 		idv.saveDataBtn.setOnAction(saveAllClick());
 		idv.createPlot.setOnAction(createPlotClick());
+		idv.gardenViewBtn.setOnAction(gardenViewClick());
 
         this.searchv = new SearchAllView(this);
         primaryStage.setScene(searchv.scene);
@@ -85,6 +90,12 @@ public class Controller extends Application {
     public Image getImage(Plant plant) {
     	System.out.println("Image gotten");
     	return view.plantImages[model.allPlants.indexOf(plant)];
+    public EventHandler<ActionEvent> gardenViewClick(){
+    	return event ->gardenViewClicked();
+    }
+    
+    public void gardenViewClicked() {
+    	view.changeScene(gv.gardenRoot);
     }
     
     public EventHandler<ActionEvent> createPlotClick(){
@@ -189,7 +200,7 @@ public class Controller extends Application {
      * @param event - event object for the preview button being clicked
      */
     public void previewClicked() {
-    	//view.changeScene(Preview.previewRoot);
+    	view.changeScene(Preview.previewRoot);
     }
     
     /**

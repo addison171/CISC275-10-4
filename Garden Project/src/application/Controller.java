@@ -141,9 +141,10 @@ public class Controller extends Application {
     public void createPlotClicked() {
     	String tx = idv.x.getText();
     	String ty = idv.y.getText();
-    	int x = Integer.parseInt(tx);
-    	int y = Integer.parseInt(ty);
-    	model.cells = new Cell[x][y];
+    	model.plotX = Integer.parseInt(tx);
+    	model.plotY = Integer.parseInt(ty);
+    	model.cells = new Cell[model.plotX][model.plotY];
+    	idv.displayPlot(model.plotX, model.plotY);
     }
     
     public EventHandler<ActionEvent> newClick(){

@@ -64,6 +64,8 @@ public class InputDataView {
 			for (int j=0; j<10; j++) {
 				ImageView iv = new ImageView();
 				iv.setFitHeight(40);
+				iv.setPreserveRatio(true);
+				iv.setFitHeight(40);
 				iv.setFitWidth(40);
 				gardenGrid.add(iv, i, j);
 			}

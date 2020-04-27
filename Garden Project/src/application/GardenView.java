@@ -54,8 +54,8 @@ public class GardenView {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				ImageView iv = new ImageView();
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
+				iv.setFitHeight(50);
+				iv.setFitWidth(50);
 				gardenGrid.add(iv, i, j);
 			}
 		}

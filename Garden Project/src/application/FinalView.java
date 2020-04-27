@@ -1,5 +1,5 @@
 /**
- * @author Jonni Tran
+ * @author Addison Kuykendall, Jonni Tran
  */
 package application;
 
@@ -10,9 +10,11 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class FinalView {
@@ -32,6 +34,8 @@ public class FinalView {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchPlants;
+	GridPane gardenGrid;
+
 	
 	/**
 	 * draws the screen
@@ -68,62 +72,46 @@ public class FinalView {
 		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
+		GridPane gp1 = new GridPane();
+		gp1.setPadding(new Insets(10,10,10,10));
+		
+		Text Pros = new Text("Pros: Plants well spaced			");
+		Pros.setFont(Font.font ("Verdana", 20));
+		GridPane.setConstraints(Pros, 0, 0);
+		
+		Text Cons = new Text("Cons: Little Variety");
+		Cons.setFont(Font.font ("Verdana", 20));
+		GridPane.setConstraints(Cons, 2, 0);
+		
+		Text space = new Text(" ");
+		GridPane.setConstraints(space, 0, 1);
+
+		Text grade = new Text("Overall Grade: C - Decent, but nothing special");
+		GridPane.setConstraints(grade, 0, 3);
+		grade.setFont(Font.font ("Verdana", 20));
+
+		gp1.getChildren().addAll(Pros,Cons,grade, space);
+		
 		BorderPane finalviewBP = new BorderPane();
-		
-		
-		
-		TextArea scores = new TextArea();
-		
-		TextArea pros = new TextArea();
 
-		TextArea cons = new TextArea();
-
+		gardenGrid = new GridPane();
+		gardenGrid.setPadding(new Insets(10,10,10,10));
+		gardenGrid.setGridLinesVisible(true);
+		gardenGrid.setPrefWidth(550);
 		
-		Label scoresLabel = new Label("Score");
-		Label consLabel = new Label("Cons");
-		Label prosLabel = new Label("Pros");
-		
-	
-		scores.setText("B+");
-		
-		pros.setText("Diverse amount of plants for food");
-		
-		
-		cons.setText("Too much grass");
-		
-		//Buttons within the menu HBox
+		for (int i=0; i<10; i++) {
+			for (int j=0; j<10; j++) {
+				ImageView iv = new ImageView();
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+			
+		finalviewBP.setBottom(gardenGrid);
 				
-		//Edit garden button
-		editButton  = new Button("Edit");
-
-		//Save garden button
-		saveButton = new Button("Save");
-		
-		//New garden button
-		newgardenButton = new Button ("New Design");
-		
-		//Creates the scene
-		
-		//Text goes top of borderpane
-		finalviewBP.setTop(scores);
-		finalviewBP.setTop(pros);
-		finalviewBP.setTop(cons);
-
-		
-		finalviewBP.setMargin(scores,new Insets(2,2,2,2));
-		finalviewBP.setMargin(pros,new Insets(2,2,2,2));
-		finalviewBP.setMargin(cons,new Insets(2,2,2,2));
-		
-		//Buttons at bottom of borderpane
-		finalviewBP.setBottom(editButton);
-		finalviewBP.setBottom(saveButton);
-		finalviewBP.setBottom(newgardenButton);
-		
-		editButton.setPadding(new Insets(2,2,2,2));
-		saveButton.setPadding(new Insets(2,2,2,2));
-		newgardenButton.setPadding(new Insets(2,2,2,2));
-		
-		
+		finalviewBP.setTop(menu);
+		finalviewBP.setCenter(gp1);
 		
 		Scene finalScene = new Scene(finalviewBP);
 		finalRoot.getChildren().add(finalviewBP);

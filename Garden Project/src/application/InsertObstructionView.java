@@ -30,6 +30,8 @@ public class InsertObstructionView {
 	 * @param shape the shape of the obstruction the insert obstruction button will create
 	 */
 	public void generateShape(Image shape) {
+		
+		
 	}
 	
 }

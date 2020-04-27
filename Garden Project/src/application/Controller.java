@@ -41,9 +41,9 @@ public class Controller extends Application {
     public void start(Stage primaryStage) {
     	view = new View(primaryStage);
     	model = new Model(view.getWidth(), view.getHeight());
-    	Model.allPlants = Model.readPlantsFromCSV("PlantData.csv");
+    	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(newClick());
+    	hv.createNew.setOnAction(inputDataClick());
     
     	        
         this.gv = new GardenView();
@@ -76,7 +76,7 @@ public class Controller extends Application {
 		searchv.searchBtn.setOnAction(searchClick());
         searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
 
-		
+        view.importImages(model.allPlants);
 		
 		primaryStage.show();
     }
@@ -215,7 +215,7 @@ public class Controller extends Application {
      * @param event - event object confirming the finalview button was clicked
      */
     public void finalViewClicked() {
-    	//view.changeScene(FinalView.finalRoot);
+    	view.changeScene(FinalView.finalRoot);
     }
     
     /**
@@ -253,13 +253,13 @@ public class Controller extends Application {
     	System.out.println("Search Plants Clicked");
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
-    	ArrayList<Plant> filteredPlants = model.f.search(Model.allPlants);
+    	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
     	
     	for (Plant p : filteredPlants) {
     		System.out.println(p.getName());
     	}
     	
-    	for (Plant p : Model.allPlants) {
+    	for (Plant p : model.allPlants) {
     		System.out.println(p.getName());
     	}
 

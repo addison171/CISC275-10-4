@@ -245,7 +245,7 @@ public class SearchAllView {
 			
 			gp = new GridPane();
 			
-			Image img = 
+			//Image img = 
 			
 			Button addToCartBtn = new Button("Add to Cart");
 			GridPane.setConstraints(addToCartBtn, 2, 0);

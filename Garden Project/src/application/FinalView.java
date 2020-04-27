@@ -124,7 +124,7 @@ public class FinalView {
 		newgardenButton.setPadding(new Insets(2,2,2,2));
 		
 		
-		finalviewBP.setTop(menu);
+		
 		Scene finalScene = new Scene(finalviewBP);
 
 		

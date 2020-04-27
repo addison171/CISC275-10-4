@@ -4,6 +4,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -26,6 +27,7 @@ public class Model implements Serializable{
 	ArrayList<Plant> allPlants;
 	ArrayList<Plant> cartPlants;
 	ArrayList<Plant> resultPlants;
+	HashMap<String,Plant> plantMap;
 	Filter f;
 	File saveFile;
 	int score;
@@ -42,6 +44,8 @@ public class Model implements Serializable{
 		this.allPlants = new ArrayList<Plant>();
 		this.cartPlants = new ArrayList<Plant>();
 		this.resultPlants = new ArrayList<Plant>();
+		this.plantMap = new HashMap<String,Plant>();
+
 		
 	}
 	public Model(double width, double height) {
@@ -51,6 +55,8 @@ public class Model implements Serializable{
 		this.allPlants = new ArrayList<Plant>();
 		this.cartPlants = new ArrayList<Plant>();
 		this.resultPlants = new ArrayList<Plant>();
+		this.plantMap = new HashMap<String,Plant>();
+
 	}
 	public Model(String soil,String water,String sun ) {
 		soilType = soil;
@@ -60,6 +66,8 @@ public class Model implements Serializable{
 		this.allPlants = new ArrayList<Plant>();
 		this.cartPlants = new ArrayList<Plant>();
 		this.resultPlants = new ArrayList<Plant>();
+		this.plantMap = new HashMap<String,Plant>();
+
 	
 	}
 	public Model(int plotX, int plotY) {
@@ -73,6 +81,8 @@ public class Model implements Serializable{
 		this.allPlants = new ArrayList<Plant>();
 		this.cartPlants = new ArrayList<Plant>();
 		this.resultPlants = new ArrayList<Plant>();
+		this.plantMap = new HashMap<String,Plant>();
+
 	}
 
 	/**
@@ -99,7 +109,8 @@ public class Model implements Serializable{
 				Plant p = createPlant(attributes); 
 				
 				// adding Plant into ArrayList 
-				plants.add(p); 
+				plants.add(p);
+				this.plantMap.put(p.getName(), p);
 				
 				// read next line before looping 
 				// if end of file reached, line would be null

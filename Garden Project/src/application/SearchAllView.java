@@ -17,6 +17,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -26,6 +28,8 @@ import javafx.scene.text.TextFlow;
 
 public class SearchAllView {
 
+	Controller ctrl;
+	
 	ComboBox<String> sunCbx;
 	ComboBox<String> waterCbx;
 	ComboBox<String> soilCbx;
@@ -34,6 +38,7 @@ public class SearchAllView {
 	ComboBox<String> filterCbx;
 	Button searchPlantsBtn;
 	
+	Button gardenViewBtn;
 	Button inputDataBtn;
 	Button previewBtn;
 	Button editCellsBtn;
@@ -58,8 +63,9 @@ public class SearchAllView {
 	
 	static Group searchRoot = new Group();
 	
-	public SearchAllView() {
+	public SearchAllView(Controller ctrl) {
 		
+		this.ctrl = ctrl;
 		this.borderpane = new BorderPane();
 		this.scene = new Scene(borderpane);
 
@@ -70,7 +76,10 @@ public class SearchAllView {
 		
 		//input data
 		inputDataBtn = new Button("Input Data");
-
+		
+		//gardenView button
+		gardenViewBtn = new Button("Garden View");
+		
 		//preview
 		previewBtn = new Button("Preview");
 		//previewBtn.setonAction
@@ -87,9 +96,9 @@ public class SearchAllView {
 		//save button
 		saveBtn = new Button("Save");
 		
+		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
-		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
-		//TOP
+		
 		
 		
 		//LEFT
@@ -102,23 +111,8 @@ public class SearchAllView {
 		
 		this.cartLbl = new Label("Cart");
 		this.cartVb.getChildren().add(cartLbl);
-		this.cart.setMinWidth(200);
+		this.cart.setPrefWidth(200);
 		
-		GridPane cartgp = new GridPane();
-		Label sun = new Label("Sun");
-		GridPane.setConstraints(sun, 1, 0);
-		Label water = new Label("Water");
-		GridPane.setConstraints(water, 1, 1);
-		Label soil = new Label("Soil");
-		GridPane.setConstraints(soil, 1, 2);
-		Button remove = new Button("Remove from cart");
-		GridPane.setConstraints(remove, 1, 3);
-		cartgp.getChildren().addAll(sun, water, soil, remove);
-		
-		cartgp.setPadding(new Insets(5,5,5,5));
-		this.cartItems.add(cartgp);
-		
-		cartVb.getChildren().add(cartgp);
 		cart.setContent(cartVb);
 		//LEFT
 		
@@ -209,7 +203,7 @@ public class SearchAllView {
 		results.setPadding(new Insets(10,10,10,10));
 		resultsVb.setSpacing(10);
 		resultsVb.setPadding(new Insets(10,10,10,10));
-		resultsVb.setPrefWidth(550);
+		resultsVb.setPrefWidth(650);
 
 		this.borderpane.setCenter(this.results);
 		
@@ -245,11 +239,17 @@ public class SearchAllView {
 		for (Plant p : plants) {
 			
 			gp = new GridPane();
-			
-			//Image img = 
+						
+			Image img = new Image("images/commonMilkweed.png");
+			ImageView iv = new ImageView(img);
+			iv.setPreserveRatio(true);
+			iv.setFitHeight(50);
+			GridPane.setConstraints(iv, 0, 0);
 			
 			Button addToCartBtn = new Button("Add to Cart");
+			addToCartBtn.setId(p.getName());
 			GridPane.setConstraints(addToCartBtn, 2, 0);
+			addToCartBtn.setOnMouseClicked(this.ctrl.getAddToCartBtnHandler());
 
 			Text descFlw = new Text();
 			descFlw.setText(p.getName() + ": " + "A plant that blooms in the " + p.getBloom() + " and thrives in " + p.getSunlight() + " and " +
@@ -257,8 +257,7 @@ public class SearchAllView {
 			descFlw.setWrappingWidth(400);
 			GridPane.setConstraints(descFlw, 1, 0);
 						
-			
-			gp.getChildren().addAll(descFlw, addToCartBtn);
+			gp.getChildren().addAll(iv, descFlw, addToCartBtn);
 			gp.setPadding(new Insets(5,5,5,5));
 			this.plantItems.add(gp);
 			
@@ -274,8 +273,6 @@ public class SearchAllView {
 		this.cartItems.clear();
 		this.cartVb.getChildren().clear();
 		this.cartVb.getChildren().add(this.cartLbl);
-
-		this.cart = new ScrollPane();
 		
 		for (Plant p : plants) {
 			
@@ -296,7 +293,6 @@ public class SearchAllView {
 		
 		this.cartVb.getChildren().addAll(cartItems);
 		this.cart.setContent(cartVb);
-		borderpane.setCenter(this.cart);
 
 	}
 	

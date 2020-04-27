@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class FinalView {
@@ -24,49 +23,13 @@ public class FinalView {
 	Button newgardenButton;
 	static Group finalRoot = new Group();
 	
-	Button gardenViewBtn;
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
-	Button searchPlants;
+	
 	
 	/**
 	 * draws the screen
 	 */
 	
 	public FinalView(){
-		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
-		
-		//garden view
-		gardenViewBtn = new Button("Garden View");		
-		
-		//input data
-		inputDataBtn = new Button("Input Data");
-
-		//preview
-		previewBtn = new Button("Preview");
-		//previewBtn.setonAction
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		menu.getChildren().addAll(gardenViewBtn, inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
-		//TOP
 		
 		BorderPane finalviewBP = new BorderPane();
 		
@@ -124,7 +87,7 @@ public class FinalView {
 		newgardenButton.setPadding(new Insets(2,2,2,2));
 		
 		
-		finalviewBP.setTop(menu);
+		
 		Scene finalScene = new Scene(finalviewBP);
 
 		

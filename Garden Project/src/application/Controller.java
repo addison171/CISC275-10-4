@@ -54,7 +54,7 @@ public class Controller extends Application {
 		gv.searchBtn.setOnAction(searchClick());
 		
 		//gv.gardenGrid 
-		pv.inputGarden(gv.gardenGrid);
+		Preview.inputGarden(gv.gardenGrid);
     	this.pv = new Preview();
     	pv.inputDataBtn.setOnAction(inputDataClick());
     	pv.editCellsBtn.setOnAction(editCellsClick());
@@ -89,6 +89,13 @@ public class Controller extends Application {
         searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
         
         this.ecv = new EditCellsView();
+        ecv.saveDataBtn.setOnAction(SelectCellsClick());
+        
+		ecv.inputDataBtn.setOnAction(inputDataClick());
+		ecv.editCellsBtn.setOnAction(editCellsClick());
+		ecv.finalViewBtn.setOnAction(finalViewClick());
+		ecv.previewBtn.setOnAction(previewClick());
+		ecv.searchBtn.setOnAction(searchClick());
         
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
@@ -100,6 +107,21 @@ public class Controller extends Application {
         view.importImages(model.allPlants);
 		
 		primaryStage.show();
+    }
+    
+    public EventHandler<ActionEvent> SelectCellsClick(){
+    	return event -> SelectCellsClicked();
+    }
+    
+    public void SelectCellsClicked() {
+    	String coordinates = ecv.cellFld.getText();
+    	String[] splitC = coordinates.split(",");
+    	int x1 = Integer.parseInt(splitC[0]);
+    	int y1 = Integer.parseInt(splitC[1]);
+    	int x2 = Integer.parseInt(splitC[2]);
+    	int y2 = Integer.parseInt(splitC[3]);
+    	model.editCells(model.cells, x1, y1, x2, y2, ecv.soilCbx.getValue(), ecv.waterCbx.getValue(), ecv.sunCbx.getValue());
+    	System.out.println(model.cells[1][1].getSoil());
     }
     
     public EventHandler<ActionEvent> gardenViewClick(){

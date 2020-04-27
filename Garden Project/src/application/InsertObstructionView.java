@@ -1,5 +1,5 @@
 /**
- * @author Addison Kuykendall
+ * @author Sohan Gadiraju
  */
 package application;
 
@@ -60,7 +60,22 @@ public class InsertObstructionView {
 			}
 		}
 		//CENTER
-
+		for (int i=5; i<7; i++) {
+			for (int j=5; j<7; j++) {
+				ImageView iv = new ImageView("images/House.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		for (int i=8; i<10; i++) {
+			for (int j=0; j<4; j++) {
+				ImageView iv = new ImageView("images/Building.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		
 		//TOP
 		HBox menu = new HBox();

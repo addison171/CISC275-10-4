@@ -60,14 +60,14 @@ public class InputDataView {
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
 		
-		for (int i=0; i<10; i++) {
+		/*for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				ImageView iv = new ImageView();
 				iv.setFitHeight(40);
 				iv.setFitWidth(40);
 				gardenGrid.add(iv, i, j);
 			}
-		}
+		}*/
 		//CENTER
 		
 		
@@ -241,7 +241,12 @@ public class InputDataView {
 	public void displayPlot(int x, int y) {
 		for (int i=0; i<x; i++) {
 			for (int j=0; j<y; j++) {
-				this.gardenGrid.getChildren().add(new ImageView("/commonMilkweed.png"));
+				ImageView iv = new ImageView();
+				iv.setFitHeight(10);
+				iv.setFitWidth(10);
+				iv.setPreserveRatio(true);
+				this.gardenGrid.add(iv,i,j);
+				this.gardenGrid.setGridLinesVisible(true);
 			}
 		}
 	}

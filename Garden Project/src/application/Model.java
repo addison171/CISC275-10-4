@@ -37,6 +37,8 @@ public class Model implements Serializable{
 	String sunLight;
 	double canvasHeight;
 	double canvasWidth;
+	int plotX;
+	int plotY;
 	
 	public Model() {
 		

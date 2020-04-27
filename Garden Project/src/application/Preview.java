@@ -69,6 +69,22 @@ public class Preview {
 				gardenGrid.add(iv, i, j);
 			}
 		}
+		for (int i=5; i<8; i++) {
+			for (int j=1; j<5; j++) {
+				ImageView iv = new ImageView("images/Birdfoot Violet.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		for (int i=5; i<10; i++) {
+			for (int j=0; j<1; j++) {
+				ImageView iv = new ImageView("images/Vaccinium Angustifolium.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		
 		//TOP
 		HBox menu = new HBox();

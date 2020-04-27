@@ -52,6 +52,7 @@ public class Controller extends Application {
     	
     	primaryStage.setScene(hv.scene);
     	
+    	//Insert obstruction view
     	iov = new InsertObstructionView();
     	iov.inputDataBtn.setOnAction(inputDataClick());
     	iov.editCellsBtn.setOnAction(editCellsClick());

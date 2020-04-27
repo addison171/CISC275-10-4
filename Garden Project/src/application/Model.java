@@ -23,7 +23,7 @@ public class Model implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	ArrayList<Plant> plants;
-	static ArrayList<Plant> allPlants;
+	ArrayList<Plant> allPlants;
 	Filter f;
 	File saveFile;
 	int score;
@@ -62,7 +62,7 @@ public class Model implements Serializable{
 	 * @param filename - a csv file containing data
 	 * @return returns a new arraylist of plants with all data from file
 	 */
-	public static ArrayList<Plant> readPlantsFromCSV(String fileName) { 
+	public ArrayList<Plant> readPlantsFromCSV(String fileName) { 
 		ArrayList<Plant> plants = new ArrayList<>(); 
 		Path pathToFile = Paths.get(fileName); 
 		// create an instance of BufferedReader 
@@ -99,7 +99,7 @@ public class Model implements Serializable{
 	 * @param metadata - metadata consumed from a line of the csv file
 	 * @return returns a new plant according to consumed Metadata
 	 */
-	private static Plant createPlant(String[] metadata) { 
+	private Plant createPlant(String[] metadata) { 
 		String name = metadata[0]; 
 		String idealSoil = metadata[1];
 		String idealWaterLevel = metadata[3];

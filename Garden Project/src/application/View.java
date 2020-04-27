@@ -12,8 +12,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import java.util.ArrayList;
 
 public class View {
+	Controller control;
 	Canvas canvas;
 	Stage theStage;
 	Scene theScene;
@@ -22,6 +24,7 @@ public class View {
 	int canvasHeight = 950;
     GraphicsContext gc;
     public Button test;
+    Image[] plantImages;
 	
 	/**
 	 * 
@@ -40,7 +43,20 @@ public class View {
 		gc = canvas.getGraphicsContext2D();
 
 	}
-	
+	/**
+	 * Creates array of Images filled with images of plants
+	 * @param plants - an arraylist of plants
+	 */
+	public void importImages(ArrayList<Plant> plants) {
+		plantImages= new Image[plants.size()];
+        // Eclipse will look for <path/to/project>/bin/<relative path specified>
+        String img_name = "images/";
+        String ext = ".png";
+        for(int i= 0; i<plants.size();i++) {
+			plantImages[i]=createImage(img_name + plants.get(i).getName() + ext);
+		}
+       
+	}
 	/**
 	 * Switches screens
 	 * @param n - the new root. Usually a group
@@ -49,7 +65,6 @@ public class View {
 		theStage.getScene().setRoot(n);
 		//theStage.setScene(n);
 	}
-	
 	/**
 	 * Displays the image (usually to display plants)
 	 * @param img - image to be displayed

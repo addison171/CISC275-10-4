@@ -29,6 +29,7 @@ public class InsertObstructionView {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button createPlot;
+	Button insertObstruction;
 
 	
 	BorderPane borderpane;
@@ -39,8 +40,7 @@ public class InsertObstructionView {
 	GridPane gardenGrid;
 	ComboBox<String> obstruction;
 	TextArea label;
-	static Button add = new Button("add");
-	static Group iovRoot = new Group();
+	Group iovRoot = new Group();
 
 	
 	//updates the view according to what inputs have been changed
@@ -67,6 +67,9 @@ public class InsertObstructionView {
 		menu.setSpacing(5);
 		
 		//Buttons within the menu HBox
+		//InsertObstruction button
+		insertObstruction = new Button("Insert Obstruction");
+		
 		//garden view
 		gardenViewBtn = new Button("Garden View");
 		
@@ -88,7 +91,7 @@ public class InsertObstructionView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
 		//TOP
 		
 		
@@ -174,10 +177,6 @@ public class InsertObstructionView {
 
 	}
 	
-	static public void update() {
-	    iovRoot.getChildren().add(add);
-	    add.setTranslateY(.5*940);
-	}
 	/**
 	 * creates an image on the scene of some shape
 	 * @param shape the shape of the obstruction the insert obstruction button will create

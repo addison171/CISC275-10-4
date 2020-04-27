@@ -46,6 +46,7 @@ public class SearchAllView {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchPlants;
+	Button insertObstruction;
 		
 	ArrayList<GridPane> plantItems;
 	ScrollPane results;
@@ -75,6 +76,9 @@ public class SearchAllView {
 		HBox menu = new HBox();
 		menu.setSpacing(5);
 		
+		//InsertObstruction button
+		insertObstruction = new Button("Insert Obstruction");
+		
 		//input data
 		inputDataBtn = new Button("Input Data");
 		
@@ -97,7 +101,7 @@ public class SearchAllView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn, insertObstruction,saveBtn);
 		//menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		
 		

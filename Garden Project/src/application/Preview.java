@@ -30,6 +30,7 @@ public class Preview {
 	Button saveBtn;
 	Button searchPlants;
 	Button gardenView;
+	Button insertObstruction;
 	GridPane gardenGrid;
 
 	public Preview() {
@@ -89,6 +90,10 @@ public class Preview {
 		//TOP
 		HBox menu = new HBox();
 		menu.setSpacing(5);
+		
+		//InsertObstruction button
+		insertObstruction = new Button("Insert Obstruction");
+		
 		//gardenGrid = control.gv.gardenGrid;
 		//input data
 		inputDataBtn = new Button("Input Data");
@@ -111,7 +116,7 @@ public class Preview {
 		
 		gardenView = new Button("Garden View");
 		
-		menu.getChildren().addAll(inputDataBtn,gardenView,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(inputDataBtn,gardenView,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
 		
 		GridPane previewPane = new GridPane();
 		//Time of Day

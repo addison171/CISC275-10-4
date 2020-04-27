@@ -43,15 +43,19 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(inputDataClick());
-    
-    	        
+    	hv.createNew.setOnAction(inputDataClick());    	
+    	
         this.gv = new GardenView();
 		gv.inputDataBtn.setOnAction(inputDataClick());
 		gv.editCellsBtn.setOnAction(editCellsClick());
 		gv.finalViewBtn.setOnAction(finalViewClick());
 		gv.previewBtn.setOnAction(previewClick());
 		gv.searchBtn.setOnAction(searchClick());
+		
+		//gv.gardenGrid 
+		
+    	//this.pv = new Preview();
+
         
         this.idv = new InputDataView();        
 		idv.inputDataBtn.setOnAction(inputDataClick());
@@ -62,6 +66,7 @@ public class Controller extends Application {
 		idv.saveBtn.setOnAction(saveAllClick());
 		idv.saveDataBtn.setOnAction(saveAllClick());
 		idv.createPlot.setOnAction(createPlotClick());
+		idv.gardenViewBtn.setOnAction(gardenViewClick());
 
         this.searchv = new SearchAllView();
         primaryStage.setScene(searchv.scene);
@@ -79,6 +84,14 @@ public class Controller extends Application {
         view.importImages(model.allPlants);
 		
 		primaryStage.show();
+    }
+    
+    public EventHandler<ActionEvent> gardenViewClick(){
+    	return event ->gardenViewClicked();
+    }
+    
+    public void gardenViewClicked() {
+    	view.changeScene(gv.gardenRoot);
     }
     
     public EventHandler<ActionEvent> createPlotClick(){

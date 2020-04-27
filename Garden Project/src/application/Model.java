@@ -37,17 +37,29 @@ public class Model implements Serializable{
 	double canvasWidth;
 	
 	public Model() {
-		ArrayList<Plant> plants = new ArrayList<Plant>();
+		
+		this.plants = new ArrayList<Plant>();
+		this.allPlants = new ArrayList<Plant>();
+		this.cartPlants = new ArrayList<Plant>();
+		this.resultPlants = new ArrayList<Plant>();
+		
 	}
 	public Model(double width, double height) {
 		canvasHeight = height;
 		canvasWidth = width;
-		
+		this.plants = new ArrayList<Plant>();
+		this.allPlants = new ArrayList<Plant>();
+		this.cartPlants = new ArrayList<Plant>();
+		this.resultPlants = new ArrayList<Plant>();
 	}
 	public Model(String soil,String water,String sun ) {
 		soilType = soil;
 		waterLevel = water;
 		sunLight = sun;
+		this.plants = new ArrayList<Plant>();
+		this.allPlants = new ArrayList<Plant>();
+		this.cartPlants = new ArrayList<Plant>();
+		this.resultPlants = new ArrayList<Plant>();
 	
 	}
 	public Model(int plotX, int plotY) {
@@ -57,6 +69,10 @@ public class Model implements Serializable{
 	        	cells[i][q] = new Cell();
 			}
 		}
+		this.plants = new ArrayList<Plant>();
+		this.allPlants = new ArrayList<Plant>();
+		this.cartPlants = new ArrayList<Plant>();
+		this.resultPlants = new ArrayList<Plant>();
 	}
 
 	/**

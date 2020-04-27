@@ -3,6 +3,7 @@
  */
 package application;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.Group;
@@ -242,10 +243,12 @@ public class InputDataView {
 		for (int i=0; i<x; i++) {
 			for (int j=0; j<y; j++) {
 				ImageView iv = new ImageView();
-				iv.setFitHeight(10);
-				iv.setFitWidth(10);
+				int scale = Math.max(x, y);
+				iv.setFitHeight(650 / scale);
+				iv.setFitWidth(650 / scale);
 				iv.setPreserveRatio(true);
-				this.gardenGrid.add(iv,i,j);
+				GridPane.setConstraints(iv, i, j);
+				this.gardenGrid.getChildren().add(iv);
 				this.gardenGrid.setGridLinesVisible(true);
 			}
 		}

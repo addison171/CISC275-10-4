@@ -32,7 +32,7 @@ public class InputDataView {
 	TextField x;
 	TextField y;
 	
-	
+	Button gardenViewBtn;
 	Button inputDataBtn;
 	Button previewBtn;
 	Button editCellsBtn;
@@ -57,14 +57,14 @@ public class InputDataView {
 		//CENTER
 		gardenGrid = new GridPane();
 		gardenGrid.setPadding(new Insets(10,10,10,10));
-		gardenGrid.setVgap(10);
-		gardenGrid.setHgap(10);
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
 		
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				ImageView iv = new ImageView();
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
 				gardenGrid.add(iv, i, j);
 			}
 		}
@@ -77,6 +77,9 @@ public class InputDataView {
 		menu.setSpacing(5);
 		
 		//Buttons within the menu HBox
+		//garden view
+		gardenViewBtn = new Button("Garden View");
+		
 		//input data
 		inputDataBtn = new Button("Input Data");
 		
@@ -95,9 +98,7 @@ public class InputDataView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		
-		
-		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(gardenViewBtn, inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
 		
@@ -135,8 +136,6 @@ public class InputDataView {
 		
 
 		//RIGHT
-		
-		
 		GridPane inputDataBox = new GridPane();
 		inputDataBox.setPadding(new Insets(10,10,10,10));
 		inputDataBox.setVgap(10);
@@ -242,7 +241,7 @@ public class InputDataView {
 	public void displayPlot(int x, int y) {
 		for (int i=0; i<x; i++) {
 			for (int j=0; j<y; j++) {
-				this.gardenGrid.getChildren().add(new ImageView());
+				this.gardenGrid.getChildren().add(new ImageView("/commonMilkweed.png"));
 			}
 		}
 	}

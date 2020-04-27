@@ -54,7 +54,7 @@ public class Controller extends Application {
 		gv.searchBtn.setOnAction(searchClick());
 		
 		//gv.gardenGrid 
-		pv.inputGarden(gv.gardenGrid);
+		Preview.inputGarden(gv.gardenGrid);
     	this.pv = new Preview();
     	pv.inputDataBtn.setOnAction(inputDataClick());
     	pv.editCellsBtn.setOnAction(editCellsClick());

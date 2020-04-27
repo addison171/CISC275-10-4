@@ -55,12 +55,13 @@ public class GardenView {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				ImageView iv = new ImageView();
-				iv.setFitHeight(50);
-				iv.setFitWidth(50);
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
 				gardenGrid.add(iv, i, j);
 			}
 		}
 		
+		//CENTERS
 
 		
 		//TOP
@@ -132,10 +133,11 @@ public class GardenView {
 		//RIGHT
 		
 		
+		
 		//RIGHT
 		
 
-		BorderPane borderpane = new BorderPane();
+		borderpane = new BorderPane();
 		
 		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
@@ -143,7 +145,6 @@ public class GardenView {
 		borderpane.setPadding(new Insets(10,10,10,10));
 
 		this.scene.setRoot(borderpane);
-		
 		gardenRoot.getChildren().add(borderpane);
 			
 	}

@@ -63,6 +63,7 @@ public class SearchAllView {
 	
 	static Group searchRoot = new Group();
 	
+	
 	public SearchAllView(Controller ctrl) {
 		
 		this.ctrl = ctrl;

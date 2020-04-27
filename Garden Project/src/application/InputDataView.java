@@ -42,7 +42,7 @@ public class InputDataView {
 	Button createPlot;
 
 	
-	static BorderPane borderpane;
+	BorderPane borderpane;
 	Scene scene;
 	
 	ScrollPane cart;

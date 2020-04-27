@@ -39,7 +39,7 @@ public class GardenView {
 	BorderPane borderpane;
 	Scene scene;
 	
-	static Group gardenRoot = new Group();
+	 Group gardenRoot = new Group();
 
 	public GardenView() {
 		

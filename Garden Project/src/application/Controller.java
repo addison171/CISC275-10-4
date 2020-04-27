@@ -54,8 +54,9 @@ public class Controller extends Application {
 		gv.searchBtn.setOnAction(searchClick());
 		
 		//gv.gardenGrid 
-		Preview.inputGarden(gv.gardenGrid);
     	this.pv = new Preview();
+		pv.inputGarden(gv.gardenGrid);
+
     	pv.inputDataBtn.setOnAction(inputDataClick());
     	pv.editCellsBtn.setOnAction(editCellsClick());
     	pv.finalViewBtn.setOnAction(finalViewClick());
@@ -218,7 +219,7 @@ public class Controller extends Application {
      * @param event - event object from input data button being clicked
      */
     public void inputDataClicked() {
-    	view.changeScene(InputDataView.inputDataRoot);
+    	view.changeScene(idv.inputDataRoot);
     }
     
     /**
@@ -234,7 +235,7 @@ public class Controller extends Application {
      * @param event - event object for the preview button being clicked
      */
     public void previewClicked() {
-    	view.changeScene(Preview.previewRoot);
+    	view.changeScene(pv.previewRoot);
     }
     
     /**
@@ -250,7 +251,7 @@ public class Controller extends Application {
      * @param event - event object confirming the editcells button was clicked
      */
     public void editCellsClicked() {
-    	view.changeScene(EditCellsView.editCellsRoot);
+    	view.changeScene(ecv.editCellsRoot);
     }
     
     /**
@@ -286,8 +287,7 @@ public class Controller extends Application {
     	model.soilType = idv.soilCbx.getValue();
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
-    	model.cells = model.inputData();
-    	
+    	model.cells = model.inputData();    	
     }
 
     /**

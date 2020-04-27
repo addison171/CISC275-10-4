@@ -26,7 +26,7 @@ public class InputDataView {
 	ComboBox<String> soilCbx;
 	Text plotSize;
 	Button addData;
-	static Group inputDataRoot = new Group();
+	 Group inputDataRoot = new Group();
 	TextField cellFld;
 	TextField cellFld2;
 	TextField x;

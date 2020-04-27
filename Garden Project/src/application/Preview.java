@@ -17,7 +17,7 @@ public class Preview {
 	ComboBox<String> timeOfDay;
 	ComboBox<String> season;
 	Button backToEdit;
-	static Group previewRoot = new Group();
+	Group previewRoot = new Group();
 	Scene scene;
 	
 	Button inputDataBtn;
@@ -27,7 +27,7 @@ public class Preview {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchPlants;
-	static GridPane gardenGrid;
+	GridPane gardenGrid;
 
 	public Preview() {
 		BorderPane bp;
@@ -105,7 +105,7 @@ public class Preview {
 	public void updatePlants() {
 	}
 	
-	public static void inputGarden(GridPane garden) {
+	public void inputGarden(GridPane garden) {
 		gardenGrid = garden;   
 	}
 }

@@ -47,7 +47,7 @@ public class EditCellsView {
 	Button createPlot;
 
 	
-	static BorderPane borderpane;
+	 BorderPane borderpane;
 	Scene scene;
 	
 	ScrollPane cart;

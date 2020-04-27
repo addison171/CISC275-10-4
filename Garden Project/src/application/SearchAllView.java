@@ -61,7 +61,7 @@ public class SearchAllView {
 	
 	GridPane gp;
 	
-	static Group searchRoot = new Group();
+	 Group searchRoot = new Group();
 	
 	
 	public SearchAllView(Controller ctrl) {

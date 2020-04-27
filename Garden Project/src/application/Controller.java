@@ -75,7 +75,7 @@ public class Controller extends Application {
 		idv.createPlot.setOnAction(createPlotClick());
 		idv.gardenViewBtn.setOnAction(gardenViewClick());
 
-        this.searchv = new SearchAllView();
+        this.searchv = new SearchAllView(this);
         primaryStage.setScene(searchv.scene);
         
     	primaryStage.setScene(hv.scene);
@@ -293,12 +293,10 @@ public class Controller extends Application {
     
     public void addToCartBtnClicked(MouseEvent e) {
     	System.out.println("Add to cart button clicked");
-    	GridPane gp = (GridPane)e.getSource();
-    	int itemNumber = searchv.resultsVb.getChildren().indexOf(e.getSource());
-    	System.out.println(itemNumber);
-    	Plant plant = model.resultPlants.get(itemNumber);
-    	System.out.println(plant.getName());
-    	model.cartPlants.add(plant);
+    	Button thisBtn = (Button)e.getSource();
+    	System.out.println(thisBtn.getId() + "jfdsafdhjkfahdjfkla");
+    	
+    	this.model.cartPlants.add(this.model.plantMap.get(thisBtn.getId()));
     	this.searchv.displayCart(model.cartPlants);
     }
     

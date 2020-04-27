@@ -90,6 +90,7 @@ public class Controller extends Application {
     public Image getImage(Plant plant) {
     	System.out.println("Image gotten");
     	return view.plantImages[model.allPlants.indexOf(plant)];
+    }
     public EventHandler<ActionEvent> gardenViewClick(){
     	return event ->gardenViewClicked();
     }

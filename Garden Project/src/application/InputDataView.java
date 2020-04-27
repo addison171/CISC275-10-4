@@ -185,9 +185,9 @@ public class InputDataView {
 		sunCbx = new ComboBox<String>();
 		GridPane.setConstraints(sunCbx, 1, 4);
 		sunCbx.getItems().addAll(
-				"High",
+				"Sunny",
 				"Medium",
-				"Low"
+				"Shady"
 		);
 		
 		//water label
@@ -198,9 +198,9 @@ public class InputDataView {
 		waterCbx = new ComboBox<String>();
 		GridPane.setConstraints(waterCbx, 1, 5);
 		waterCbx.getItems().addAll(
-				"High",
+				"Wet",
 				"Medium",
-				"Low"
+				"Dry"
 		);
 		
 		//water label

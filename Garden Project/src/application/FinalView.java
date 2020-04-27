@@ -33,64 +33,65 @@ public class FinalView {
 		
 		BorderPane finalviewBP = new BorderPane();
 		
-		
+		GridPane buttonsGP = new GridPane();
+		GridPane scoringGP = new GridPane();
 		
 		TextArea scores = new TextArea();
-		
 		TextArea pros = new TextArea();
-
 		TextArea cons = new TextArea();
 
-		
 		Label scoresLabel = new Label("Score");
 		Label consLabel = new Label("Cons");
 		Label prosLabel = new Label("Pros");
 		
 	
 		scores.setText("B+");
-		
 		pros.setText("Diverse amount of plants for food");
-		
-		
 		cons.setText("Too much grass");
 		
 		//Buttons within the menu HBox
 				
 		//Edit garden button
 		editButton  = new Button("Edit");
-
+		
 		//Save garden button
 		saveButton = new Button("Save");
+		
 		
 		//New garden button
 		newgardenButton = new Button ("New Design");
 		
-		//Creates the scene
 		
-		//Text goes top of borderpane
-		finalviewBP.setTop(scores);
-		finalviewBP.setTop(pros);
-		finalviewBP.setTop(cons);
+		GridPane.setConstraints(scoresLabel,2,1);
+		GridPane.setConstraints(consLabel,1,3);
+		GridPane.setConstraints(prosLabel,3,3);
+		
+		GridPane.setConstraints(scores,2,2);
+		GridPane.setConstraints(pros,1,4);
+		GridPane.setConstraints(cons,3,4);
+		
+		GridPane.setConstraints(editButton,1,1);
+		GridPane.setConstraints(saveButon,1,2);
+		GridPane.setConstraints(newgardenButton,1,3);
 
 		
-		finalviewBP.setMargin(scores,new Insets(2,2,2,2));
-		finalviewBP.setMargin(pros,new Insets(2,2,2,2));
-		finalviewBP.setMargin(cons,new Insets(2,2,2,2));
+		//GridPane 
+		buttonsGP.getChildren().addAll(editButton,saveButton,newgardenButton);
+		scoringGP.getChildren().addAll(scoresLabel,consLabel,prosLabel,scores,pros,cons);
+		
+		//Text goes top of borderpane
+		finalviewBP.setTop(scoringGP);
+		finalviewBP.setTop(buttonsGP);
+
 		
 		//Buttons at bottom of borderpane
-		finalviewBP.setBottom(editButton);
-		finalviewBP.setBottom(saveButton);
-		finalviewBP.setBottom(newgardenButton);
-		
-		editButton.setPadding(new Insets(2,2,2,2));
-		saveButton.setPadding(new Insets(2,2,2,2));
-		newgardenButton.setPadding(new Insets(2,2,2,2));
 		
 		
 		
 		Scene finalScene = new Scene(finalviewBP);
 
-		
+		this.finalScene.setRoot(finalviewBP);
+		finalRoot.getChildren().add(finalviewBP);
 	}
 	
 	

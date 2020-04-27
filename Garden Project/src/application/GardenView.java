@@ -11,7 +11,6 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -56,12 +55,13 @@ public class GardenView {
 		for (int i=0; i<10; i++) {
 			for (int j=0; j<10; j++) {
 				ImageView iv = new ImageView();
-				iv.setFitHeight(50);
-				iv.setFitWidth(50);
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
 				gardenGrid.add(iv, i, j);
 			}
 		}
 		
+		//CENTER
 
 		
 		//TOP
@@ -115,11 +115,7 @@ public class GardenView {
 		GridPane.setConstraints(soil, 1, 2);
 		Button remove = new Button("Remove from cart");
 		GridPane.setConstraints(remove, 1, 3);
-		ImageView image = new ImageView(new Image("images/commonMilkweed.png"));
-		image.setPreserveRatio(true);
-		image.setFitHeight(100);
-		GridPane.setConstraints(image, 0, 0, 1, 4);
-		cartgp.getChildren().addAll(image, sun, water, soil, remove);
+		cartgp.getChildren().addAll(sun, water, soil, remove);
 		
 		cartgp.setPadding(new Insets(5,5,5,5));
 		this.cartItems.add(cartgp);

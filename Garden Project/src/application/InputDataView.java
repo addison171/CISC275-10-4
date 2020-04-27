@@ -1,5 +1,5 @@
 /**
- * @author Sohan Gadiraju
+ * @author Addison Kuykendall, Nick Sabatini
  */
 package application;
 

@@ -43,7 +43,7 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(newClick());
+    	hv.createNew.setOnAction(inputDataClick());
     
     	        
         this.gv = new GardenView();
@@ -215,7 +215,7 @@ public class Controller extends Application {
      * @param event - event object confirming the finalview button was clicked
      */
     public void finalViewClicked() {
-    	//view.changeScene(FinalView.finalRoot);
+    	view.changeScene(FinalView.finalRoot);
     }
     
     /**

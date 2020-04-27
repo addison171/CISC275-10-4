@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class Controller extends Application {
 	private Model model;
 	private View view;
-	private GardenView gv;
+	GardenView gv;
 	private HomeView hv;
 	private InputDataView idv;
 	private InsertObstructionView iov;
@@ -183,7 +183,7 @@ public class Controller extends Application {
      * @param event - event object for the preview button being clicked
      */
     public void previewClicked() {
-    	//view.changeScene(Preview.previewRoot);
+    	view.changeScene(Preview.previewRoot);
     }
     
     /**

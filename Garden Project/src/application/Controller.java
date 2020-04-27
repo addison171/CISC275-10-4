@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class Controller extends Application {
 	private Model model;
 	private View view;
-	GardenView gv;
+	 GardenView gv;
 	private HomeView hv;
 	private InputDataView idv;
 	private InsertObstructionView iov;
@@ -288,7 +288,8 @@ public class Controller extends Application {
     	model.soilType = idv.soilCbx.getValue();
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
-    	model.cells = model.inputData();    	
+    	model.cells = model.inputData();   
+    	model.saveAll();
     }
 
     /**

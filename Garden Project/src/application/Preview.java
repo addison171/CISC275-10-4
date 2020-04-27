@@ -1,13 +1,15 @@
 /**
- * @author Sohan Gadiraju Addison Kuykendall
+ * @author Sohan Gadiraju, Addison Kuykendall
  */
 package application;
 
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -33,7 +35,20 @@ public class Preview {
 		BorderPane bp;
 		bp = new BorderPane();
 		this.scene = new Scene(bp);
-
+		
+		gardenGrid = new GridPane();
+		gardenGrid.setPadding(new Insets(10,10,10,10));
+		gardenGrid.setGridLinesVisible(true);
+		gardenGrid.setPrefWidth(550);
+		
+		for (int i=0; i<10; i++) {
+			for (int j=0; j<10; j++) {
+				ImageView iv = new ImageView();
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		
 		//TOP
 		HBox menu = new HBox();

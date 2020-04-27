@@ -22,7 +22,7 @@ public class FinalView {
 	Button saveButton;
 	Button editButton;
 	Button newgardenButton;
-	static Group finalRoot = new Group();
+	Group finalRoot = new Group();
 	
 	Button gardenViewBtn;
 	Button inputDataBtn;
@@ -126,7 +126,7 @@ public class FinalView {
 		
 		
 		Scene finalScene = new Scene(finalviewBP);
-
+		finalRoot.getChildren().add(finalviewBP);
 		
 	}
 	

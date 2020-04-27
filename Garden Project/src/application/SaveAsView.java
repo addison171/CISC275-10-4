@@ -29,7 +29,9 @@ package application;
 		Button openBtn;
 		Button saveAsBtn;
 		
-		
+		/**
+		 * Save as view. Has a button for opening new vs existing file
+		 */
 		public SaveAsView() {
 			borderpane = new BorderPane();
 			this.scene = new Scene(borderpane);

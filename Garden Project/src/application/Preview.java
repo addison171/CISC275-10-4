@@ -74,8 +74,8 @@ public class Preview {
 		);
 
 		//Season
-		Label seasonLbl = new Label("Water Level");
-		GridPane.setConstraints(waterLbl, 0, 2);
+		Label seasonLbl = new Label("Season Level");
+		GridPane.setConstraints(seasonLbl, 0, 2);
 		
 		season = new ComboBox<String>();
 		GridPane.setConstraints(season, 1, 2);

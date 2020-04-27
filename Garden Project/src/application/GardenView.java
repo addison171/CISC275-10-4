@@ -29,6 +29,8 @@ public class GardenView {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchBtn;
+	Button gardenView;
+
 	HBox menu = new HBox();
 	GridPane gardenGrid;
 	ScrollPane cart;
@@ -61,12 +63,23 @@ public class GardenView {
 			}
 		}
 		
+		for (int i=5; i<7; i++) {
+			for (int j=5; j<7; j++) {
+				ImageView iv = new ImageView("images/House.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		//CENTERS
 
 		
 		//TOP
 		HBox menu = new HBox();
 		menu.setSpacing(5);
+		
+		//InsertObstruction button
+		insertObstruction = new Button("Insert Obstruction");
 		
 		//Buttons within the menu HBox
 		//garden view
@@ -90,7 +103,7 @@ public class GardenView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll( inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll( inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
 		//TOP
 		
 		

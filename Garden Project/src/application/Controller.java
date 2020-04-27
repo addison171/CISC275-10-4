@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class Controller extends Application {
 	private Model model;
 	private View view;
-	 GardenView gv;
+	private GardenView gv;
 	private HomeView hv;
 	private InputDataView idv;
 	private InsertObstructionView iov;
@@ -29,13 +29,16 @@ public class Controller extends Application {
 	private EditCellsView ecv;
 	private SearchAllView searchv;
 	private FinalView fv;
+	private SaveAsView sav;
+	String name;
 	
     public static void main(String[] args) {
         launch(args);
     }
     
     /**
-     * Starts the program
+     * Starts the program. Instaniates each view so the program can switch screens.
+     * Sets all the buttons to the associate button handlers.
      * @param primaryStage - stage from the view
      */
     @Override
@@ -43,17 +46,37 @@ public class Controller extends Application {
     	view = new View(primaryStage);
     	model = new Model(view.getWidth(), view.getHeight());
     	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
+    	//The home view
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(inputDataClick());    	
+    	hv.createNew.setOnAction(saveAsClick());   
     	
+    	primaryStage.setScene(hv.scene);
+    	
+    	//Insert obstruction view
+    	iov = new InsertObstructionView();
+    	iov.inputDataBtn.setOnAction(inputDataClick());
+    	iov.editCellsBtn.setOnAction(editCellsClick());
+    	iov.finalViewBtn.setOnAction(finalViewClick());
+    	iov.previewBtn.setOnAction(previewClick());
+    	iov.searchBtn.setOnAction(searchClick());
+    	iov.saveBtn.setOnAction(saveAllClick());
+    	iov.gardenViewBtn.setOnAction(gardenViewClick());
+    	
+    	//The SaveAsView
+    	sav = new SaveAsView();
+    	sav.openBtn.setOnAction(openExistingClick());
+    	sav.saveAsBtn.setOnAction(openNewClick());
+    	
+    	//The garden View
         this.gv = new GardenView();
 		gv.inputDataBtn.setOnAction(inputDataClick());
 		gv.editCellsBtn.setOnAction(editCellsClick());
 		gv.finalViewBtn.setOnAction(finalViewClick());
 		gv.previewBtn.setOnAction(previewClick());
 		gv.searchBtn.setOnAction(searchClick());
+		gv.insertObstruction.setOnAction(insertObstructionClick());
 		
-		//gv.gardenGrid 
+		//The preview View
     	this.pv = new Preview();
 		pv.inputGarden(gv.gardenGrid);
 
@@ -64,8 +87,9 @@ public class Controller extends Application {
 		pv.searchBtn.setOnAction(searchClick());
 		pv.saveBtn.setOnAction(saveAllClick());
 		pv.gardenView.setOnAction(gardenViewClick());
+		pv.insertObstruction.setOnAction(insertObstructionClick());
 
-        
+        //The InputDataView
         this.idv = new InputDataView();        
 		idv.inputDataBtn.setOnAction(inputDataClick());
 		idv.editCellsBtn.setOnAction(editCellsClick());
@@ -76,36 +100,90 @@ public class Controller extends Application {
 		idv.saveDataBtn.setOnAction(saveAllClick());
 		idv.createPlot.setOnAction(createPlotClick());
 		idv.gardenViewBtn.setOnAction(gardenViewClick());
+		idv.insertObstruction.setOnAction(insertObstructionClick());
 
+		//The search view
         this.searchv = new SearchAllView(this);
-        primaryStage.setScene(searchv.scene);
-        
-    	primaryStage.setScene(hv.scene);
-
-
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
 		searchv.finalViewBtn.setOnAction(finalViewClick());
 		searchv.previewBtn.setOnAction(previewClick());
 		searchv.searchBtn.setOnAction(searchClick());
         searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
-        
+		searchv.gardenViewBtn.setOnAction(gardenViewClick());
+		searchv.insertObstruction.setOnAction(insertObstructionClick());
+
+        //The Edit cells view
         this.ecv = new EditCellsView();
         ecv.saveDataBtn.setOnAction(SelectCellsClick());
-        
 		ecv.inputDataBtn.setOnAction(inputDataClick());
 		ecv.editCellsBtn.setOnAction(editCellsClick());
 		ecv.finalViewBtn.setOnAction(finalViewClick());
 		ecv.previewBtn.setOnAction(previewClick());
 		ecv.searchBtn.setOnAction(searchClick());
-        
-		this.fv = new FinalView();
+		ecv.gardenViewBtn.setOnAction(gardenViewClick());
+		ecv.insertObstruction.setOnAction(insertObstructionClick());
 
+		//The final view
+		this.fv = new FinalView();
+		fv.editCellsBtn.setOnAction(editCellsClick());
+		fv.finalViewBtn.setOnAction(finalViewClick());
+		fv.previewBtn.setOnAction(previewClick());
+		fv.searchBtn.setOnAction(searchClick());
+		fv.saveBtn.setOnAction(saveAllClick());
+		fv.gardenViewBtn.setOnAction(gardenViewClick());
+		fv.inputDataBtn.setOnAction(inputDataClick());
+		fv.insertObstruction.setOnAction(insertObstructionClick());
+
+		
+		//Importing the plant images
         view.importImages(model.allPlants);
 		
 		primaryStage.show();
     }
     
+    /**
+     * Event handler for opening a new garden
+     * @return the method called
+     */
+    public EventHandler<ActionEvent> openNewClick(){
+    	name = sav.newCellFld.getText();
+    	return event ->openNewClicked();
+    }
+
+    public void openNewClicked() {
+    	view.changeScene(idv.inputDataRoot);
+    }
+    
+    /**
+     * Event handler for opening an existing garden
+     * @return The method called
+     */
+    public EventHandler<ActionEvent> openExistingClick(){
+    	return event ->openExistingClicked();
+    }
+    
+    public void openExistingClicked() {
+    	model.open();
+    	//view.changeScene(idv.inputDataRoot);
+    }
+    
+    /**
+     * Event handler for going from the home screen to opening a project
+     * @return the method called
+     */
+    public EventHandler<ActionEvent> saveAsClick(){
+    	return event ->saveAsClicked();
+    }
+    
+    public void saveAsClicked() {
+    	view.changeScene(sav.saveAsRoot);
+    }
+    
+    /**
+     * Handler for when the user inputs cells that they would like to change the information
+     * @return the Method called
+     */
     public EventHandler<ActionEvent> SelectCellsClick(){
     	return event -> SelectCellsClicked();
     }
@@ -121,6 +199,11 @@ public class Controller extends Application {
     	System.out.println(model.cells[1][1].getSoil());
     }
     
+    
+    /**
+     * Handler to move to the garden view
+     * @return The method called
+     */
     public EventHandler<ActionEvent> gardenViewClick(){
     	return event ->gardenViewClicked();
     }
@@ -129,6 +212,11 @@ public class Controller extends Application {
     	view.changeScene(gv.gardenRoot);
     }
     
+    
+    /**
+     * Handler for when the user inputs the size of the plot
+     * @return The method called
+     */
     public EventHandler<ActionEvent> createPlotClick(){
     	return event ->createPlotClicked();
     }
@@ -140,14 +228,6 @@ public class Controller extends Application {
     	model.plotY = Integer.parseInt(ty);
     	model.cells = new Cell[model.plotX][model.plotY];
     	idv.displayPlot(model.plotX, model.plotY);
-    }
-    
-    public EventHandler<ActionEvent> newClick(){
-    	return event -> newClicked();
-    }
-    
-    public void newClicked() {
-    	view.changeScene(gv.gardenRoot);
     }
     
     /**
@@ -182,8 +262,7 @@ public class Controller extends Application {
      * @param event - event object from the insert obstruction button being clicked
      */
     public void insertObstructionClicked() {
-    	InsertObstructionView.update();
-    	//view.changeScene(InsertObstructionView.iovRoot);
+    	view.changeScene(iov.iovRoot);
     }
 	
     /**
@@ -285,7 +364,7 @@ public class Controller extends Application {
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
     	model.cells = model.inputData();   
-    	model.saveAll();
+    	//model.saveAll();
     }
 
     /**
@@ -315,7 +394,10 @@ public class Controller extends Application {
     	
     	this.searchv.displayResults(filteredPlants);
     }
-    
+    /**
+     * Event handler for when plants are added to the cart
+     * @return the method called
+     */
     public EventHandler<MouseEvent> getAddToCartBtnHandler(){
     	return event -> addToCartBtnClicked(event);
     }

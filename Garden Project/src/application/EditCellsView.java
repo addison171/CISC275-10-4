@@ -37,6 +37,7 @@ public class EditCellsView {
 	TextField x;
 	TextField y;
 	
+	Button insertObstruction;
 	Button gardenViewBtn;
 	Button inputDataBtn;
 	Button previewBtn;
@@ -82,6 +83,9 @@ public class EditCellsView {
 		menu.setSpacing(5);
 		
 		//Buttons within the menu HBox
+		//InsertObstruction button
+		insertObstruction = new Button("Insert Obstruction");
+		
 		//garden view
 		gardenViewBtn = new Button("Garden View");
 		
@@ -103,7 +107,7 @@ public class EditCellsView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(inputDataBtn,gardenViewBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
 		//TOP
 		
 		

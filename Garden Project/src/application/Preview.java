@@ -30,6 +30,7 @@ public class Preview {
 	Button saveBtn;
 	Button searchPlants;
 	Button gardenView;
+	Button insertObstruction;
 	GridPane gardenGrid;
 
 	public Preview() {
@@ -51,9 +52,48 @@ public class Preview {
 			}
 		}
 		
+		// Test image placement
+		for (int i=5; i<7; i++) {
+			for (int j=5; j<7; j++) {
+				ImageView iv = new ImageView("images/House.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		
+		for (int i=0; i<5; i++) {
+			for (int j=0; j<5; j++) {
+				ImageView iv = new ImageView("images/Asclepias Tuberosa.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		for (int i=5; i<8; i++) {
+			for (int j=1; j<5; j++) {
+				ImageView iv = new ImageView("images/Birdfoot Violet.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		for (int i=5; i<10; i++) {
+			for (int j=0; j<1; j++) {
+				ImageView iv = new ImageView("images/Vaccinium Angustifolium.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		
 		//TOP
 		HBox menu = new HBox();
 		menu.setSpacing(5);
+		
+		//InsertObstruction button
+		insertObstruction = new Button("Insert Obstruction");
+		
 		//gardenGrid = control.gv.gardenGrid;
 		//input data
 		inputDataBtn = new Button("Input Data");
@@ -76,7 +116,7 @@ public class Preview {
 		
 		gardenView = new Button("Garden View");
 		
-		menu.getChildren().addAll(inputDataBtn,gardenView,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(inputDataBtn,gardenView,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
 		
 		GridPane previewPane = new GridPane();
 		//Time of Day

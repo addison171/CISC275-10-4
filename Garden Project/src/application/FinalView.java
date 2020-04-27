@@ -107,7 +107,41 @@ public class FinalView {
 				gardenGrid.add(iv, i, j);
 			}
 		}
-			
+		
+		//Dummy images for testing
+		for (int i=5; i<7; i++) {
+			for (int j=5; j<7; j++) {
+				ImageView iv = new ImageView("images/House.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		
+		for (int i=0; i<5; i++) {
+			for (int j=0; j<5; j++) {
+				ImageView iv = new ImageView("images/Asclepias Tuberosa.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		for (int i=5; i<8; i++) {
+			for (int j=1; j<5; j++) {
+				ImageView iv = new ImageView("images/Birdfoot Violet.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
+		for (int i=5; i<10; i++) {
+			for (int j=0; j<1; j++) {
+				ImageView iv = new ImageView("images/Vaccinium Angustifolium.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		finalviewBP.setBottom(gardenGrid);
 				
 		finalviewBP.setTop(menu);

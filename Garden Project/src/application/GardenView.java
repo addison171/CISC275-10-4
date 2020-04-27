@@ -61,6 +61,14 @@ public class GardenView {
 			}
 		}
 		
+		for (int i=5; i<7; i++) {
+			for (int j=5; j<7; j++) {
+				ImageView iv = new ImageView("images/House.png");
+				iv.setFitHeight(40);
+				iv.setFitWidth(40);
+				gardenGrid.add(iv, i, j);
+			}
+		}
 		//CENTERS
 
 		

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class Controller extends Application {
 	private Model model;
 	private View view;
-	 GardenView gv;
+	private GardenView gv;
 	private HomeView hv;
 	private InputDataView idv;
 	private InsertObstructionView iov;

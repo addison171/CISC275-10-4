@@ -4,6 +4,7 @@
 package application;
 
 import javafx.geometry.Insets;
+import javafx.scene.layout.Background;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -230,8 +231,12 @@ public class EditCellsView {
 	/**
 	 * highlightCells allows the user to highlight cells and change the sunlight, water, and soil
 	 */
-	public void highlightCells() {
-		
+	public void highlightCells(GridPane gardenGrid, int x1, int x2, int y1, int y2) {
+//		for(int i = x1; i<= x2; i++) {
+//			for(int j= y1; j<=y2; j++) {
+//				gardenGrid.setStyle( "-fx-background-color:black;" );
+//			}
+//		}
 	}
 	/**
 	 * Updates the screen based off what cells are changed.

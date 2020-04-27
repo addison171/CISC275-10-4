@@ -87,6 +87,15 @@ public class Controller extends Application {
 		searchv.previewBtn.setOnAction(previewClick());
 		searchv.searchBtn.setOnAction(searchClick());
         searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
+        
+        this.ecv = new EditCellsView();
+        
+		searchv.inputDataBtn.setOnAction(inputDataClick());
+		searchv.editCellsBtn.setOnAction(editCellsClick());
+		searchv.finalViewBtn.setOnAction(finalViewClick());
+		searchv.previewBtn.setOnAction(previewClick());
+		searchv.searchBtn.setOnAction(searchClick());
+        searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
 
         view.importImages(model.allPlants);
 		
@@ -219,7 +228,7 @@ public class Controller extends Application {
      * @param event - event object confirming the editcells button was clicked
      */
     public void editCellsClicked() {
-    	//view.changeScene(EditCellsView.editCellsRoot);
+    	view.changeScene(EditCellsView.editCellsRoot);
     }
     
     /**

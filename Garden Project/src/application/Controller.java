@@ -63,6 +63,7 @@ public class Controller extends Application {
     	pv.previewBtn.setOnAction(previewClick());
 		pv.searchBtn.setOnAction(searchClick());
 		pv.saveBtn.setOnAction(saveAllClick());
+		pv.gardenView.setOnAction(gardenViewClick());
 
         
         this.idv = new InputDataView();        

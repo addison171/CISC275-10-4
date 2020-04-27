@@ -29,6 +29,7 @@ public class Preview {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchPlants;
+	Button gardenView;
 	GridPane gardenGrid;
 
 	public Preview() {
@@ -73,7 +74,9 @@ public class Preview {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		gardenView = new Button("Garden View");
+		
+		menu.getChildren().addAll(inputDataBtn,gardenView,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		
 		GridPane previewPane = new GridPane();
 		//Time of Day

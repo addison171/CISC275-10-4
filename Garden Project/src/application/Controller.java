@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class Controller extends Application {
 	private Model model;
 	private View view;
-	GardenView gv;
+	 GardenView gv;
 	private HomeView hv;
 	private InputDataView idv;
 	private InsertObstructionView iov;
@@ -99,12 +99,7 @@ public class Controller extends Application {
 		ecv.previewBtn.setOnAction(previewClick());
 		ecv.searchBtn.setOnAction(searchClick());
         
-		searchv.inputDataBtn.setOnAction(inputDataClick());
-		searchv.editCellsBtn.setOnAction(editCellsClick());
-		searchv.finalViewBtn.setOnAction(finalViewClick());
-		searchv.previewBtn.setOnAction(previewClick());
-		searchv.searchBtn.setOnAction(searchClick());
-        searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
+		this.fv = new FinalView();
 
         view.importImages(model.allPlants);
 		
@@ -204,7 +199,7 @@ public class Controller extends Application {
      * @param event - event object from view button being clicked
      */
     public void viewClicked() {
-    	//view.changeScene(FinalView.finalRoot);
+    	view.changeScene(fv.finalRoot);
     }
     
     /**
@@ -269,7 +264,7 @@ public class Controller extends Application {
      * @param event - event object confirming the finalview button was clicked
      */
     public void finalViewClicked() {
-    	view.changeScene(FinalView.finalRoot);
+    	view.changeScene(fv.finalRoot);
     }
     
     /**
@@ -289,7 +284,8 @@ public class Controller extends Application {
     	model.soilType = idv.soilCbx.getValue();
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
-    	model.cells = model.inputData();    	
+    	model.cells = model.inputData();   
+    	model.saveAll();
     }
 
     /**

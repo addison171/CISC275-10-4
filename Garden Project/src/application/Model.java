@@ -25,6 +25,7 @@ public class Model implements Serializable{
 	ArrayList<Plant> plants;
 	ArrayList<Plant> allPlants;
 	ArrayList<Plant> cartPlants;
+	ArrayList<Plant> resultPlants;
 	Filter f;
 	File saveFile;
 	int score;

@@ -18,7 +18,6 @@ public class Preview {
 	ComboBox<String> season;
 	Button backToEdit;
 	static Group previewRoot = new Group();
-	BorderPane borderpane;
 	Scene scene;
 	
 	Button inputDataBtn;
@@ -28,17 +27,18 @@ public class Preview {
 	Button finalViewBtn;
 	Button saveBtn;
 	Button searchPlants;
-	GridPane gardenGrid;
+	static GridPane gardenGrid;
 
 	public Preview() {
-		this.borderpane = new BorderPane();
-		this.scene = new Scene(borderpane);
+		BorderPane bp;
+		bp = new BorderPane();
+		this.scene = new Scene(bp);
 
 		
 		//TOP
 		HBox menu = new HBox();
 		menu.setSpacing(5);
-		gardenGrid =control.gv.gardenGrid;
+		//gardenGrid = control.gv.gardenGrid;
 		//input data
 		inputDataBtn = new Button("Input Data");
 
@@ -86,14 +86,14 @@ public class Preview {
 				"Winter"
 		);
 		previewPane.getChildren().addAll(timeOfDayLbl, seasonLbl, timeOfDay, season);
-		borderpane.setTop(menu);
-		borderpane.setRight(previewPane);
-		borderpane.setCenter(gardenGrid);
+		bp.setTop(menu);
+		bp.setRight(previewPane);
+		bp.setCenter(gardenGrid);
 		
-		scene = new Scene(borderpane);
-		this.scene.setRoot(borderpane);
+		//scene = new Scene(bp);
+		//this.scene.setRoot(bp);
 		
-		previewRoot.getChildren().add(borderpane);
+		previewRoot.getChildren().add(bp);
 	}
 
 	//changes the season that the garden is being viewed in
@@ -103,6 +103,10 @@ public class Preview {
 	
 	//updates the images of plants according to the season selected
 	public void updatePlants() {
+	}
+	
+	public static void inputGarden(GridPane garden) {
+		gardenGrid = garden;   
 	}
 }
 

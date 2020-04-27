@@ -11,7 +11,6 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -55,8 +54,14 @@ public class Controller extends Application {
 		gv.searchBtn.setOnAction(searchClick());
 		
 		//gv.gardenGrid 
-		
-    	//this.pv = new Preview();
+		pv.inputGarden(gv.gardenGrid);
+    	this.pv = new Preview();
+    	pv.inputDataBtn.setOnAction(inputDataClick());
+    	pv.editCellsBtn.setOnAction(editCellsClick());
+    	pv.finalViewBtn.setOnAction(finalViewClick());
+    	pv.previewBtn.setOnAction(previewClick());
+		pv.searchBtn.setOnAction(searchClick());
+		pv.saveBtn.setOnAction(saveAllClick());
 
         
         this.idv = new InputDataView();        
@@ -70,7 +75,7 @@ public class Controller extends Application {
 		idv.createPlot.setOnAction(createPlotClick());
 		idv.gardenViewBtn.setOnAction(gardenViewClick());
 
-        this.searchv = new SearchAllView(this);
+        this.searchv = new SearchAllView();
         primaryStage.setScene(searchv.scene);
         
     	primaryStage.setScene(hv.scene);
@@ -88,10 +93,6 @@ public class Controller extends Application {
 		primaryStage.show();
     }
     
-    public Image getImage(Plant plant) {
-    	System.out.println("Image gotten");
-    	return view.plantImages[model.allPlants.indexOf(plant)];
-    }
     public EventHandler<ActionEvent> gardenViewClick(){
     	return event ->gardenViewClicked();
     }
@@ -272,9 +273,7 @@ public class Controller extends Application {
     	System.out.println("Search Plants Clicked");
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
-    	
     	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
-    	model.resultPlants = filteredPlants;
     	
     	for (Plant p : filteredPlants) {
     		System.out.println(p.getName());
@@ -288,6 +287,7 @@ public class Controller extends Application {
     	this.searchv.displayResults(filteredPlants);
     }
     
+<<<<<<< HEAD
     public EventHandler<MouseEvent> getAddToCartBtnHandler(){
     	return event -> addToCartBtnClicked(event);
     }
@@ -303,4 +303,6 @@ public class Controller extends Application {
     	this.searchv.displayCart(model.cartPlants);
     }
     
+=======
+>>>>>>> 874a1d425f834a65af1c71f5d2a7354d7c15bdd4
 }

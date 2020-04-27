@@ -25,7 +25,6 @@ public class Model implements Serializable{
 	ArrayList<Plant> plants;
 	ArrayList<Plant> allPlants;
 	ArrayList<Plant> cartPlants;
-	ArrayList<Plant> resultPlants;
 	Filter f;
 	File saveFile;
 	int score;
@@ -225,17 +224,6 @@ public class Model implements Serializable{
 		}
 		return cells;
 	}
-	
-	
-	public void updateResultPlants() {
-		
-	}
-	
-	public void updateCartPlants() {
-		
-	}
-	
-	
 	/**
 	 * Grades plants depending on attributes of garden and the plants own attributes (1 point added for every common attribute)
 	 * @param plants - ArrayList of all plants in the garden

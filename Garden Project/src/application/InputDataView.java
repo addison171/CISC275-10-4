@@ -98,7 +98,7 @@ public class InputDataView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll(gardenViewBtn, inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
 		

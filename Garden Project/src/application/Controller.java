@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
  
 public class Controller extends Application {
@@ -286,4 +287,22 @@ public class Controller extends Application {
     	this.searchv.displayResults(filteredPlants);
     }
     
+<<<<<<< HEAD
+    public EventHandler<MouseEvent> getAddToCartBtnHandler(){
+    	return event -> addToCartBtnClicked(event);
+    }
+    
+    public void addToCartBtnClicked(MouseEvent e) {
+    	System.out.println("Add to cart button clicked");
+    	GridPane gp = (GridPane)e.getSource();
+    	int itemNumber = searchv.resultsVb.getChildren().indexOf(e.getSource());
+    	System.out.println(itemNumber);
+    	Plant plant = model.resultPlants.get(itemNumber);
+    	System.out.println(plant.getName());
+    	model.cartPlants.add(plant);
+    	this.searchv.displayCart(model.cartPlants);
+    }
+    
+=======
+>>>>>>> 874a1d425f834a65af1c71f5d2a7354d7c15bdd4
 }

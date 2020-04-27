@@ -244,15 +244,18 @@ public class SearchAllView {
 		for (Plant p : plants) {
 			
 			gp = new GridPane();
-			Text descFlw = new Text();
-			Button addToCartBtn = new Button("Add to Cart");
 			
+			Image img = 
+			
+			Button addToCartBtn = new Button("Add to Cart");
+			GridPane.setConstraints(addToCartBtn, 2, 0);
+
+			Text descFlw = new Text();
 			descFlw.setText(p.getName() + ": " + "A plant that blooms in the " + p.getBloom() + " and thrives in " + p.getSunlight() + " and " +
 					p.getSoil() + " soil. This plant can be described with the phrase, '" + p.getDescription() + ".'"  );
 			descFlw.setWrappingWidth(400);
 			GridPane.setConstraints(descFlw, 1, 0);
 						
-			GridPane.setConstraints(addToCartBtn, 2, 0);
 			
 			gp.getChildren().addAll(descFlw, addToCartBtn);
 			gp.setPadding(new Insets(5,5,5,5));

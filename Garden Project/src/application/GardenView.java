@@ -44,7 +44,6 @@ public class GardenView {
 		
 		this.borderpane = new BorderPane();
 		this.scene = new Scene(borderpane);
-
 		
 		//CENTER
 		GridPane gardenGrid = new GridPane();

@@ -48,7 +48,7 @@ public class View {
 	 * @param plants - an arraylist of plants
 	 */
 	public void importImages(ArrayList<Plant> plants) {
-		plantImages= new Image[plants.size()];
+		plantImages = new Image[plants.size()];
         // Eclipse will look for <path/to/project>/bin/<relative path specified>
         String img_name = "images/";
         String ext = ".png";

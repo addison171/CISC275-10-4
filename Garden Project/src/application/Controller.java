@@ -37,7 +37,8 @@ public class Controller extends Application {
     }
     
     /**
-     * Starts the program
+     * Starts the program. Instaniates each view so the program can switch screens.
+     * Sets all the buttons to the associate button handlers.
      * @param primaryStage - stage from the view
      */
     @Override
@@ -45,13 +46,18 @@ public class Controller extends Application {
     	view = new View(primaryStage);
     	model = new Model(view.getWidth(), view.getHeight());
     	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
+    	//The home view
     	this.hv = new HomeView();
     	hv.createNew.setOnAction(saveAsClick());   
     	
+    	primaryStage.setScene(hv.scene);
+    	
+    	//The SaveAsView
     	sav = new SaveAsView();
     	sav.openBtn.setOnAction(openExistingClick());
     	sav.saveAsBtn.setOnAction(openNewClick());
     	
+    	//The garden View
         this.gv = new GardenView();
 		gv.inputDataBtn.setOnAction(inputDataClick());
 		gv.editCellsBtn.setOnAction(editCellsClick());
@@ -59,7 +65,7 @@ public class Controller extends Application {
 		gv.previewBtn.setOnAction(previewClick());
 		gv.searchBtn.setOnAction(searchClick());
 		
-		//gv.gardenGrid 
+		//The preview View
     	this.pv = new Preview();
 		pv.inputGarden(gv.gardenGrid);
 
@@ -71,7 +77,7 @@ public class Controller extends Application {
 		pv.saveBtn.setOnAction(saveAllClick());
 		pv.gardenView.setOnAction(gardenViewClick());
 
-        
+        //The InputDataView
         this.idv = new InputDataView();        
 		idv.inputDataBtn.setOnAction(inputDataClick());
 		idv.editCellsBtn.setOnAction(editCellsClick());
@@ -83,12 +89,8 @@ public class Controller extends Application {
 		idv.createPlot.setOnAction(createPlotClick());
 		idv.gardenViewBtn.setOnAction(gardenViewClick());
 
+		//The search view
         this.searchv = new SearchAllView(this);
-        primaryStage.setScene(searchv.scene);
-        
-    	primaryStage.setScene(hv.scene);
-
-
 		searchv.inputDataBtn.setOnAction(inputDataClick());
 		searchv.editCellsBtn.setOnAction(editCellsClick());
 		searchv.finalViewBtn.setOnAction(finalViewClick());
@@ -97,10 +99,9 @@ public class Controller extends Application {
         searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
 		searchv.gardenViewBtn.setOnAction(gardenViewClick());
 
-        
+        //The Edit cells view
         this.ecv = new EditCellsView();
         ecv.saveDataBtn.setOnAction(SelectCellsClick());
-        
 		ecv.inputDataBtn.setOnAction(inputDataClick());
 		ecv.editCellsBtn.setOnAction(editCellsClick());
 		ecv.finalViewBtn.setOnAction(finalViewClick());
@@ -108,6 +109,7 @@ public class Controller extends Application {
 		ecv.searchBtn.setOnAction(searchClick());
 		ecv.gardenViewBtn.setOnAction(gardenViewClick());
         
+		//The final view
 		this.fv = new FinalView();
 		fv.editCellsBtn.setOnAction(editCellsClick());
 		fv.finalViewBtn.setOnAction(finalViewClick());
@@ -116,7 +118,8 @@ public class Controller extends Application {
 		fv.saveBtn.setOnAction(saveAllClick());
 		fv.gardenViewBtn.setOnAction(gardenViewClick());
 		fv.inputDataBtn.setOnAction(inputDataClick());
-
+		
+		//Importing the plant images
         view.importImages(model.allPlants);
 		
 		primaryStage.show();

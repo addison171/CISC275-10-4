@@ -45,6 +45,8 @@ public class Filter {
 		
 		for(Iterator<Plant> itr = filteredPlants.iterator(); itr.hasNext();){ 
 			Plant p = itr.next(); 
+			System.out.println(p.getName());
+
 			if (!p.getSoil().equals(soil)) {
 				itr.remove();
 			}

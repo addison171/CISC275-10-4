@@ -53,8 +53,14 @@ public class Controller extends Application {
 		gv.searchBtn.setOnAction(searchClick());
 		
 		//gv.gardenGrid 
-		
-    	//this.pv = new Preview();
+		pv.inputGarden(gv.gardenGrid);
+    	this.pv = new Preview();
+    	pv.inputDataBtn.setOnAction(inputDataClick());
+    	pv.editCellsBtn.setOnAction(editCellsClick());
+    	pv.finalViewBtn.setOnAction(finalViewClick());
+    	pv.previewBtn.setOnAction(previewClick());
+		pv.searchBtn.setOnAction(searchClick());
+		pv.saveBtn.setOnAction(saveAllClick());
 
         
         this.idv = new InputDataView();        

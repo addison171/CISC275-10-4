@@ -30,7 +30,7 @@ public class EditCellsView {
 	ComboBox<String> soilCbx;
 	Text plotSize;
 	Button addData;
-	static Group inputDataRoot = new Group();
+	
 	TextField cellFld;
 	TextField cellFld2;
 	TextField x;
@@ -152,9 +152,6 @@ public class EditCellsView {
 		GridPane.setConstraints(instruct, 0, 0, 2, 1 );
 		
 		
-		createPlot = new Button("Create Plot");
-		GridPane.setConstraints(createPlot, 0, 2);
-		
 		//features within the data input box
 		Label cellsLbl = new Label("Cells Selected: ");
 		GridPane.setConstraints(cellsLbl, 0, 3);
@@ -209,7 +206,7 @@ public class EditCellsView {
 		GridPane.setConstraints(saveDataBtn, 1, 7);
 		
 		
-		inputDataBox.getChildren().addAll(instruct, createPlot, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
+		inputDataBox.getChildren().addAll(instruct, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
 
@@ -226,7 +223,7 @@ public class EditCellsView {
 		scene =  new Scene(borderpane);
 		
 		this.scene.setRoot(borderpane);
-		inputDataRoot.getChildren().add(borderpane);
+		editCellsRoot.getChildren().add(borderpane);
 
 	}
 	

@@ -43,7 +43,7 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	Model.allPlants = Model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(newClick());
+    	hv.createNew.setOnAction(inputDataClick());
     
     	        
         this.gv = new GardenView();

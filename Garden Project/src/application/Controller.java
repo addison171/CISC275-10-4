@@ -287,7 +287,6 @@ public class Controller extends Application {
     	this.searchv.displayResults(filteredPlants);
     }
     
-<<<<<<< HEAD
     public EventHandler<MouseEvent> getAddToCartBtnHandler(){
     	return event -> addToCartBtnClicked(event);
     }
@@ -303,6 +302,4 @@ public class Controller extends Application {
     	this.searchv.displayCart(model.cartPlants);
     }
     
-=======
->>>>>>> 874a1d425f834a65af1c71f5d2a7354d7c15bdd4
 }

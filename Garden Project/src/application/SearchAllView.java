@@ -87,11 +87,8 @@ public class SearchAllView {
 		//save button
 		saveBtn = new Button("Save");
 		
-<<<<<<< HEAD
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
-=======
+		//menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
->>>>>>> 874a1d425f834a65af1c71f5d2a7354d7c15bdd4
 		//TOP
 		
 		

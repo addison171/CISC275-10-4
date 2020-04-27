@@ -29,7 +29,7 @@ public class GardenView {
 	Button saveBtn;
 	Button searchBtn;
 	HBox menu = new HBox();
-	
+	GridPane gardenGrid;
 	ScrollPane cart;
 	VBox cartVb;
 	ArrayList<GridPane> cartItems;
@@ -46,7 +46,7 @@ public class GardenView {
 		this.scene = new Scene(borderpane);
 		
 		//CENTER
-		GridPane gardenGrid = new GridPane();
+		gardenGrid = new GridPane();
 		gardenGrid.setPadding(new Insets(10,10,10,10));
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
@@ -141,8 +141,7 @@ public class GardenView {
 		this.scene.setRoot(borderpane);
 		
 		gardenRoot.getChildren().add(borderpane);
-		
-		
+			
 	}
 
 

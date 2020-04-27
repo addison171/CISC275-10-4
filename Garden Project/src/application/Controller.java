@@ -29,6 +29,8 @@ public class Controller extends Application {
 	private EditCellsView ecv;
 	private SearchAllView searchv;
 	private FinalView fv;
+	private SaveAsView sav;
+	String name;
 	
     public static void main(String[] args) {
         launch(args);
@@ -44,7 +46,11 @@ public class Controller extends Application {
     	model = new Model(view.getWidth(), view.getHeight());
     	model.allPlants = model.readPlantsFromCSV("PlantData.csv");
     	this.hv = new HomeView();
-    	hv.createNew.setOnAction(inputDataClick());    	
+    	hv.createNew.setOnAction(saveAsClick());   
+    	
+    	sav = new SaveAsView();
+    	sav.openBtn.setOnAction(openExistingClick());
+    	sav.saveAsBtn.setOnAction(openNewClick());
     	
         this.gv = new GardenView();
 		gv.inputDataBtn.setOnAction(inputDataClick());
@@ -104,6 +110,32 @@ public class Controller extends Application {
         view.importImages(model.allPlants);
 		
 		primaryStage.show();
+    }
+    
+    public EventHandler<ActionEvent> openNewClick(){
+    	name = sav.newCellFld.getText();
+    	return event ->openNewClicked();
+    }
+    
+    public void openNewClicked() {
+    	view.changeScene(idv.inputDataRoot);
+    }
+    
+    public EventHandler<ActionEvent> openExistingClick(){
+    	return event ->openExistingClicked();
+    }
+    
+    public void openExistingClicked() {
+    	model.open();
+    	//view.changeScene(idv.inputDataRoot);
+    }
+    
+    public EventHandler<ActionEvent> saveAsClick(){
+    	return event ->saveAsClicked();
+    }
+    
+    public void saveAsClicked() {
+    	view.changeScene(sav.saveAsRoot);
     }
     
     public EventHandler<ActionEvent> SelectCellsClick(){
@@ -285,7 +317,7 @@ public class Controller extends Application {
     	model.sunLight = idv.sunCbx.getValue();
     	model.waterLevel = idv.waterCbx.getValue();
     	model.cells = model.inputData();   
-    	model.saveAll();
+    	//model.saveAll();
     }
 
     /**

@@ -95,6 +95,8 @@ public class Controller extends Application {
 		searchv.previewBtn.setOnAction(previewClick());
 		searchv.searchBtn.setOnAction(searchClick());
         searchv.searchPlantsBtn.setOnAction(searchPlantsClick());
+		searchv.gardenViewBtn.setOnAction(gardenViewClick());
+
         
         this.ecv = new EditCellsView();
         ecv.saveDataBtn.setOnAction(SelectCellsClick());
@@ -104,8 +106,16 @@ public class Controller extends Application {
 		ecv.finalViewBtn.setOnAction(finalViewClick());
 		ecv.previewBtn.setOnAction(previewClick());
 		ecv.searchBtn.setOnAction(searchClick());
+		ecv.gardenViewBtn.setOnAction(gardenViewClick());
         
 		this.fv = new FinalView();
+		fv.editCellsBtn.setOnAction(editCellsClick());
+		fv.finalViewBtn.setOnAction(finalViewClick());
+		fv.previewBtn.setOnAction(previewClick());
+		fv.searchBtn.setOnAction(searchClick());
+		fv.saveBtn.setOnAction(saveAllClick());
+		fv.gardenViewBtn.setOnAction(gardenViewClick());
+		fv.inputDataBtn.setOnAction(inputDataClick());
 
         view.importImages(model.allPlants);
 		

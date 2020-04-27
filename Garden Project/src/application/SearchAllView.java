@@ -1,6 +1,5 @@
 /**
- * @author Addison Kuykendall 
- * @author Sohan 
+ * @author Nick Sabatini
  */
 package application;
 

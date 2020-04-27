@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -72,7 +73,7 @@ public class Controller extends Application {
 		idv.createPlot.setOnAction(createPlotClick());
 		idv.gardenViewBtn.setOnAction(gardenViewClick());
 
-        this.searchv = new SearchAllView();
+        this.searchv = new SearchAllView(this);
         primaryStage.setScene(searchv.scene);
         
     	primaryStage.setScene(hv.scene);
@@ -90,6 +91,10 @@ public class Controller extends Application {
 		primaryStage.show();
     }
     
+    public Image getImage(Plant plant) {
+    	System.out.println("Image gotten");
+    	return view.plantImages[model.allPlants.indexOf(plant)];
+    }
     public EventHandler<ActionEvent> gardenViewClick(){
     	return event ->gardenViewClicked();
     }
@@ -270,7 +275,9 @@ public class Controller extends Application {
     	System.out.println("Search Plants Clicked");
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
+    	
     	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants);
+    	model.resultPlants = filteredPlants;
     	
     	for (Plant p : filteredPlants) {
     		System.out.println(p.getName());
@@ -282,6 +289,18 @@ public class Controller extends Application {
 
     	
     	this.searchv.displayResults(filteredPlants);
+    }
+    
+    public EventHandler<MouseEvent> getAddToCartBtnHandler(){
+    	return event -> addToCartBtnClicked(event);
+    }
+    
+    public void addToCartBtnClicked(MouseEvent e) {
+    	System.out.println("Add to cart button clicked");
+    	int itemNumber = searchv.resultsVb.getChildren().indexOf(e.getSource());
+    	Plant plant = model.resultPlants.get(itemNumber + 1);
+    	model.cartPlants.add(plant);
+    	this.searchv.displayCart(model.cartPlants);
     }
     
 }

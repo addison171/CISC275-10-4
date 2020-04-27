@@ -17,6 +17,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -26,6 +28,8 @@ import javafx.scene.text.TextFlow;
 
 public class SearchAllView {
 
+	Controller ctrl;
+	
 	ComboBox<String> sunCbx;
 	ComboBox<String> waterCbx;
 	ComboBox<String> soilCbx;
@@ -34,6 +38,7 @@ public class SearchAllView {
 	ComboBox<String> filterCbx;
 	Button searchPlantsBtn;
 	
+	Button gardenViewBtn;
 	Button inputDataBtn;
 	Button previewBtn;
 	Button editCellsBtn;
@@ -42,7 +47,8 @@ public class SearchAllView {
 	Button saveBtn;
 	Button searchPlants;
 		
-	ArrayList<GridPane> plantItems;
+	
+	ArrayList<GridPane> resultPanes;
 	ScrollPane results;
 	VBox resultsVb;
 	
@@ -58,7 +64,9 @@ public class SearchAllView {
 	
 	static Group searchRoot = new Group();
 	
-	public SearchAllView() {
+	public SearchAllView(Controller ctrl) {
+		
+		this.ctrl = ctrl;
 		
 		this.borderpane = new BorderPane();
 		this.scene = new Scene(borderpane);
@@ -67,6 +75,9 @@ public class SearchAllView {
 		//TOP
 		HBox menu = new HBox();
 		menu.setSpacing(5);
+		
+		//garden view
+		gardenViewBtn = new Button("Garden View");		
 		
 		//input data
 		inputDataBtn = new Button("Input Data");
@@ -87,7 +98,7 @@ public class SearchAllView {
 		//save button
 		saveBtn = new Button("Save");
 		
-		menu.getChildren().addAll(inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
+		menu.getChildren().addAll(gardenViewBtn, inputDataBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
 		//TOP
 		
 		
@@ -208,11 +219,11 @@ public class SearchAllView {
 		results.setPadding(new Insets(10,10,10,10));
 		resultsVb.setSpacing(10);
 		resultsVb.setPadding(new Insets(10,10,10,10));
-		resultsVb.setPrefWidth(550);
+		resultsVb.setPrefWidth(650);
 
 		this.borderpane.setCenter(this.results);
 		
-		this.plantItems = new ArrayList<GridPane>();
+		this.resultPanes = new ArrayList<GridPane>();
 		
 		//CENTER
 		
@@ -238,16 +249,22 @@ public class SearchAllView {
 	
 	public void displayResults(ArrayList<Plant> plants) {
 		
-		this.plantItems.clear();
+		this.resultPanes.clear();
 		this.resultsVb.getChildren().clear();
 		
 		for (Plant p : plants) {
 			
 			gp = new GridPane();
 			
-			Image img = 
+			//Image img = this.ctrl.getImage(p);
+			Image img = new Image("images/commonMilkweed.png");
+			ImageView iv = new ImageView(img);
+			iv.setPreserveRatio(true);
+	    	iv.setFitHeight(100);
+			GridPane.setConstraints(iv, 0, 0);
 			
 			Button addToCartBtn = new Button("Add to Cart");
+			addToCartBtn.setOnMouseClicked(ctrl.getAddToCartBtnHandler());
 			GridPane.setConstraints(addToCartBtn, 2, 0);
 
 			Text descFlw = new Text();
@@ -257,13 +274,13 @@ public class SearchAllView {
 			GridPane.setConstraints(descFlw, 1, 0);
 						
 			
-			gp.getChildren().addAll(descFlw, addToCartBtn);
+			gp.getChildren().addAll(iv, descFlw, addToCartBtn);
 			gp.setPadding(new Insets(5,5,5,5));
-			this.plantItems.add(gp);
+			this.resultPanes.add(gp);
 			
 		}
 		
-		resultsVb.getChildren().addAll(plantItems);
+		resultsVb.getChildren().addAll(resultPanes);
 		results.setContent(resultsVb);
 		borderpane.setCenter(results);
 	}
@@ -281,12 +298,16 @@ public class SearchAllView {
 			GridPane cartgp = new GridPane();
 			Label sun = new Label(p.getSunlight());
 			GridPane.setConstraints(sun, 1, 0);
+			
 			Label water = new Label(p.getWater());
 			GridPane.setConstraints(water, 1, 1);
+			
 			Label soil = new Label(p.getSoil());
 			GridPane.setConstraints(soil, 1, 2);
+			
 			Button remove = new Button("Remove from cart");
 			GridPane.setConstraints(remove, 1, 3);
+			
 			cartgp.getChildren().addAll(sun, water, soil, remove);
 			
 			cartgp.setPadding(new Insets(5,5,5,5));

@@ -24,6 +24,7 @@ public class Model implements Serializable{
 	private static final long serialVersionUID = 1L;
 	ArrayList<Plant> plants;
 	ArrayList<Plant> allPlants;
+	ArrayList<Plant> cartPlants;
 	Filter f;
 	File saveFile;
 	int score;

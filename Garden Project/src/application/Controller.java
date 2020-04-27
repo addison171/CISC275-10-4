@@ -247,7 +247,7 @@ public class Controller extends Application {
     	return event -> searchPlantsClicked();
     }
     /**
-     * SOHAN HERE
+     * event handler for what should happen when searchPlants is clicked
      */
     public void searchPlantsClicked() {
     	System.out.println("Search Plants Clicked");

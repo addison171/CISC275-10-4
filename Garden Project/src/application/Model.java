@@ -23,7 +23,7 @@ public class Model implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	ArrayList<Plant> plants;
-	static ArrayList<Plant> allPlants;
+	ArrayList<Plant> allPlants;
 	ArrayList<Plant> cartPlants;
 	Filter f;
 	File saveFile;

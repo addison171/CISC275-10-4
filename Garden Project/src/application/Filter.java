@@ -15,6 +15,8 @@ public class Filter {
 	private String lightLevel;
 	private String water;
 	Model m;
+	int strength;
+	int numCriteria;
 	
 	private ArrayList<Plant> filteredPlants;
 	/**
@@ -30,6 +32,8 @@ public class Filter {
 		this.water = waterLevel;
 		m = new Model();
 		this.filteredPlants = new ArrayList<Plant>();
+		
+		this.numCriteria = 4;
 	}
 	
 	/**
@@ -38,12 +42,33 @@ public class Filter {
 	 * @param plants the arraylist that contains all the plant data
 	 * @return the a new arraylist of plants that suit chosen data.
 	 */
-	public ArrayList<Plant> search(ArrayList<Plant> plants){
+	public ArrayList<Plant> search(ArrayList<Plant> plants, int error){
 		
 		this.filteredPlants.clear();
-		filteredPlants = plants;
 		
-		for(Iterator<Plant> itr = filteredPlants.iterator(); itr.hasNext();){ 
+		for (Plant p : plants) {
+			
+			int i = numCriteria;
+			
+			if (!p.getSoil().equals(soil)) {
+				i--;
+			}
+			if (!p.getSunlight().equals(lightLevel)) {
+				i--;
+			}
+			if (!p.getWater().equals(water)) {
+				i--;
+			}
+			if (!p.getBloom().equals(season)) {
+				i--;
+			}
+			
+			if (i >= numCriteria - error) {
+				this.filteredPlants.add(p);
+			}
+		}
+		
+		/*for(Iterator<Plant> itr = filteredPlants.iterator(); itr.hasNext();){ 
 			Plant p = itr.next(); 
 			if (!p.getSoil().equals(soil)) {
 				itr.remove();
@@ -58,7 +83,7 @@ public class Filter {
 				itr.remove();
 			}
 				
-		}
+		}*/
 		return filteredPlants;
 	}
 

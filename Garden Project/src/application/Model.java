@@ -41,15 +41,13 @@ public class Model implements Serializable{
 	int plotY;
 	
 	public Model() {
-		
 		this.plants = new ArrayList<Plant>();
 		this.allPlants = new ArrayList<Plant>();
 		this.cartPlants = new ArrayList<Plant>();
 		this.resultPlants = new ArrayList<Plant>();
 		this.plantMap = new HashMap<String,Plant>();
-
-		
 	}
+	
 	public Model(double width, double height) {
 		canvasHeight = height;
 		canvasWidth = width;
@@ -58,8 +56,8 @@ public class Model implements Serializable{
 		this.cartPlants = new ArrayList<Plant>();
 		this.resultPlants = new ArrayList<Plant>();
 		this.plantMap = new HashMap<String,Plant>();
-
 	}
+	
 	public Model(String soil,String water,String sun ) {
 		soilType = soil;
 		waterLevel = water;

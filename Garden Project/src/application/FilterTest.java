@@ -19,7 +19,7 @@ public class FilterTest {
 		plants1.add(redOak);
 		Filter f = new Filter("Fall", "Clay", "Sunny" , "Dry");
 		plants2.add(redOak);
-		assertEquals(plants2,f.search(plants1));
+		assertEquals(plants2,f.search(plants1,0));
 	}
 
 	
@@ -32,7 +32,7 @@ public class FilterTest {
 		plants1.add(redOak);
 		Filter f = new Filter( "Fall", "Clay", "Sunny" , "Dry");
 		plants2.add(redOak);
-		assertEquals(plants2,f.search(plants1));
+		assertEquals(plants2,f.search(plants1,0));
 	}
 
 

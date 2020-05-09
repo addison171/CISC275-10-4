@@ -280,6 +280,12 @@ public class SearchAllView {
 		
 		for (Plant p : plants) {
 			
+			Image img = new Image("images/commonMilkweed.png");
+			ImageView iv = new ImageView(img);
+			iv.setPreserveRatio(true);
+			iv.setFitHeight(50);
+			GridPane.setConstraints(iv, 0, 0);
+			
 			GridPane cartgp = new GridPane();
 			Label sun = new Label(p.getSunlight());
 			GridPane.setConstraints(sun, 1, 0);

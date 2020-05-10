@@ -15,7 +15,6 @@ public class Filter {
 	private String lightLevel;
 	private String water;
 	Model m;
-	int strength;
 	int numCriteria;
 	
 	private ArrayList<Plant> filteredPlants;
@@ -62,7 +61,6 @@ public class Filter {
 			if (!p.getBloom().equals(season)) {
 				i--;
 			}
-			
 			if (i >= numCriteria - error) {
 				this.filteredPlants.add(p);
 			}

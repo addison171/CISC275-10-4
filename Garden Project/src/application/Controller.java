@@ -381,7 +381,8 @@ public class Controller extends Application {
     	System.out.println("Search Plants Clicked");
     	model.f = new Filter(searchv.bloomCbx.getValue().toString(), searchv.soilCbx.getValue().toString(), 
     						 searchv.sunCbx.getValue().toString(), searchv.waterCbx.getValue().toString());
-    	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants, 0);
+    	
+    	ArrayList<Plant> filteredPlants = model.f.search(model.allPlants, 2);
     	
     	for (Plant p : filteredPlants) {
     		System.out.println(p.getName());
@@ -390,7 +391,6 @@ public class Controller extends Application {
     	for (Plant p : model.allPlants) {
     		//System.out.println(p.getName());
     	}
-
     	
     	this.searchv.displayResults(filteredPlants);
     }

@@ -5,38 +5,39 @@ package application;
 
 import java.util.ArrayList;
 
+
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class InsertObstructionView {
+	Controller ctrl;
 	Image circle;
 	Image rectangle;
-	Button gardenViewBtn;
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
-	Button createPlot;
-	Button insertObstruction;
-
 	
 	BorderPane borderpane;
 	Scene scene;
 	
+	ArrayList<GridPane> cartItems;
 	ScrollPane cart;
+	VBox cartVb;
+	Label cartLbl;
 	
+	Button addToCartBtn;
 	GridPane gardenGrid;
 	ComboBox<String> obstruction;
 	TextArea label;
@@ -44,71 +45,34 @@ public class InsertObstructionView {
 
 	
 	//updates the view according to what inputs have been changed
-	public InsertObstructionView() {
+	public InsertObstructionView(Controller ctrl) {
+		
+		this.ctrl = ctrl;
+		
 		//CENTER
 		gardenGrid = new GridPane();
 		gardenGrid.setPadding(new Insets(10,10,10,10));
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
 		
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
-				ImageView iv = new ImageView();
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		//CENTER
-		for (int i=5; i<7; i++) {
-			for (int j=5; j<7; j++) {
-				ImageView iv = new ImageView("images/House.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		for (int i=8; i<10; i++) {
-			for (int j=0; j<4; j++) {
-				ImageView iv = new ImageView("images/Building.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
 		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
+		this.borderpane = new BorderPane();
+		this.scene = new Scene(borderpane);
+
 		
-		//Buttons within the menu HBox
-		//InsertObstruction button
-		insertObstruction = new Button("Insert Obstruction");
+		//LEFT
+		this.cart = new ScrollPane();
+		this.cartVb = new VBox();
+		this.cartItems = new ArrayList<GridPane>();
+		cart.setContent(cartVb);
+		cart.setPadding(new Insets(10,10,10,10));
+		cartVb.setSpacing(10);
 		
-		//garden view
-		gardenViewBtn = new Button("Garden View");
+		this.cartLbl = new Label("Cart");
+		this.cartVb.getChildren().add(cartLbl);
+		this.cart.setPrefWidth(200);
 		
-		//input data
-		inputDataBtn = new Button("Input Data");
-		
-		//preview
-		previewBtn = new Button("Preview");
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
-		//TOP
-		
+		cart.setContent(cartVb);
 		
 		//LEFT
 		
@@ -118,29 +82,11 @@ public class InsertObstructionView {
 		cart.setPadding(new Insets(10,10,10,10));
 		
 		GridPane gp1 = new GridPane();
-		Label sun1 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun1, 1, 0);
-		Label water1 = new Label("Water preference");
-		GridPane.setConstraints(water1, 1, 1);
-		Label soil1 = new Label("Soil Preference");
-		GridPane.setConstraints(soil1, 1, 2);
-		
-		gp1.getChildren().addAll(sun1,water1,soil1);
+		Label cart = new Label("Obstructions Cart:");
+		GridPane.setConstraints(cart, 1, 1);
+		gp1.setPrefSize(40, 40);
+		gp1.getChildren().addAll(cart);
 		vb.getChildren().add(gp1);
-		
-		GridPane gp2 = new GridPane();
-		Label sun2 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun2, 1, 0);
-		Label water2 = new Label("Water preference");
-		GridPane.setConstraints(water2, 1, 1);
-		Label soil2 = new Label("Soil Preference");
-		GridPane.setConstraints(soil2, 1, 2);
-		
-		gp2.getChildren().addAll(sun2,water2,soil2);
-		vb.getChildren().add(gp2);
-		
-		
-		//LEFT
 		
 
 		//RIGHT
@@ -157,6 +103,8 @@ public class InsertObstructionView {
 		
 		//sunlight label
 		Label obstructionType = new Label("Obstruction");
+		obstructionType.setFont(new Font("Futura",14));
+		obstructionType.setTextFill(Color.BLACK);
 		GridPane.setConstraints(obstructionType, 0, 4);
 		
 		//sunlight combo box
@@ -165,24 +113,26 @@ public class InsertObstructionView {
 		obstruction.getItems().addAll(
 				"House",
 				"Pond",
-				"Lake",
-				"Building"
+				"Building",
+				"Black Box"
 		);
+		addToCartBtn = new Button("Add to Cart");
+		addToCartBtn.setOnAction(this.ctrl.getAddToCartBtnHandlerObs());
+		addToCartBtn.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		GridPane.setConstraints(addToCartBtn, 0, 6);
 		
-		
-		
-		inputDataBox.getChildren().addAll(instruct, obstructionType, obstruction);
+		inputDataBox.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+		inputDataBox.getChildren().addAll(addToCartBtn, instruct, obstructionType, obstruction);
 		//inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
-
+		
 
 		//BORDERPANE
 		borderpane = new BorderPane();
 		
-		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
 		borderpane.setRight(inputDataBox);
-		//borderpane.setLeft(this.cart);
+		borderpane.setLeft(cart);
 		borderpane.setPadding(new Insets(10,10,10,10));
 		
 		scene =  new Scene(borderpane);
@@ -191,14 +141,51 @@ public class InsertObstructionView {
 		iovRoot.getChildren().add(borderpane);
 
 	}
-	
 	/**
-	 * creates an image on the scene of some shape
-	 * @param shape the shape of the obstruction the insert obstruction button will create
+	 * Edits left gridpane to contain any obstructions user selects to add
+	 * @param obstructions - an arraylist containing obstructions
 	 */
-	public void generateShape(Image shape) {
+	public void displayCart(ArrayList<Obstruction> obstructions) {
 		
+		this.cartItems.clear();
+		this.cartVb.getChildren().clear();
+		this.cartVb.getChildren().add(this.cartLbl);
 		
+		for (Obstruction o : obstructions) {
+			Image img = new Image("images/" + o.getName() + ".png");
+			ImageView iv = new ImageView(img);
+			iv.setPreserveRatio(true);
+			iv.setFitHeight(50);
+			GridPane.setConstraints(iv, 0, 0);
+			
+			GridPane cartgp = new GridPane();
+			Label name = new Label(o.getName());
+			GridPane.setConstraints(name, 1, 0);
+	
+			Button remove = new Button("Remove");
+			remove.setOnMouseClicked(ctrl.getRemoveFromCartBtnHandlerObs());
+			remove.setId(o.getName());
+			GridPane.setConstraints(remove, 1, 3);
+			
+			cartgp.getChildren().addAll(iv,name, remove);
+			cartgp.setPadding(new Insets(5,5,5,5));
+			this.cartItems.add(cartgp);
+		}
+		
+		this.cartVb.getChildren().addAll(cartItems);
+		this.cart.setContent(cartVb);
+		borderpane.setLeft(cart);
+
+	}
+	/**
+	 * updates any changes made to garden grid in edit cells view
+	 * @param garden - a gridpane to be updated in the view
+	 * @return returns an updated gridpane in case any changes are made
+	 */
+	public GridPane updateGrid(GridPane garden) {
+		gardenGrid = garden;
+		borderpane.setCenter(garden);
+		return garden;
 	}
 	
 }

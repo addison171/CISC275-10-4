@@ -4,12 +4,14 @@
 
 package application;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Filter {
+public class Filter implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String season;
 	private String soil;
 	private String lightLevel;
@@ -31,8 +33,7 @@ public class Filter {
 		this.water = waterLevel;
 		m = new Model();
 		this.filteredPlants = new ArrayList<Plant>();
-		
-		this.numCriteria = 4;
+		numCriteria = 4;
 	}
 	
 	/**
@@ -42,48 +43,34 @@ public class Filter {
 	 * @return the a new arraylist of plants that suit chosen data.
 	 */
 	public ArrayList<Plant> search(ArrayList<Plant> plants, int error){
-		
-		this.filteredPlants.clear();
-		
-		for (Plant p : plants) {
 			
-			int i = numCriteria;
+			this.filteredPlants.clear();
 			
-			if (!p.getSoil().equals(soil)) {
-				i--;
-			}
-			if (!p.getSunlight().equals(lightLevel)) {
-				i--;
-			}
-			if (!p.getWater().equals(water)) {
-				i--;
-			}
-			if (!p.getBloom().equals(season)) {
-				i--;
-			}
-			if (i >= numCriteria - error) {
-				this.filteredPlants.add(p);
-			}
-		}
-		
-		/*for(Iterator<Plant> itr = filteredPlants.iterator(); itr.hasNext();){ 
-			Plant p = itr.next(); 
-			if (!p.getSoil().equals(soil)) {
-				itr.remove();
-			}
-			else if (!p.getSunlight().equals(lightLevel)) {
-				itr.remove();
-			}
-			else if (!p.getWater().equals(water)) {
-				itr.remove();
-			}
-			else if (!p.getBloom().equals(season)) {
-				itr.remove();
-			}
+			for (Plant p : plants) {
 				
-		}*/
-		return filteredPlants;
-	}
+				int i = numCriteria;
+				
+				if (!p.getSoil().equals(soil)) {
+					i--;
+				}
+				if (!p.getSunlight().equals(lightLevel)) {
+					i--;
+				}
+				if (!p.getWater().equals(water)) {
+					i--;
+				}
+				if (!p.getBloom().equals(season)) {
+					i--;
+				}
+				
+				if (i >= numCriteria - error) {
+					this.filteredPlants.add(p);
+				}
+			}
+	
+			return filteredPlants;
+		}
+
 
 	/**
 	 * Will compare all plants in ArrayList to garden data and return a new ArrayList of plants

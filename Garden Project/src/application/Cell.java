@@ -3,12 +3,17 @@
  */
 package application;
 
-public class Cell {
+import java.io.Serializable;
+
+public class Cell implements Serializable{
 	
 	private String soil;
 	private String water;
 	private String sunlight;
 	private Object obj;
+	private Plant p2;
+	private static final long serialVersionUID = 1L;
+
 	
 	/**
 	 * Setter for the soil in the cell
@@ -72,6 +77,21 @@ public class Cell {
 	 */
 	public Plant getPlant() {
 		return (Plant) obj;
+	}
+	/**
+	 * Setter to create a second plant in a cell
+	 * @param newPlant - the new plant to be inserted in the cell
+	 */
+	public void setPlant2(Plant newPlant) {
+		p2 = newPlant;
+	}
+	
+	/**
+	 * Getter for the second plant
+	 * @return returns the plant object that was inserted in the cell
+	 */
+	public Plant getPlant2() {
+		return p2;
 	}
 	
 	/**

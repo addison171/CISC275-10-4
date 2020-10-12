@@ -3,13 +3,26 @@
  */
 package application;
 
-class Plant {
+import java.io.Serializable;
+
+import javafx.scene.image.ImageView;
+
+class Plant implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String idealSoil;
 	private String idealWaterLevel;
 	private String idealSunlightLevel;
 	private String bloomTime;
 	private String description;
+	private int xCell;
+	private int yCell;
+	private Double xLoc;
+	private Double yLoc;
+	private double scale;
 	/**
 	 * 
 	 * @param n String for the name of plant
@@ -26,6 +39,61 @@ class Plant {
 		this.bloomTime = bloom;
 		this.description = descrip;
 		
+	}
+	/**
+	 * setter for xLoc which holds the position of the plant on the screen
+	 * @param x -location of plant
+	 */
+	public void setX(double x) {
+		xLoc = x;
+	}
+	/**
+	 * getter for xloc
+	 * @return xLoc of the plant
+	 */
+	public Double getX() {
+		return xLoc;
+	}
+	/**
+	 * setter for yLoc which holds the position of the plant on the screen
+	 * @param y -location of plant
+	 */
+	public void setY(double y) {
+		yLoc = y;
+	}
+	/**
+	 * getter for yloc
+	 * @return yLoc of the plant
+	 */
+	public Double getY() {
+		return yLoc;
+	}
+	/**
+	 * Setter for xCell which holds what column the cell is in
+	 * @param x - the column number
+	 */
+	public void setXCell(int x) {
+		xCell = x;
+	}
+	/**
+	 * @return what column the cell is in
+	 */
+	public int getXCell() {
+		return xCell;
+	}
+	/**
+	 * Setter for the yCell which holds what row the cell is in
+	 * @param y - the row number
+	 */
+	public void setYCell(int y) {
+		yCell = y;
+	}
+	/**
+	 * 
+	 * @return what row the cell is in
+	 */
+	public int getYCell() {
+		return yCell;
 	}
 	
 	 /**
@@ -117,7 +185,19 @@ class Plant {
 	public String getDescription() {
 	    return this.description;
 	}
-
+	/**
+	 * Setter for scale
+	 */
+	public void setScale(double size) {
+		this.scale = size;
+	}
+	/**
+	 * getter for scale
+	 * @return scale of plant
+	 */
+	public double getScale() {
+		return this.scale;
+	}
 }
 
 

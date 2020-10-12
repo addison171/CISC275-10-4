@@ -22,7 +22,7 @@ public class FilterTest {
 		assertEquals(plants2,f.search(plants1,0));
 	}
 
-	
+	@Test
 	public void suitablePlantsTest() {
 		ArrayList<Plant> plants1 = new ArrayList<Plant>();
 		ArrayList<Plant> plants2 = new ArrayList<Plant>();

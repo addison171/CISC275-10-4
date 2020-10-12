@@ -5,6 +5,7 @@ package application;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,9 +15,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class EditCellsView {
@@ -25,7 +29,7 @@ public class EditCellsView {
 	Button SoilType;
 	Button Save;
 	
-	static Group editCellsRoot = new Group();
+	Group editCellsRoot = new Group();
 	ComboBox<String> sunCbx;
 	ComboBox<String> waterCbx;
 	ComboBox<String> soilCbx;
@@ -37,15 +41,6 @@ public class EditCellsView {
 	TextField x;
 	TextField y;
 	
-	Button insertObstruction;
-	Button gardenViewBtn;
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
-	Button createPlot;
 
 	
 	 BorderPane borderpane;
@@ -66,49 +61,7 @@ public class EditCellsView {
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
 		
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
-				ImageView iv = new ImageView();
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
 		//CENTER
-		
-		
-		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
-		
-		//Buttons within the menu HBox
-		//InsertObstruction button
-		insertObstruction = new Button("Insert Obstruction");
-		
-		//garden view
-		gardenViewBtn = new Button("Garden View");
-		
-		//input data
-		inputDataBtn = new Button("Input Data");
-		
-		//preview
-		previewBtn = new Button("Preview");
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		menu.getChildren().addAll(inputDataBtn,gardenViewBtn,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
-		//TOP
 		
 		
 		//LEFT
@@ -118,40 +71,16 @@ public class EditCellsView {
 		cart.setContent(vb);
 		cart.setPadding(new Insets(10,10,10,10));
 		
-		GridPane gp1 = new GridPane();
-		Label sun1 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun1, 1, 0);
-		Label water1 = new Label("Water preference");
-		GridPane.setConstraints(water1, 1, 1);
-		Label soil1 = new Label("Soil Preference");
-		GridPane.setConstraints(soil1, 1, 2);
-		
-		gp1.getChildren().addAll(sun1,water1,soil1);
-		vb.getChildren().add(gp1);
-		
-		GridPane gp2 = new GridPane();
-		Label sun2 = new Label("Sunlight preference");
-		GridPane.setConstraints(sun2, 1, 0);
-		Label water2 = new Label("Water preference");
-		GridPane.setConstraints(water2, 1, 1);
-		Label soil2 = new Label("Soil Preference");
-		GridPane.setConstraints(soil2, 1, 2);
-		
-		gp2.getChildren().addAll(sun2,water2,soil2);
-		vb.getChildren().add(gp2);
-		
-		
 		//LEFT
 		
 
 		//RIGHT
-		GridPane inputDataBox = new GridPane();
-		inputDataBox.setPadding(new Insets(10,10,10,10));
-		inputDataBox.setVgap(10);
-		inputDataBox.setHgap(10);
+		GridPane editCellsBox = new GridPane();
+		editCellsBox.setPadding(new Insets(10,10,10,10));
+		editCellsBox.setVgap(10);
+		editCellsBox.setHgap(10);
 		
-		Text instruct = new Text("Select individual cells or drag across multiple cells to change their information.\n\n"
-				+ "Happy virtual gardening!");
+		Text instruct = new Text("Enter the cells you would like to change in an x1, y1, x2, y2 format: \n \n");
 		
 		instruct.setWrappingWidth(350);
 		GridPane.setConstraints(instruct, 0, 0, 2, 1 );
@@ -159,6 +88,8 @@ public class EditCellsView {
 		
 		//features within the data input box
 		Label cellsLbl = new Label("Cells Selected: ");
+		cellsLbl.setFont(new Font("Futura",14));
+		cellsLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(cellsLbl, 0, 3);
 		
 		//text field
@@ -168,33 +99,39 @@ public class EditCellsView {
 		GridPane.setConstraints(cellFld, 1, 3);
 		
 		//sunlight label
-		Label sunLbl = new Label("Sunlight Level");
+		Label sunLbl = new Label("Sunlight Level:");
+		sunLbl.setFont(new Font("Futura",14));
+		sunLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(sunLbl, 0, 4);
 		
 		//sunlight combo box
 		sunCbx = new ComboBox<String>();
 		GridPane.setConstraints(sunCbx, 1, 4);
 		sunCbx.getItems().addAll(
-				"High",
+				"Sunny",
 				"Medium",
-				"Low"
+				"Shady"
 		);
 		
 		//water label
-		Label waterLbl = new Label("Water Level");
+		Label waterLbl = new Label("Water Level:");
+		waterLbl.setFont(new Font("Futura",14));
+		waterLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(waterLbl, 0, 5);
 		
 		//sunlight combo box
 		waterCbx = new ComboBox<String>();
 		GridPane.setConstraints(waterCbx, 1, 5);
 		waterCbx.getItems().addAll(
-				"High",
+				"Wet",
 				"Medium",
-				"Low"
+				"Dry"
 		);
 		
 		//water label
-		Label soilLbl = new Label("Soil Type");
+		Label soilLbl = new Label("Soil Type:");
+		soilLbl.setFont(new Font("Futura",14));
+		soilLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(soilLbl, 0, 6);
 		
 		//sunlight combo box
@@ -208,20 +145,21 @@ public class EditCellsView {
 		
 		// enter the data into selected boxes
 		this.saveDataBtn = new Button("Enter Data");
+		saveDataBtn.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
 		GridPane.setConstraints(saveDataBtn, 1, 7);
 		
 		
-		inputDataBox.getChildren().addAll(instruct, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
-		//inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
+		editCellsBox.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+		editCellsBox.getChildren().addAll(instruct, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
+		//editCellsBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
 
 
 		//BORDERPANE
 		borderpane = new BorderPane();
 		
-		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
-		borderpane.setRight(inputDataBox);
+		borderpane.setRight(editCellsBox);
 		//borderpane.setLeft(this.cart);
 		borderpane.setPadding(new Insets(10,10,10,10));
 		
@@ -243,9 +181,13 @@ public class EditCellsView {
 //		}
 	}
 	/**
-	 * Updates the screen based off what cells are changed.
+	 * updates any changes made to garden grid in edit cells view
+	 * @param garden - a gridpane to be updated in the view
+	 * @return returns an updated gridpane in case any changes are made
 	 */
-	public void update() {
-		
+	public GridPane updateGarden(GridPane garden) {
+		borderpane.setCenter(garden);
+		return garden;
 	}
+	
 }

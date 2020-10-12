@@ -4,15 +4,21 @@
 package application;
 
 import javafx.geometry.Insets;
+import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class Preview {
 	Controller control;
@@ -21,21 +27,15 @@ public class Preview {
 	Button backToEdit;
 	Group previewRoot = new Group();
 	Scene scene;
-	
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
-	Button searchPlants;
-	Button gardenView;
-	Button insertObstruction;
+	Button changeSeasonBtn;
 	GridPane gardenGrid;
+	BorderPane bp;
+
 
 	public Preview() {
-		BorderPane bp;
+		
 		bp = new BorderPane();
+		bp.setPadding(new Insets(5,5,5,5));
 		this.scene = new Scene(bp);
 		
 		gardenGrid = new GridPane();
@@ -43,97 +43,17 @@ public class Preview {
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
 		
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
-				ImageView iv = new ImageView();
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		
-		// Test image placement
-		for (int i=5; i<7; i++) {
-			for (int j=5; j<7; j++) {
-				ImageView iv = new ImageView("images/House.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		
-		for (int i=0; i<5; i++) {
-			for (int j=0; j<5; j++) {
-				ImageView iv = new ImageView("images/Asclepias Tuberosa.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		for (int i=5; i<8; i++) {
-			for (int j=1; j<5; j++) {
-				ImageView iv = new ImageView("images/Birdfoot Violet.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		for (int i=5; i<10; i++) {
-			for (int j=0; j<1; j++) {
-				ImageView iv = new ImageView("images/Vaccinium Angustifolium.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
-		
-		//InsertObstruction button
-		insertObstruction = new Button("Insert Obstruction");
-		
-		//gardenGrid = control.gv.gardenGrid;
-		//input data
-		inputDataBtn = new Button("Input Data");
-
-		//preview
-		previewBtn = new Button("Preview");
-		//previewBtn.setonAction
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		gardenView = new Button("Garden View");
-		
-		menu.getChildren().addAll(inputDataBtn,gardenView,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
-		
 		GridPane previewPane = new GridPane();
-		//Time of Day
-		Label timeOfDayLbl = new Label("Time Of Day");
-		GridPane.setConstraints(timeOfDayLbl, 0, 1);
 		
-		timeOfDay = new ComboBox<String>();
-		GridPane.setConstraints(timeOfDay, 1, 1);
-		timeOfDay.getItems().addAll(
-				"Morning",
-				"Afternoon",
-				"Night"
-		);
-
+		changeSeasonBtn = new Button("Change Season");
+		GridPane.setConstraints(changeSeasonBtn, 1, 6);
+		changeSeasonBtn.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		
 		//Season
-		Label seasonLbl = new Label("Season Level");
+		Label seasonLbl = new Label(" Season Level: ");
 		GridPane.setConstraints(seasonLbl, 0, 2);
+		seasonLbl.setFont(new Font("Futura",14));
+		seasonLbl.setTextFill(Color.BLACK);
 		
 		season = new ComboBox<String>();
 		GridPane.setConstraints(season, 1, 2);
@@ -143,8 +63,8 @@ public class Preview {
 				"Fall",
 				"Winter"
 		);
-		previewPane.getChildren().addAll(timeOfDayLbl, seasonLbl, timeOfDay, season);
-		bp.setTop(menu);
+		previewPane.getChildren().addAll(changeSeasonBtn, seasonLbl, season);
+		previewPane.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		bp.setRight(previewPane);
 		bp.setCenter(gardenGrid);
 		
@@ -153,14 +73,42 @@ public class Preview {
 		
 		previewRoot.getChildren().add(bp);
 	}
-
-	//changes the season that the garden is being viewed in
-	public void changeSeason() {
-		
+	/**
+	 * Updates the garden grid from the main view with changes made in Preview
+	 * @param garden - changes the gardenGrid in this view, this parameter should usually be filled with the main views garden
+	 * @return returns garden in case any changes are made
+	 */
+	public GridPane updateGrid(GridPane garden) {
+		gardenGrid = garden;
+		bp.setCenter(garden);
+		return garden;
 	}
-	
-	//updates the images of plants according to the season selected
-	public void updatePlants() {
+	/**
+	 * Changes the opacity of any plant which does not bloom in selected season to 0
+	 * @param season - Season selected by user
+	 * @param objs - an arraylist of objects that are currently on the grid
+	 * @return returns garden in case any changes are made
+	 */
+	public void changeSeason(String season, ArrayList<Object> objs, ArrayList<ImageView> images) {
+		for(int i = 0; i<objs.size(); i++) {
+			if(objs.get(i) instanceof Plant) {
+				Plant p = (Plant) objs.get(i);
+				images.get(i).setOpacity(1);
+				if (!(p.getBloom().equals(season))) {
+					images.get(i).setOpacity(0);
+				}
+				else {
+					images.get(i).setOpacity(100);
+				}
+			}
+		}
+	}
+	public void revertOpacity(ArrayList<Object> objs, ArrayList<ImageView> images) {
+		for(int i = 0; i<objs.size(); i++) {
+			if(objs.get(i) instanceof Plant) {
+				images.get(i).setOpacity(100);
+			}
+		}
 	}
 	
 	public void inputGarden(GridPane garden) {

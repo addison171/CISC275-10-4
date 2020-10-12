@@ -1,19 +1,27 @@
 /**
- * @author Addison Kuykendall, Jonni Tran
+ * @author Addison Kuykendall
  */
 package application;
 
 
 
 import javafx.geometry.Insets;
+
+import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -25,17 +33,12 @@ public class FinalView {
 	Button editButton;
 	Button newgardenButton;
 	Group finalRoot = new Group();
-	
-	Button insertObstruction;
-	Button gardenViewBtn;
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
-	Button searchPlants;
 	GridPane gardenGrid;
+	BorderPane finalviewBP = new BorderPane();
+	ScrollPane conflictScroll;
+	VBox conflictVB;
+	
+
 
 	
 	/**
@@ -44,37 +47,6 @@ public class FinalView {
 	
 	public FinalView(){
 		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
-		
-		//InsertObstruction button
-		insertObstruction = new Button("Insert Obstruction");
-		
-		//garden view
-		gardenViewBtn = new Button("Garden View");		
-		
-		//input data
-		inputDataBtn = new Button("Input Data");
-
-		//preview
-		previewBtn = new Button("Preview");
-		//previewBtn.setonAction
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
-		//TOP
 		
 		GridPane gp1 = new GridPane();
 		gp1.setPadding(new Insets(10,10,10,10));
@@ -96,70 +68,86 @@ public class FinalView {
 
 		gp1.getChildren().addAll(Pros,Cons,grade, space);
 		
-		BorderPane finalviewBP = new BorderPane();
 
 		gardenGrid = new GridPane();
 		gardenGrid.setPadding(new Insets(10,10,10,10));
 		gardenGrid.setGridLinesVisible(true);
 		gardenGrid.setPrefWidth(550);
 		
-		for (int i=0; i<10; i++) {
-			for (int j=0; j<10; j++) {
-				ImageView iv = new ImageView();
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
+		this.conflictVB = new VBox();
+		this.conflictVB.setPadding(new Insets(10,10,10,10));
+		this.conflictVB.setSpacing(10);
+		this.conflictScroll = new ScrollPane();
+		this.conflictScroll.setContent(this.conflictVB);
+		this.conflictScroll.setPrefViewportHeight(500);
+		this.conflictScroll.setPrefViewportWidth(400);
+
 		
-		//Dummy images for testing
-		for (int i=5; i<7; i++) {
-			for (int j=5; j<7; j++) {
-				ImageView iv = new ImageView("images/House.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		
-		for (int i=0; i<5; i++) {
-			for (int j=0; j<5; j++) {
-				ImageView iv = new ImageView("images/Asclepias Tuberosa.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		for (int i=5; i<8; i++) {
-			for (int j=1; j<5; j++) {
-				ImageView iv = new ImageView("images/Birdfoot Violet.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
-		for (int i=5; i<10; i++) {
-			for (int j=0; j<1; j++) {
-				ImageView iv = new ImageView("images/Vaccinium Angustifolium.png");
-				iv.setFitHeight(40);
-				iv.setFitWidth(40);
-				gardenGrid.add(iv, i, j);
-			}
-		}
 		finalviewBP.setBottom(gardenGrid);
-				
-		finalviewBP.setTop(menu);
 		finalviewBP.setCenter(gp1);
 		
 		Scene finalScene = new Scene(finalviewBP);
 		finalRoot.getChildren().add(finalviewBP);
 		
 	}
-	
-	
-	
-	
-	public void draw() {
-		
+	/**
+	 * updates any changes made to garden grid in edit cells view
+	 * @param garden - a gridpane to be updated in the view
+	 * @return returns an updated gridpane in case any changes are made
+	 */
+	public GridPane updateGrid(GridPane garden) {
+		gardenGrid = garden;
+		finalviewBP.setCenter(garden);
+		return garden;
 	}
+	/**
+	 * Displays a grading of the user's garden
+	 * 
+	 * @param userScore - an integer indicating the score of the user's garden
+	 * @param possibleScore - an integer indicating the total possible score of the user's garden
+	 * @param cells - a 2D cell array
+	 * @param objs - an arraylist containing all the objects in the user's garden
+	 */
+	public void displayScore(int userScore, int possibleScore, Cell[][] cell, ArrayList<Object> objs, ArrayList<String> conflicts) {
+		
+		GridPane gp1 = new GridPane();
+		gp1.setPadding(new Insets(10,10,10,10));
+		gp1.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+		Text showScore = new Text("Overall Grade: "+ userScore + "/" + possibleScore);
+		showScore.setFont(Font.font ("Futura", 24));
+		GridPane.setConstraints(showScore, 0, 0);
+		
+
+		Text space = new Text(" ");
+		GridPane.setConstraints(space, 0, 1);
+		Text gardenGradeTxt = new Text();
+		
+		if(((double)userScore/(double)possibleScore)<.5) {
+			gardenGradeTxt.setText("Please go back and try to improve your garden");
+		}
+		if(((double)userScore/(double)possibleScore)>.5 && (userScore/possibleScore)<.75) {
+			gardenGradeTxt.setText("Your garden is okay but can be improved");
+		}
+		if(((double)userScore/(double)possibleScore)>.75 ) {
+			gardenGradeTxt.setText("Your garden is very good. Save your garden or make an another");
+		}
+		
+		gardenGradeTxt.setFont(Font.font ("Futura", 20));
+		GridPane.setConstraints(gardenGradeTxt, 0, 2);
+		gp1.getChildren().addAll(showScore, gardenGradeTxt, space);
+		
+		this.conflictVB.getChildren().clear();
+		
+		for (String conf : conflicts) {
+			Text confTxt = new Text();
+			confTxt.setWrappingWidth(400);
+			confTxt.setText(conf);
+			confTxt.setFont(Font.font("Futura", 12));
+			this.conflictVB.getChildren().add(confTxt);
+		}
+		finalviewBP.setLeft(conflictScroll);
+		finalviewBP.setTop(gp1);
+	}
+	
+
 }

@@ -15,15 +15,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.StringConverter;
 
 public class SearchAllView {
 
@@ -35,17 +42,9 @@ public class SearchAllView {
 	ComboBox<String> bloomCbx;
 	ComboBox<String> nativeCbx;
 	ComboBox<String> filterCbx;
+	Slider errorSld;
 	Button searchPlantsBtn;
 	
-	Button gardenViewBtn;
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
-	Button searchPlants;
-	Button insertObstruction;
 		
 	ArrayList<GridPane> plantItems;
 	ScrollPane results;
@@ -61,7 +60,7 @@ public class SearchAllView {
 	
 	GridPane gp;
 	
-	 Group searchRoot = new Group();
+	Group searchRoot = new Group();
 	
 	
 	public SearchAllView(Controller ctrl) {
@@ -71,43 +70,11 @@ public class SearchAllView {
 		this.scene = new Scene(borderpane);
 
 		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
-		
-		//InsertObstruction button
-		insertObstruction = new Button("Insert Obstruction");
-		
-		//input data
-		inputDataBtn = new Button("Input Data");
-		
-		//gardenView button
-		gardenViewBtn = new Button("Garden View");
-		
-		//preview
-		previewBtn = new Button("Preview");
-		//previewBtn.setonAction
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn, insertObstruction,saveBtn);
-		//menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,saveBtn);
-		
-		
-		
 		//LEFT
 		this.cart = new ScrollPane();
+		cart.setPrefViewportHeight(500);
 		this.cartVb = new VBox();
+		
 		this.cartItems = new ArrayList<GridPane>();
 		cart.setContent(cartVb);
 		cart.setPadding(new Insets(10,10,10,10));
@@ -126,6 +93,7 @@ public class SearchAllView {
 		filterPane.setPadding(new Insets(10,10,10,10));
 		filterPane.setVgap(10);
 		filterPane.setHgap(10);
+		filterPane.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		
 		//features within the data input box
 		Label cellsLbl = new Label("Search");
@@ -138,7 +106,9 @@ public class SearchAllView {
 		GridPane.setConstraints(cellFld, 1, 0);
 		
 		//sunlight label
-		Label sunLbl = new Label("Sunlight Level");
+		Label sunLbl = new Label("Sunlight Level:");
+		sunLbl.setFont(new Font("Futura",14));
+		sunLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(sunLbl, 0, 1);
 		
 		//sunlight combo box
@@ -151,7 +121,9 @@ public class SearchAllView {
 		);
 		
 		//water label
-		Label waterLbl = new Label("Water Level");
+		Label waterLbl = new Label("Water Level:");
+		waterLbl.setFont(new Font("Futura",14));
+		waterLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(waterLbl, 0, 2);
 		
 		//water combo box
@@ -164,7 +136,9 @@ public class SearchAllView {
 		);
 		
 		//soil label
-		Label soilLbl = new Label("Soil Type");
+		Label soilLbl = new Label("Soil Type:");
+		soilLbl.setFont(new Font("Futura",14));
+		soilLbl.setTextFill(Color.BLACK);
 		GridPane.setConstraints(soilLbl, 0, 3);
 		
 		//soil combo box
@@ -177,8 +151,10 @@ public class SearchAllView {
 		);
 		
 		//bloom label
-		Label bloomLbl = new Label("Bloom Season");
+		Label bloomLbl = new Label("Bloom Season:");
 		GridPane.setConstraints(bloomLbl, 0, 4);
+		bloomLbl.setFont(new Font("Futura",14));
+		bloomLbl.setTextFill(Color.BLACK);
 		
 		//bloom combo box
 		bloomCbx = new ComboBox<String>();
@@ -190,17 +166,59 @@ public class SearchAllView {
 				"Winter"
 		);
 		
+		//Filter Strength Toggle
+		Label errorLbl = new Label("Selectivity");
+		errorLbl.setFont(new Font("Futura",14));
+		errorLbl.setTextFill(Color.BLACK);
+		
+		GridPane.setConstraints(errorLbl, 0, 5);
+		this.errorSld = new Slider();
+		errorSld.setMin(0);
+		errorSld.setMax(4);
+		errorSld.setBlockIncrement(1);
+		errorSld.setShowTickLabels(true);
+		errorSld.setShowTickMarks(true);
+		errorSld.setMinorTickCount(0);
+		errorSld.setMajorTickUnit(1);
+		errorSld.setSnapToTicks(true);
+		errorSld.setLabelFormatter(new StringConverter<Double>() {
+
+			@Override
+			public Double fromString(String str) {
+				// TODO Auto-generated method stub
+				
+				return null;
+			}
+
+			@Override
+			public String toString(Double num) {
+				// TODO Auto-generated method stub
+				if (num == 0) { return "High"; }
+				if (num == 1) { return "Very"; }
+				if (num == 2) { return "Mid"; }
+				if (num == 3) { return "Less"; }
+				if (num == 4) {return "Not"; }
+
+				return null;
+			}
+			
+		});
+		GridPane.setConstraints(errorSld, 1, 5);
+		
 		//Search button
 		searchPlantsBtn = new Button("Search Plants");
-		GridPane.setConstraints(searchPlantsBtn, 1, 5);
+		searchPlantsBtn.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		GridPane.setConstraints(searchPlantsBtn, 1, 6);
 		
-		filterPane.getChildren().addAll(cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, bloomLbl, bloomCbx, searchPlantsBtn);
+		filterPane.getChildren().addAll(sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, bloomLbl, bloomCbx,
+				errorLbl, errorSld, searchPlantsBtn);
 		//RIGHT
 
 		
 		
 		//CENTER
 		this.results = new ScrollPane();
+		this.results.setPrefViewportHeight(500);
 		this.resultsVb = new VBox();
 		
 		results.setContent(resultsVb);
@@ -215,16 +233,14 @@ public class SearchAllView {
 		
 		//CENTER
 		
-	
 		
 	
 		//BORDERPANE
 		this.borderpane = new BorderPane();
 		
-		borderpane.setTop(menu);
 		borderpane.setRight(filterPane);
 		borderpane.setCenter(results);
-		borderpane.setLeft(cart);
+		borderpane.setLeft(this.cart);
 		borderpane.setPadding(new Insets(10,10,10,10));
 			
 		
@@ -234,7 +250,11 @@ public class SearchAllView {
 		searchRoot.getChildren().add(borderpane);
 		
 	}
-	
+	/**
+	 * Displays all the plants from the consumed arraylist of plants
+	 * 
+	 * @param plants - an arraylist of plants to display
+	 */
 	public void displayResults(ArrayList<Plant> plants) {
 		
 		this.plantItems.clear();
@@ -243,8 +263,7 @@ public class SearchAllView {
 		for (Plant p : plants) {
 			
 			gp = new GridPane();
-						
-			Image img = new Image("images/commonMilkweed.png");
+			Image img = new Image("images/" + p.getName() + ".png");
 			ImageView iv = new ImageView(img);
 			iv.setPreserveRatio(true);
 			iv.setFitHeight(50);
@@ -264,58 +283,53 @@ public class SearchAllView {
 			gp.getChildren().addAll(iv, descFlw, addToCartBtn);
 			gp.setPadding(new Insets(5,5,5,5));
 			this.plantItems.add(gp);
-			
 		}
 		
 		resultsVb.getChildren().addAll(plantItems);
-		results.setContent(resultsVb);
-		borderpane.setCenter(results);
+		//results.setContent(resultsVb);
+		//borderpane.setCenter(results);
 	}
-	
-	public void displayCart(ArrayList<Plant> plants) {
+	/**
+	 * Edits left gridpane to contain plants user chooses to add to cart
+	 * @param allItems - an arraylist of plants to add to cart
+	 */
+	public void displayCart(ArrayList<Plant> allItems) {
 		
 		this.cartItems.clear();
 		this.cartVb.getChildren().clear();
 		this.cartVb.getChildren().add(this.cartLbl);
 		
-		for (Plant p : plants) {
-			
-			Image img = new Image("images/commonMilkweed.png");
-			ImageView iv = new ImageView(img);
-			iv.setPreserveRatio(true);
-			iv.setFitHeight(50);
-			GridPane.setConstraints(iv, 0, 0);
-			
-			GridPane cartgp = new GridPane();
-			Label sun = new Label(p.getSunlight());
-			GridPane.setConstraints(sun, 1, 0);
-			Label water = new Label(p.getWater());
-			GridPane.setConstraints(water, 1, 1);
-			Label soil = new Label(p.getSoil());
-			GridPane.setConstraints(soil, 1, 2);
-			Button remove = new Button("Remove from cart");
-			GridPane.setConstraints(remove, 1, 3);
-			cartgp.getChildren().addAll(sun, water, soil, remove);
-			
-			cartgp.setPadding(new Insets(5,5,5,5));
-			this.cartItems.add(cartgp);
-		}
+		for (Plant p : allItems) {
+				Image img = new Image("images/" + p.getName() + ".png");
+				ImageView iv = new ImageView(img);
+				iv.setPreserveRatio(true);
+				iv.setFitHeight(50);
+				GridPane.setConstraints(iv, 0, 0);
+				
+				GridPane cartgp = new GridPane();
+				Label name = new Label(p.getName());
+				GridPane.setConstraints(name, 1, 0);
+				Label sun = new Label(p.getSunlight());
+				GridPane.setConstraints(sun, 1, 1);
+				Label water = new Label(p.getWater());
+				GridPane.setConstraints(water, 1, 2);
+				Label soil = new Label(p.getSoil());
+				GridPane.setConstraints(soil, 1, 3);
+				
+				Button remove = new Button("Remove");
+				remove.setOnMouseClicked(ctrl.getRemoveFromCartBtnHandler());
+				remove.setId(p.getName());
+				GridPane.setConstraints(remove, 1, 4);
+				cartgp.getChildren().addAll(iv,name, sun, water, soil, remove);
+				
+				cartgp.setPadding(new Insets(5,5,5,5));
+				this.cartItems.add(cartgp);
+			}
+		
 		
 		this.cartVb.getChildren().addAll(cartItems);
 		this.cart.setContent(cartVb);
 
-	}
-	
-	//displays the search all view on the scene
-	public void display() {
-	}
-	
-	//changes the images of plants displayed depending on season(bloomage)
-	public void changeSeason() {
-	}
-	
-	//updates the plants on the screen based on criteria.  Basically a "search" button.
-	public void updatePlants() {
 	}
 	
 }

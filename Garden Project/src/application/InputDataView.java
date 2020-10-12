@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -14,13 +15,18 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class InputDataView {
+public class InputDataView{
 	
 	ComboBox<String> sunCbx;
 	ComboBox<String> waterCbx;
@@ -33,14 +39,6 @@ public class InputDataView {
 	TextField x;
 	TextField y;
 	
-	Button gardenViewBtn;
-	Button insertObstruction;
-	Button inputDataBtn;
-	Button previewBtn;
-	Button editCellsBtn;
-	Button searchBtn;
-	Button finalViewBtn;
-	Button saveBtn;
 	Button createPlot;
 
 	
@@ -54,7 +52,6 @@ public class InputDataView {
 	Button saveDataBtn;
 	
 	public InputDataView() {
-		
 		
 		//CENTER
 		gardenGrid = new GridPane();
@@ -73,40 +70,6 @@ public class InputDataView {
 		//CENTER
 		
 		
-		
-		//TOP
-		HBox menu = new HBox();
-		menu.setSpacing(5);
-		
-		//Buttons within the menu HBox
-		//InsertObstruction button
-		insertObstruction = new Button("Insert Obstruction");
-		
-		//garden view
-		gardenViewBtn = new Button("Garden View");
-		
-		//input data
-		inputDataBtn = new Button("Input Data");
-		
-		//preview
-		previewBtn = new Button("Preview");
-		
-		//edit cells
-		editCellsBtn = new Button("Edit Cells");
-		
-		//search all
-		searchBtn = new Button("Plants Search");
-		
-		//final view 
-		finalViewBtn = new Button("Final View");
-		
-		//save button
-		saveBtn = new Button("Save");
-		
-		menu.getChildren().addAll(inputDataBtn, gardenViewBtn ,previewBtn,editCellsBtn, searchBtn, finalViewBtn,insertObstruction,saveBtn);
-		//TOP
-		
-		
 		//LEFT
 		
 		this.cart = new ScrollPane();
@@ -115,11 +78,21 @@ public class InputDataView {
 		cart.setPadding(new Insets(10,10,10,10));
 		
 		GridPane gp1 = new GridPane();
-		Label sun1 = new Label("Sunlight preference");
+		
+		Label sun1 = new Label("Sunlight Preference:");
+		sun1.setFont(new Font("Futura",16));
+		sun1.setTextFill(Color.BLACK);
 		GridPane.setConstraints(sun1, 1, 0);
-		Label water1 = new Label("Water preference");
+		
+		Label water1 = new Label("Water Preference:");
+		water1.setFont(new Font("Futura",16));
+		water1.setTextFill(Color.BLACK);
 		GridPane.setConstraints(water1, 1, 1);
-		Label soil1 = new Label("Soil Preference");
+		
+		
+		Label soil1 = new Label("Soil Preference:");
+		soil1.setFont(new Font("Futura",16));
+		soil1.setTextFill(Color.BLACK);
 		GridPane.setConstraints(soil1, 1, 2);
 		
 		gp1.getChildren().addAll(sun1,water1,soil1);
@@ -149,7 +122,8 @@ public class InputDataView {
 		Text instruct = new Text("Input the size of your garden (in feet) in the corresponding boxes, once you hit 'Create' the garden will appear"
 				+ "as a grid.\n\nWarning: if you ever change the size of your garden after you first create it, the cells and any plants you've"
 				+ "inserted will be wiped clean.  So please, make sure you go outside and get the right dimensions and garden information first.\n\n"
-				+ "Once you create your plot, you will be able to select individual cells or drag across multiple cells to change their information.\n\n"
+				+ "Once you create your plot, you will be able to select individual cells to change their information.\n\n"
+				+ "NOTE: Each box indicates a 2'by 2' area of your garden or 4 square feet\n\n"
 				+ "Happy virtual gardening!");
 		
 		instruct.setWrappingWidth(350);
@@ -166,25 +140,19 @@ public class InputDataView {
 		y.setMaxWidth(100);
 		
 		createPlot = new Button("Create Plot");
+		createPlot.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
 		GridPane.setConstraints(createPlot, 0, 2);
 		
-		//features within the data input box
-		Label cellsLbl = new Label("Cells Selected: ");
-		GridPane.setConstraints(cellsLbl, 0, 3);
-		
-		//text field
-		cellFld = new TextField();
-		cellFld.setPromptText("x1, y1, x2, y2");
-		cellFld.setPrefWidth(200);
-		GridPane.setConstraints(cellFld, 1, 3);
 		
 		//sunlight label
-		Label sunLbl = new Label("Sunlight Level");
-		GridPane.setConstraints(sunLbl, 0, 4);
+		Label sunLbl = new Label("Sunlight Level:");
+		sunLbl.setFont(new Font("Futura",14));
+		sunLbl.setTextFill(Color.BLACK);
+		GridPane.setConstraints(sunLbl, 0, 3);
 		
 		//sunlight combo box
 		sunCbx = new ComboBox<String>();
-		GridPane.setConstraints(sunCbx, 1, 4);
+		GridPane.setConstraints(sunCbx, 1, 3);
 		sunCbx.getItems().addAll(
 				"Sunny",
 				"Medium",
@@ -192,12 +160,14 @@ public class InputDataView {
 		);
 		
 		//water label
-		Label waterLbl = new Label("Water Level");
-		GridPane.setConstraints(waterLbl, 0, 5);
+		Label waterLbl = new Label("Water Level:");
+		waterLbl.setFont(new Font("Futura",14));
+		waterLbl.setTextFill(Color.BLACK);
+		GridPane.setConstraints(waterLbl, 0, 4);
 		
 		//sunlight combo box
 		waterCbx = new ComboBox<String>();
-		GridPane.setConstraints(waterCbx, 1, 5);
+		GridPane.setConstraints(waterCbx, 1, 4);
 		waterCbx.getItems().addAll(
 				"Wet",
 				"Medium",
@@ -205,12 +175,14 @@ public class InputDataView {
 		);
 		
 		//water label
-		Label soilLbl = new Label("Soil Type");
-		GridPane.setConstraints(soilLbl, 0, 6);
+		Label soilLbl = new Label("Soil Type:");
+		soilLbl.setFont(new Font("Futura",14));
+		soilLbl.setTextFill(Color.BLACK);
+		GridPane.setConstraints(soilLbl, 0, 5);
 		
 		//sunlight combo box
 		soilCbx = new ComboBox<String>();
-		GridPane.setConstraints(soilCbx, 1, 6);
+		GridPane.setConstraints(soilCbx, 1, 5);
 		soilCbx.getItems().addAll(
 				"Clay",
 				"Mix",
@@ -219,18 +191,17 @@ public class InputDataView {
 		
 		// enter the data into selected boxes
 		this.saveDataBtn = new Button("Enter Data");
-		GridPane.setConstraints(saveDataBtn, 1, 7);
+		saveDataBtn.setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		GridPane.setConstraints(saveDataBtn, 1, 6);
 		
 		
-		inputDataBox.getChildren().addAll(instruct, x, y, createPlot, cellsLbl, cellFld, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
+		inputDataBox.getChildren().addAll(instruct, x, y, createPlot, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//inputDataBox.getChildren().addAll(cellFld, cellFld2, sunLbl, sunCbx, waterLbl, waterCbx, soilLbl, soilCbx, saveDataBtn);
 		//RIGHT
-
-
+		inputDataBox.setBackground(new Background(new BackgroundFill(Color.SKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+		
 		//BORDERPANE
 		borderpane = new BorderPane();
-		
-		borderpane.setTop(menu);
 		borderpane.setCenter(gardenGrid);
 		borderpane.setRight(inputDataBox);
 		//borderpane.setLeft(this.cart);
@@ -242,20 +213,15 @@ public class InputDataView {
 		inputDataRoot.getChildren().add(borderpane);
 
 	}
-	
-	public void displayPlot(int x, int y) {
-		for (int i=0; i<x; i++) {
-			for (int j=0; j<y; j++) {
-				ImageView iv = new ImageView();
-				int scale = Math.max(x, y);
-				iv.setFitHeight(650 / scale);
-				iv.setFitWidth(650 / scale);
-				iv.setPreserveRatio(true);
-				GridPane.setConstraints(iv, i, j);
-				this.gardenGrid.getChildren().add(iv);
-				this.gardenGrid.setGridLinesVisible(true);
-			}
-		}
+	/**
+	 * updates any changes made to garden grid in edit cells view
+	 * 
+	 * @param garden - a gridpane to be updated in the view
+	 * @return returns an updated gridpane in case any changes are made
+	 */
+	public GridPane displayPlot(GridPane garden) {
+		borderpane.setCenter(garden);
+		return garden;
 	}
 	
 	public void update() {
